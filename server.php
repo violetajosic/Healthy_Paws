@@ -19,8 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $email = $_POST['myemail'];
     $mypassword = $_POST['mypassword'];
 
-
-
     // SQL query to add client to the table
     $sql = "INSERT INTO users (email, password, user_type) VALUES (?, ?, 'client')";
     $stmt = $conn->prepare($sql);
@@ -47,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
 
 
 // LOG IN
-//dodati remember me
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
     $email = $_POST['myemail'];
@@ -83,27 +80,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
         // Direct comparison for debugging purposes (remove in production)
         if ($my2password === $storedPassword) {
             // Lozinke se podudaraju - prijava uspešna
-            session_start();
-            echo "sesija pocela";
-            $_SESSION['login'] = "1";
-            $_SESSION['email'] = $email;
-            header("Location: index.html");
+            if ($row_login['user_type'] === 'client') {
+                session_start();
+                echo "sesija pocela kao klijent";
+                $_SESSION['loginClient'] = "1";
+                $_SESSION['emailClient'] = $email;
+                header("Location: index.html");
+            } elseif ($row_login['user_type'] === 'clinics') {
+                session_start();
+                echo "sesija pocela kao klinika";
+                $_SESSION['loginClinics'] = "1";
+                $_SESSION['emailClinics'] = $email;
+                header("Location: index.html");
+            }
+            //kraj
             exit();
         } else {
             echo "<h1> Login failed. Invalid email or password PRVI.</h1>"; //ovo se prikaze
+            session_destroy();
         }
     } else {
         echo "<h1> Login failed. Invalid email or password.</h1>";
     }
-
     // Zatvaranje stmt_login objekta
     $stmt_login->close();
 }
 
 
+//provera da li je ulogovana sesija loginClient
+if (!(isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
+    $clientLogged = true;
+    echo json_encode(['clientLogged' => $clientLogged]);
+    exit();
+}
+
+// Check if the clinic is logged in
+if (!(isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) { 
+    $clinicLogged = true; 
+    echo json_encode(['clinicLogged' => $clinicLogged]);
+    exit();
+}
+
+// If neither condition is met, return a generic response
+echo json_encode(['status' => 'error', 'message' => 'Invalid session state']);
+exit();
 
 
-
+// If neither condition is met, return a generic response
+echo json_encode(['status' => 'error', 'message' => 'Invalid session state']);
+exit();
 
 // Endpoint for clinic registration
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
