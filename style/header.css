@@ -1,0 +1,77 @@
+.navbar-brand img {
+    height: 50px;
+}
+div#navbarNavAltMarkup {
+    text-align: center;
+}
+.bg-light {
+    background-color: transparent !important;
+    gap: 20px;
+    padding-left: 30px;
+}
+.active, .active:hover{
+    text-decoration: underline;
+    text-decoration-color: #FFD95A;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+}
+.nav-item.nav-link {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.navbar-nav {
+    gap: 20px;
+}
+.navbar-light .navbar-toggler {
+    border: none;
+}
+.navbar-light .navbar-toggler:focus {
+    outline: #FFD95A 2px solid;
+    box-shadow: inset #FFD95A 0 0 8px 1px;
+    background-color: #ecfdffc2;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("../img/menuIcon/menuIcon.png");
+    height: 40px;
+    width: 40px;
+}
+.menu-opened {
+    margin-top: 0 !important;
+    height: 35vh !important;
+}
+.searchBar {
+    align-content: center;
+}
+.form-inline.form-control {
+    border-radius: 5px !important;
+}
+button.btn.btn-outline-success.my-2.my-sm-0 {
+    border: none;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+    padding: 0;
+}
+button.btn.btn-outline-success.my-2.my-sm-0:hover {
+    background-color: transparent;
+}
+input.form-control.mr-sm-2:focus {
+    box-shadow: none;
+    border: 1px black solid;
+}
+@media only screen and (max-width: 992px) {
+    .show {
+        background-color: #ecfdffc2;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .navbar-brand img {
+        height: 40px;
+    }
+    .navbar-light .navbar-toggler-icon {
+        height: 30px;
+    }
+}
+@media only screen and (max-width: 390px) {
+    .bg-light {
+        padding-left: 16px;
+    }
+}

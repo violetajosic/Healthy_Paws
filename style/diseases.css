@@ -1,0 +1,154 @@
+input[type="checkbox"] {
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+}
+.diseases-wrapper {
+    margin: 20px 0;
+}
+.diseasesHeading {
+    text-align: center;
+}
+.alert-heading {
+    display: none;
+    color: red;
+}
+.diseasesRowHeading h4{
+    font-weight: bold;
+}
+.col-12.mb-2.diseasesRowHeading {
+    padding-left: 0;
+}
+.diseasesWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.diseases-example-wrapper {
+    display: none;
+    width: 90%;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+.diseasesBtn {
+    text-align: right;
+}
+.diseasesBtn button {
+    background-color: #FFD95A;
+}
+.diseasesBtn button:hover {
+    background-color: #5087ca;
+    cursor: url("..img/cursor/cursorPointer.png"), pointer;
+}
+.diseases-example {
+    padding: 0;
+    height: 500px;
+}
+.diseases-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.diseases-img img {
+    border-radius: 10px;
+    height: 450px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+.diseases-text {
+    padding-top: 20px;
+}
+.diseases-text h3 {
+    font-weight: bold;
+}
+.diseases-text ul {
+    list-style: none;
+    padding-left: 0;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.diseases-text li {
+    display: flex;
+    flex-direction: column;
+}
+.diseases-example-rows h5 {
+    font-weight: bold;
+}
+@media only screen and (max-width: 1400px) {
+    .diseases-example-wrapper {
+        width: 100%;
+    }
+    .diseases-example {
+        height: 540px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    h5 {
+        font-size: 1.2rem;
+    }
+    .diseases-example {
+        height: 580px;
+    }
+    .diseases-img img {
+        height: 400px;
+    }
+}
+@media only screen and (max-width: 992px) {
+    h5 {
+        font-size: 1rem;
+    }
+    .diseases-example-wrapper {
+        flex-direction: column;
+    }
+    .diseases-text {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .diseases-example-rows h5 {
+        text-align: center;
+    }
+    .diseases-example-rows p {
+        text-align: justify;
+    }
+    .diseases-text ul {
+        gap: 20px;
+    }
+    .diseases-text li {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+    .diseases-example-rows h3 {
+        padding-top: 10px;
+    }
+    .diseases-example-rows h5 {
+        margin: 0;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .diseases-text li {
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .diseasesRow {
+        text-align: left;
+    }
+    .diseaseContainer {
+        padding: 20px 30px;
+    }
+    .diseases-example {
+        height: 740px;
+    }
+    .diseases-img img {
+        height: 300px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .diseasesFind {
+        text-align: center;
+    }
+}

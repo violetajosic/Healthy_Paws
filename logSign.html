@@ -1,0 +1,100 @@
+<div class="lswrapper"> <!-- OVO JE I LOG I SIGN UP PAGE ZA MENJANJE TEKSTA UZ JS-->
+    <div id="lsNavigation"></div>
+    <div class="container lsContainer">
+        <div class="row mt-5 mb-5 lsHeading">
+            <div class="col-12 mb-2">
+                <h1><span style="font-family:'Chicle', serif;">Sign <span style="color: #FFD95A; letter-spacing: 2px;">Up</span></span></h1>
+            </div>
+            <div class="col-12 lsAs">
+                <h5>As a</h5>
+            </div>
+        </div>
+        <!--SIGN UP DEO-->
+        <div class="row mb-5 lsButtons">
+            <div class="col-6 leftBtnLS">
+               <button type="button" onclick="signUpChoose()" class="btn btn-primary clientLSBtn"><h4>client</h4></button>
+            </div>
+            <div class="col-6 rightBtnLS">
+               <button type="button" onclick="signUpChoose()" class="btn btn-primary clinicsLSBtn"><h4>clinics</h4></button>
+            </div>
+        </div>
+        
+        <!--LOG IN DEO-->
+        <form action="server.php" method="post" class="row mb-5 logInForm" >
+            <div class="form-group mb-4 logInFormGroup">
+                <label class="logInLabel" for="exampleInputEmail1">Email address</label>
+                <input type="email" name="myemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                <div id="emailError" class="error-message"></div>
+            </div>
+            <div class="form-group logInFormGroup">
+                <label class="logInLabel" for="exampleInputPassword1">Password</label>
+                <input type="password" name="my2password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" autocomplete="off">
+                <div id="passwordError" class="error-message"></div>
+            </div>
+            <div class="form-group form-check logInFormGroup">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="logInLabel" class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <button onclick="validateAndRedirect()" name="logInFormCheck" type="submit" class="btn btn-primary clinicsLSBtn loginBtn"><h5>Log in</h5></button>
+        </form>
+
+        <!--CLIENT SIGN UP-->
+        <div class="col-12 mb-5 signUpHeading1">
+            <h3>Client</h3>
+        </div>
+        <form action="server.php" method="post" class="row mb-5 signUpFormClient">
+            <div class="form-group mb-4 signUpFormGroup">
+                <label class="logInLabel" for="exampleInputEmail2">Email address</label>
+                <input type="email" name="myemail" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                <div class="emailError" class="error-message"></div>
+            </div>
+            <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputPassword2">Create password</label>
+                <input type="password" name="mypassword" class="form-control" id="exampleInputPassword2" placeholder="Create a strong password." autocomplete="off">
+                <div class="passwordError" class="error-message"></div>
+            </div>
+            <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputPassword3">Repeat password</label>
+                <input type="password" name="repeatpassword" class="form-control repeatPassword" id="exampleInputPassword3" placeholder="Repeat your password." autocomplete="off">
+                <div class="repeatPasswordError" class="error-message"></div>
+            </div><!--kad neko klikne na ovaj button u bazu se ispisuje user_type client-->
+        
+            <button onclick="validateAndRedirectSignUpCLIENT()" name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>Sign Up</h5></button>
+        </form>
+        <!--CLINICS SIGN UP-->
+        <div class="col-12 mb-5 signUpHeading2">
+            <h3>Clinics</h3>
+        </div>
+        
+        <form action="server.php" method="post" class="row mb-5 signUpFormClinics">
+            <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputEmail3">Email address</label>
+                <input type="email" name="myemail" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                <div class="emailError2" class="error-message"></div>
+             </div>
+             <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputPassword4">Create password</label>
+                <input type="password" name="mypassword" class="form-control" id="exampleInputPassword4" placeholder="Create a strong password." autocomplete="off">
+                <div class="passwordError2" class="error-message"></div>
+             </div>
+             <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputPassword5">Repeat password</label>
+                <input type="password" name="repeatpassword" class="form-control" id="exampleInputPassword5" placeholder="Repeat your password." autocomplete="off">
+                <div class="repeatPasswordError2" class="error-message"></div>
+             </div>
+             <div class="form-group signUpFormGroup">
+                <label class="logInLabel" for="exampleInputPassword6">Clinics ID</label>
+                <input type="text" name="clinics_id" class="form-control clinicsID" id="exampleInputPassword6" placeholder="Your unique number" autocomplete="off">
+                <div class="clinicsId" class="error-message"></div>
+             </div><!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics-->
+            <button onclick="validateAndRedirectSignUpCLINICS()" name="register-clinics" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>Sign Up</h5></button>
+        </form>
+        
+        <!--SWITCH-->
+        <div class="row mb-5 lsSwitch">
+            <div class="col-12">
+                <h6>Already have an account? <a href="log.html"><span class="lsLogInBtn" style="color: #FFD95A;">Log in</span></a></h6>
+            </div>
+        </div>
+    </div>
+</div>

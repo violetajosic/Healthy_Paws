@@ -1,0 +1,144 @@
+div#lswrapper {
+    text-align: center;
+    background-color: white;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+    width: 40%;
+}
+.lsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lsHeading {
+    text-transform: uppercase;
+}
+.clientLSBtn {
+    background-color: #ADFF44;
+}
+.clinicsLSBtn {
+    background-color: #FFD95A;
+}
+.clientLSBtn:hover h4,
+.clinicsLSBtn:hover h4, .clinicsLSBtn:hover h5, .diseasesBtn button:hover h4 {
+    color: white;
+}
+.clientLSBtn:hover, .clinicsLSBtn:hover {
+    background-color: #5087ca;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+}
+.leftBtnLS {
+    display: flex;
+    justify-content: right;
+}
+.rightBtnLS {
+    display: flex;
+    justify-content: left;
+}
+.btn-primary {
+    border: none;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    padding: 20px;
+}
+.btn h4{
+    margin: 0;
+    color: black;
+    text-transform: uppercase;
+}
+span.lsLogInBtn:hover {
+    color: #5087ca !important;
+}
+button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
+    color: #FFD95A !important;
+}
+.logInForm, .signUpFormClinics, .signUpFormClient {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.logInFormGroup, .signUpFormGroup {
+    width: 80%;
+    text-align: left;
+}
+.logInLabel {
+    font-weight: bold;
+}
+.loginBtn {
+    width: 50%;
+    padding: 15px;
+}
+.loginBtn h5 {
+    margin: 0;
+    text-transform: uppercase;
+    color: black;
+}
+.logInFormGroup input:not([type="checkbox"]),
+.logInFormGroup input:not([type="checkbox"]):focus {
+    height: 50px;
+    box-shadow: inset 0 0 5px 1px #FFD95A;
+    background-color: #ffd95a2c;
+}
+.signUpFormGroup input:not([type="checkbox"]),
+.signUpFormGroup input:not([type="checkbox"]):focus {
+    height: 50px;
+    box-shadow: inset 0 0 5px 1px #FFD95A;
+    background-color: #ffd95a2c;
+}
+.signUpHeading1, .signUpHeading2 {
+    display: none;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family:'Chicle', serif;
+    letter-spacing: 1px;
+}
+@media only screen and (max-width: 1400px) {
+    div#lswrapper {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .lsHeading h1 {
+        font-size: 2.5rem !important;
+    }
+    div#lswrapper {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .lsHeading h1 {
+        font-size: 2rem !important;
+    }
+    div#lswrapper {
+        width: 70%;
+        padding-bottom: 30px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    div#lswrapper {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    div#lswrapper {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .row.mt-5.mb-5.lsHeading, .row.mb-5.lsButtons, .row.mb-5.lsSwitch {
+        margin-bottom: 48px !important;
+    }
+    div#lswrapper {
+        width: 70%;
+        padding-bottom: 0;
+    }
+}
+@media only screen and (max-width: 480px) {
+    div#lswrapper {
+        width: 95%;
+    }
+    .loginBtn {
+        padding: 10px;
+    }
+}
