@@ -1,6 +1,7 @@
 # Diplomski rad
 Za pokretanje projekta neophodno je da se on nalazi u xampp htdocs folderu.
 Xampp Apache i MySQL moraju biti startovani.
+U pregledaču (chrome) kucati localhost/hp/index.html
 
 Opis projekta:
 Sajt posvećen brizi o kućnim ljubimcima. Ukoliko nemate nalog možete da vidite:
