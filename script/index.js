@@ -429,15 +429,17 @@ function validateAndRedirectSignUpCLINICS() {
     .catch((error) => console.error("Error fetching navigation:", error));
   }
 }
-//provera da li je ulogovan kao klijent
+/*provera da li je ulogovan kao klijent
 document.addEventListener('DOMContentLoaded', function () {
   // Function to load headers
   function loadHeaders() {
+    console.log('radi');
       $.ajax({
-          url: 'server.php', // Adjust the URL as needed
+          url: 'server.php', 
           method: 'GET',
           dataType: 'json',
           success: function (response) {
+            console.log('radi 2');
               var userData = JSON.parse(response);
 
               if (userData.clientLogged) {
@@ -503,8 +505,9 @@ document.addEventListener('DOMContentLoaded', function () {
                       })
                       .catch((error) => console.error("Error fetching default header:", error));
               }
-          }
-      });
+          }, error: function (xhr, status, error) {
+            console.error("AJAX Error:", status, error);
+      }});
   }
 
   // Function to add active class to navigation links
@@ -512,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Call the loadHeaders function when the DOM is fully loaded
   loadHeaders();
-});
+});*/
 
 
 //funkcija za diseases
