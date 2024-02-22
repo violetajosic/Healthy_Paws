@@ -1,0 +1,22 @@
+.profile {
+    height: auto;
+}
+.profileWhiteWrapper {
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+.profileWrapper {
+    border-radius: 20px;
+    border: 10px #98b5c8 solid;
+    height: 100vh;
+    padding: 20px;
+    margin: 30px;
+    width: 100%;
+}
+.profileOwnerImg img{
+    height: 300px;
+}

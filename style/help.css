@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 85vh;
 }
 .help-secondWrapper {
     width: 70%;
@@ -13,7 +14,6 @@
     align-items: center;
     flex-direction: column;
     padding: 60px 30px;
-    margin-top: 50px;
     text-align: center;
 }
 .help-secondWrapper p {

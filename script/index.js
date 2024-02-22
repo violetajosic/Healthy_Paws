@@ -2,13 +2,17 @@
 fetch("header.html")
   .then((response) => response.text())
   .then((html) => {
+
     // Insert the HTML content into the navigation container
     document.getElementById("navigation").innerHTML = html;
 
     // After the HTML is loaded, check and add the .active class
     addActiveClassToLink();
+  
   })
   .catch((error) => console.error("Error fetching navigation:", error));
+
+  
 //promena iz sign u log tj iz ls html u log html
 // ubacivanje logSign html u ls i log
 fetch("logSign.html")
@@ -80,14 +84,14 @@ function signUpChoose() {
   }
 }
 //heading ls
-fetch("lsHeader.html")
+/*fetch("lsHeader.html")
   .then((response) => response.text())
   .then((html) => {
     // Insert the HTML content into the navigation container
     document.getElementById("lsNavigation").innerHTML = html;
   })
   .catch((error) => console.error("Error fetching navigation:", error));
-//heading .active class
+//heading .active class*/
 function addActiveClassToLink() {
   // Get the current page path
   var currentPagePath = window.location.pathname;
@@ -122,10 +126,13 @@ function addActiveClassToLink() {
 //INDEX HOME PAGE
 //carton button hover
 var indexBtn = document.querySelector(".indexBtn-abs");
+console.log(indexBtn);
 var indexBtnImg = document.querySelector(".indexBtn");
 var indexBtnImgHover = document.querySelector(".indexBtnHover");
 
 // Add a click event listener
+if(indexBtn !== null && indexBtnImg !== null && indexBtnImgHover !== null){
+
 indexBtn.addEventListener("mouseover", function (event) {
   indexBtnImg.style.display = "none";
   indexBtnImgHover.style.display = "flex";
@@ -135,6 +142,11 @@ indexBtn.addEventListener("mouseout", function (event) {
   indexBtnImgHover.style.display = "none";
   indexBtnImg.style.display = "flex";
 });
+
+}
+
+
+console.log('usao ovde');
 
 //CLINICS
 //Search bar
@@ -429,8 +441,11 @@ function validateAndRedirectSignUpCLINICS() {
     .catch((error) => console.error("Error fetching navigation:", error));
   }
 }
-/*provera da li je ulogovan kao klijent
+
+console.log(22222);
+//provera da li je ulogovan kao klijent
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('doc ready');
   // Function to load headers
   function loadHeaders() {
     console.log('radi');
@@ -439,10 +454,11 @@ document.addEventListener('DOMContentLoaded', function () {
           method: 'GET',
           dataType: 'json',
           success: function (response) {
-            console.log('radi 2');
-              var userData = JSON.parse(response);
+        
+              var userData = response.data;
+              console.log(userData);
 
-              if (userData.clientLogged) {
+              if (userData.loginClient) {
                   // Do something when the user is logged in as a client
                   console.log('Client is logged in.');
 
@@ -466,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       var indexH3 = document.querySelector(".indexBtn-abs h4");
                       indexH3.innerHTML = 'Type your ID here..'; //promeniti da je input i da uzima catalog sa tim id iz baze i odvodi na catalog page koji inace nema u meniju
 
-              } else if (userData.clinicLogged) {
+              } else if (userData.loginClinics) {
                   // Do something when the user is logged in as a clinic
                   console.log('Clinic is logged in.');
 
@@ -515,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Call the loadHeaders function when the DOM is fully loaded
   loadHeaders();
-});*/
+});
 
 
 //funkcija za diseases

@@ -27,6 +27,9 @@ body {
 .bodyHelp {
     background-image: url("../img/help/helpBcg.jpg");
 }
+body.bodyProfile {
+    background-image: url("../img/diseases/diseasesBcg.png");
+}
 a, a:hover {
     text-decoration: none;
     color: black;

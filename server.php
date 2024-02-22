@@ -7,12 +7,12 @@ $database = "healthypawsusers";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
+/* Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
     echo "Connected successfully";
-}
+}*/
 
 // sign up client (dodati da ne sme isti mail)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
@@ -73,9 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
     $stmt->close();
 }
 
+session_start();
+
 // LOG IN RADI
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
-
+    
     $email = $_POST['myemail'];
     $my2password = $_POST['my2password'];
 
@@ -100,31 +102,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
         $row_login = $result_login->fetch_assoc();
 
-        // Debugging statements for password verification
-        echo "Stored Password (length: " . strlen($row_login['password']) . "): " . $row_login['password'];
-        echo "Provided Password (length: " . strlen($my2password) . "): " . $my2password;
-
-
         $storedPassword = $row_login['password'];
         // Direct comparison for debugging purposes (remove in production)
         if ($my2password === $storedPassword) {
+        
             // Lozinke se podudaraju - prijava uspešna
             if ($row_login['user_type'] === 'client') {
-                echo "sesija pocela kao klijent"; //ne ispise se 
-                session_start(); //radi
+                echo "sesija pocela kao klijent";
+                 
                 $_SESSION['loginClient'] = "1";
+                $_SESSION['type'] = 'client';
                 $_SESSION['emailClient'] = $email;
-                header("Location: index.html"); //radi
-                exit();
+                header("Location: index.html"); 
+                
             } elseif ($row_login['user_type'] === 'clinics') {
-                echo "sesija pocela kao klinika"; //ne ispise se
-                session_start(); //radi
+                echo "sesija pocela kao klinika"; 
                 $_SESSION['loginClinics'] = "1";
+                $_SESSION['type'] = 'clinics';
                 $_SESSION['emailClinics'] = $email;
-                header("Location: index.html"); //radi
-                exit();
+                header("Location: index.html"); 
             }
-            exit();
+            
         } else {
             echo "<h1> Login failed. Invalid email or password PRVI.</h1>"; //ovo se prikaze
             session_destroy();
@@ -136,23 +134,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
     $stmt_login->close();
 }
 
-/*
-//provera da li je ulogovana sesija loginClient
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    header('Content-Type: application/json');
 if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
     $clientLogged = true;
-    echo json_encode(['clientLogged' => $clientLogged]);
-    exit();
+    echo json_encode(['data' => ['loginClient' => 1]]);
+   
 } elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {  //ako je klinika
     $clinicLogged = true; 
-    echo json_encode(['clinicLogged' => $clinicLogged]);
-    exit();
+   
+    echo json_encode(['data' => ['loginClinics' => 1]]);
+   
 } else { //ako je izlogovan
     echo json_encode(['status' => 'error', 'message' => 'Invalid session state']); //ovo se prikaze
-    exit();
+    
 }
-
-*/
-
+}
 
 // Close the connection
 $conn->close();
