@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         var indexH3 = document.querySelector(".indexBtn-abs h4");
                         indexH3.innerHTML = 'Type your ID here..'; //promeniti da je input i da uzima catalog sa tim id iz baze i odvodi na catalog page koji inace nema u meniju
   
-                } else if (userData.loginClinics) { //ne radi ne prepozna uvek je klijent
+                } else if (userData.loginClinics) {
                     // uradi nesto ako je ulogovan kao klinika
                     console.log('Clinic is logged in.'); 
   
