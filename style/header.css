@@ -41,9 +41,16 @@ div#navbarNavAltMarkup {
 }
 .searchBar {
     align-content: center;
+    justify-content: center;
+}
+.searchBar:focus {
+    border: none;
 }
 .form-inline.form-control {
     border-radius: 5px !important;
+}
+.form-inline {
+    flex-wrap: nowrap;
 }
 button.btn.btn-outline-success.my-2.my-sm-0 {
     border: none;
