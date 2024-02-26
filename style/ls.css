@@ -68,11 +68,15 @@ button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
 .loginBtn {
     width: 50%;
     padding: 15px;
+    transition: transform 0.3s ease-in-out;
 }
 .loginBtn h5 {
     margin: 0;
     text-transform: uppercase;
     color: black;
+}
+.loginBtn:hover {
+    transform: scale(0.95);
 }
 .logInFormGroup input:not([type="checkbox"]),
 .logInFormGroup input:not([type="checkbox"]):focus {

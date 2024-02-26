@@ -16,12 +16,15 @@
     top: 20px;
     left: 110px;
 }
-.IDSearchClinicInput,.IDSearchClinicInput:active,.IDSearchClinicInput:focus {
+.IDSearchClinicInput,.IDSearchClinicInput:active {
     height: 60px;
     background-color: transparent;
     border: none;
     color: black;
     outline: none;
+}
+.IDSearchClinicInput:focus {
+    background-color: white;
 }
 .IDSearchClinicInput::placeholder {
     font-size: 20px;
@@ -48,6 +51,9 @@
     cursor: pointer;
     color: white;
     cursor: url("../img/cursor/cursorPointer.png"), pointer;
+}
+.IDSearchClinic {
+    display: none;
 }
 .IDSearchClinicInput {
     text-align: center;

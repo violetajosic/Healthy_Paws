@@ -1,0 +1,99 @@
+.mncButton {
+    text-align: left;
+}
+.mncButton {
+    width: 100%;
+}
+button.profileClientBtn.mncBtn {
+    width: 50%;
+}
+.mncCol {
+    padding: 0;
+}
+.mncBtn {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #98b5c8;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease-in-out;
+}
+.mncBtn:hover, .mncLabel {
+    cursor: pointer;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+    transform: scale(0.95);
+    background-color: #98b5c8;
+}
+label.form-label.text-white.m-1.mncLabel {
+    font-size: 1.2rem;
+}
+.mncWrapper {
+    padding: 35px;
+}
+.mncInfoRow {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.mncTable {
+    padding: 5px;
+    align-items: center;
+}
+.row-12.petAgeHeading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.col-6.petCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
+.col-6.petAgeConverted {
+    max-width: 100% !important;
+    padding: 0;
+}
+.row-6.petAgeInput {
+    padding: 0 5px;
+}
+.mncConverted {
+    padding: 3px 5px !important;
+    border-radius: 3px;
+    background-color: white;
+    border: 1px solid #ced4da;
+}
+.col-6.petAgeConverted {
+    padding: 0 5px;
+}
+.petInput {
+    width: 100%;
+}
+@media only screen and (max-width: 1200px) {
+    .mncTableWrapper {
+        width: 95%;
+    }
+    .mncWrapper {
+        padding: 35px 25px;
+    }
+    .row-12.petAgeHeading {
+        flex-direction: column;
+    }
+    .col-6.petCol {
+        max-width: 100% !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    label.form-label.text-white.m-1.mncLabel {
+        font-size: 1rem;
+    }
+    .mncBtn {
+        padding: 8px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .mncWrapper {
+        padding: 25px 15px;
+    }
+}

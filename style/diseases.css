@@ -38,10 +38,12 @@ input[type="checkbox"] {
 }
 .diseasesBtn button {
     background-color: #FFD95A;
+    transition: transform 0.3s ease-in-out;
 }
 .diseasesBtn button:hover {
     background-color: #5087ca;
     cursor: url("..img/cursor/cursorPointer.png"), pointer;
+    transform: scale(0.95);
 }
 .diseases-example {
     padding: 0;

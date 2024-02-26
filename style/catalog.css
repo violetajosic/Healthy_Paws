@@ -53,7 +53,7 @@
 .vetTableHeadingCol {
     padding: 0;
 }
-.vetTableHeadingCol h5 {
+.vetTableHeadingCol h6 {
     margin: 0;
     text-transform: uppercase;
 }
@@ -80,6 +80,9 @@
     align-items: center;
     gap: 6px;
 }
+.vetInputTable {
+    display: none;
+}
 .vetInputTableInfo ul {
     padding: 0 0 10px 0;
 }
@@ -96,4 +99,74 @@
 .vetInfoInput:focus {
     box-shadow:  2px 2px 3px 1px #98b5c8;
     border-color: #98b5c8;
+}
+.vetHeadingInput:focus {
+    box-shadow:  2px 2px 3px 1px #728796;
+    border-color: #728796;
+}
+@media only screen and (max-width: 992px) {
+    .catalogIDCol {
+        justify-content: center;
+    }
+    .catalogInfoCol {
+        align-items: center;
+    }
+    .catalogWrapper {
+        padding: 30px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .vetTable {
+        width: 95%;
+    }
+    .catalogExit img {
+        height: 40px;
+    }
+    .vetTableHeading {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    .vetTableHeadingCol {
+        text-align: center;
+    }
+    .vetInputHeadingCol {
+        text-align: left;
+    }
+    .col-6.vetTableHeadingCol.vetInputHeadingCol {
+        max-width: 100%;
+    }
+    .vetHeadingInput {
+        margin-top: 5px;
+    }
+    .col-6.vetTableHeadingCol {
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .profileWhiteWrapper.catalogWhiteWrapper {
+        width: 80%;
+    }
+    .profileButton.catalogBtn {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .catalogWrapper {
+        padding: 20px;
+    }
+    .profileWhiteWrapper.catalogWhiteWrapper {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .catalogWrapper {
+        padding: 20px 10px;
+    }
+    .profileWhiteWrapper.catalogWhiteWrapper {
+        width: 100%;
+    }
+    .catalogExit img {
+        height: 30px;
+    }
 }
