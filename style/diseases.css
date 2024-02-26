@@ -8,8 +8,10 @@ input[type="checkbox"] {
     text-align: center;
 }
 .alert-heading {
-    display: none;
+    display: flex;
     color: red;
+    justify-content: center;
+    align-items: center;
 }
 .diseasesRowHeading h4{
     font-weight: bold;

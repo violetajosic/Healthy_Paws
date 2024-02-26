@@ -1,0 +1,99 @@
+.catalogWrapper {
+    padding: 45px;
+}
+.catalogExit img {
+    height: 50px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+}
+.exitBtn:hover, .exitBtnHover:hover {
+    height: 50px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    cursor: pointer;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+}
+.exitBtnHover {
+    display: none;
+}
+.catalogExitRow, .catalogInfoRow {
+    width: 100%;
+}
+.catalogExit {
+    display: flex;
+    justify-content: right;
+}
+.catalogIDCol {
+    display: flex;
+    justify-content: left;
+    padding: 0;
+}
+.catalogInfoCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 30px;
+    padding: 0;
+}
+.vetTable {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background-color: #e3e8eb;
+    border-radius: 5px;
+}
+.vetTableHeading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 6px;
+    color: white;
+    background-color: #98b5c8;
+    border-radius: 5px;
+}
+.vetTableHeadingCol {
+    padding: 0;
+}
+.vetTableHeadingCol h5 {
+    margin: 0;
+    text-transform: uppercase;
+}
+.vetDate {
+    text-align: right;
+}
+.vetInputHeadingCol {
+    text-align: left;
+}
+.vetTableInfo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+.vetInfo {
+    line-height: 30px;
+}
+.vetTableInfo ul{
+    list-style: none !important;
+    padding: 6px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.vetInputTableInfo ul {
+    padding: 0 0 10px 0;
+}
+.vetTableInfo ul li {
+    background-color: white;
+}
+.vetTableInfo ul li, .vetTableInfo p{
+    padding: 0 0 0 4px;
+    text-align: left;
+}
+.vetInfoInput {
+    width: 98%;
+}
+.vetInfoInput:focus {
+    box-shadow:  2px 2px 3px 1px #98b5c8;
+    border-color: #98b5c8;
+}

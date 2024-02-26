@@ -1,5 +1,6 @@
 .profile {
     height: auto;
+    margin-top: 50px;
 }
 .profileWhiteWrapper {
     background-color: white;
@@ -12,11 +13,108 @@
 .profileWrapper {
     border-radius: 20px;
     border: 10px #98b5c8 solid;
-    height: 100vh;
-    padding: 20px;
+    height: auto;
+    padding: 45px 0;
     margin: 30px;
     width: 100%;
+    justify-content: flex-start;
+    gap: 40px;
+}
+.profileRow {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
 }
 .profileOwnerImg img{
     height: 300px;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+.profileCol {
+    text-align: left;
+    padding: 0;
+}
+.profileCLID {
+    display: none;
+}
+.profileButton {
+    width: 80%;
+}
+.profileButton h4 {
+    margin: 0;
+    color: white;
+}
+.profileButton button {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #98b5c8;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+.profileButton button:hover {
+    cursor: pointer;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+    transform: scale(0.95);
+}
+.profileBtn button:focus {
+    outline: none;
+}
+.profileClinicsBtn {
+    display: none;
+}
+@media only screen and (max-width: 1200px) {
+    .profileOwnerImg img{
+        height: 280px;
+    }
+    .profileRow {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .profileOwnerImg img{
+        height: 230px;
+    }
+    .profileRow {
+        flex-direction: column;
+    }
+    .profileCol {
+        text-align: center;
+    }
+    .profileWrapper {
+        gap: 20px;
+    }
+}
+@media only screen and (max-width: 850px) {
+    .profileWhiteWrapper {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .profileOwnerImg img{
+        height: 200px;
+    }
+    .profileWhiteWrapper {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .profileOwnerImg img{
+        height: 180px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .profileWhiteWrapper {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .profileWhiteWrapper {
+        width: 100%;
+    }
+    .profileWrapper {
+        margin: 20px;
+    }
 }

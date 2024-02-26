@@ -8,6 +8,25 @@
 .container {
     max-width: 1500px;
 }
+.indexBtnRow {
+    position: relative;
+}
+.IDSearchClinic {
+    position: absolute;
+    top: 20px;
+    left: 110px;
+}
+.IDSearchClinicInput,.IDSearchClinicInput:active,.IDSearchClinicInput:focus {
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    color: black;
+    outline: none;
+}
+.IDSearchClinicInput::placeholder {
+    font-size: 20px;
+    color: black;
+}
 .indexBtn, .indexBtnHover {
     height: 100px;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
@@ -29,6 +48,9 @@
     cursor: pointer;
     color: white;
     cursor: url("../img/cursor/cursorPointer.png"), pointer;
+}
+.IDSearchClinicInput {
+    text-align: center;
 }
 @media only screen and (max-width: 1400px) {
     .container {

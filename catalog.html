@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝐇𝐞𝐚𝐥𝐭𝐡𝐲 𝐏𝐚𝐰𝐬</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/x-icon" a href="img/logo/icon.png">
+</head>
+<body class="bodyProfile">
+
+    <div id="navigation"></div>
+    <div class="help-wrapper profile">
+        <div class="profileWhiteWrapper">
+            <div class="help-secondWrapper profileWrapper catalogWrapper">
+                <div class="row-12 catalogExitRow"> <!--samo za kliniku-->
+                    <div class="col-12 catalogExit">
+                       <a href="index.html"><img src="img/exitIcon/exit.png" alt="This is exit button" class="exitBtn"></a>
+                       <a href="index.html"><img src="img/exitIcon/exitHover.png" alt="This is exit button" class="exitBtnHover"></a> 
+                    </div>
+                </div>
+                <div class="row-12 mb-2 catalogInfoRow">
+                    <div class="col-12 catalogIDCol">
+                        <h4>1245635</h4> <!--ID BROJ KATALOGA IZ BAZE KOJI SE KUCA U SEARCH-->
+                    </div>
+                    <div class="col-12 mb-4 profileCol profileOwnerImg">
+                        <img src="img/profile/dogWithOwner.jpg" alt="User (client) image with his pet."><!--SLIKA IZ BAZE ZA TAJ ID-->
+                    </div>
+                    <div class="col-12 catalogInfoCol">
+                        <h4>IME ZIVOTINJE - ime i prezime valsnika</h4>
+                        <p>Vrsta i rasa zivotinje</p>
+                        <p>Starost zivotinje - starost kao ljudske godine</p>
+                    </div>
+                </div>
+                <div class="row-12 vetTable">
+                    <div class="row-12 vetTableHeading">
+                        <div class="col-6 vetTableHeadingCol">
+                            <h5>NAZIV POSLEDNJE BOLESTI</h5>
+                        </div>
+                        <div class="col-6 vetTableHeadingCol vetDate"> <!--datum iz baze vetTable-->
+                            <h5>12.01.2015.</h5>
+                        </div>
+                    </div>
+                    <div class="row-12 vetTableInfo">
+                        <ul>
+                            <li class="col-12 vetInfo">Spisak simptoma</li>
+                            <li class="col-12 vetInfo">Data terapija</li>
+                            <li class="col-12 vetInfo">Potpis lekara i veterinarske klinike</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row-12 vetTable">
+                    <div class="row-12 vetTableHeading">
+                        <div class="col-6 vetTableHeadingCol">
+                            <h5>NAZIV POSLEDNJE BOLESTI</h5>
+                        </div>
+                        <div class="col-6 vetTableHeadingCol vetDate"> <!--datum iz baze vetTable-->
+                            <h5>12.01.2015.</h5>
+                        </div>
+                    </div>
+                    <div class="row-12 vetTableInfo">
+                        <ul>
+                            <li class="col-12 vetInfo">Spisak simptoma</li>
+                            <li class="col-12 vetInfo">Data terapija</li>
+                            <li class="col-12 vetInfo">Potpis lekara i veterinarske klinike</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--input u bazu vetTable-->
+                <div class="row-12 vetTable vetInputTable">
+                    <div class="row-12 vetTableHeading vetInputHeading">
+                        <div class="col-6 vetTableHeadingCol vetInputHeadingCol">
+                            <h5>Disease name:</h5>
+                            <input type="text" name="inpDiseaseName" class="form-control" id="inpDiseaseName1" placeholder="Enter disease name" autocomplete="off">
+                        </div>
+                        <div class="col-6 vetTableHeadingCol vetDate vetInputHeadingCol"> <!--datum iz baze vetTable-->
+                            <h5>Date:</h5>
+                            <input type="text" name="inpDiseaseName" class="form-control" id="inpDiseaseName1" placeholder="Enter appointment date" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row-12 vetTableInfo vetInputTableInfo">
+                        <ul>
+                           <p class="col-12 vetInfo vetInputInfo">Spisak simptoma:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="inpDiseaseName1" placeholder="Enter symptoms" autocomplete="off">
+                           <p class="col-12 vetInfo vetInputInfo">Data terapija:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="inpDiseaseName1" placeholder="Enter terapy" autocomplete="off">
+                           <p class="col-12 vetInfo vetInputInfo">Potpis lekara i veterinarske klinike:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="inpDiseaseName1" placeholder="Enter doctor's name and clinic ID" autocomplete="off">
+                        </ul>
+                    </div>
+                </div>
+                <div class="row-12 profileButton">
+                    <div class="col-12 profileBtn">
+                        <button onclick="" type="submit" class="profileClientBtn"><h4>Add new appointment data</h4></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script/common.js"></script>
+    <script src="script/catalog.js"></script>
+    <script src="script/afterLogIn.js"></script>
+    <script src="server.php"></script>
+</body>
+</html>
