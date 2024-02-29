@@ -41,6 +41,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         var newSearch = document.querySelector(".IDSearchClinic"); //klikom na ovo salje na catalog.html sa odredjenim podacima iz baze UKOLIKO JE MEMBERSHIP PLACEN, UKOLIKO NIJE IZLAZI ALERT ILI NEKI NASLOV DA MORAJU DA PLATE
                         newSearch.style.display="flex";
+                        function findID() { //pretraga catalog ID-ja ALI SAMO ZA ONE KOJI IMAJU TAJ EMAIL
+                            // Get the value from the input field
+                            var catalogID = document.getElementById('searchInput').value;
+                        
+                            // Use jQuery to send an AJAX request to catalog.html
+                            $.ajax({
+                                type: 'POST',
+                                url: 'catalog.html',
+                                data: { catalogID: catalogID },
+                                success: function(response) {
+                                    // Update the content in catalogIDCol with the response from catalog.html
+                                    $('.catalogIDCol h4').html(response);
+                                },
+                                error: function() {
+                                    alert('Error fetching data.');
+                                }
+                            });
+                        }
+                        findID();
+                    }
+                    if (window.location.pathname.includes('profile.html')) { //dodavanje informacija o tome ko je ulogovan
+                        var profileEmail = document.querySelector("#profileEmail h5");
+                        profileEmail.innerHTML = "EMAIL: " + response.emailClient.toUpperCase();
+                        var profilePassword = document.querySelector("#profilePassword h5");
+                        profilePassword.innerHTML = "PASSWORD: " + response.passwordClient.toUpperCase();
                     }
                 } else if (userData.loginClinics) {
                     // uradi nesto ako je ulogovan kao klinika
@@ -113,6 +138,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         var newSearch = document.querySelector(".IDSearchClinic");
                         newSearch.style.display="flex";
+
+                        function findID() { //pretraga catalog ID-ja
+                            // Get the value from the input field
+                            var catalogID = document.getElementById('searchInput').value;
+                        
+                            // Use jQuery to send an AJAX request to catalog.html
+                            $.ajax({
+                                type: 'POST',
+                                url: 'catalog.html',
+                                data: { catalogID: catalogID },
+                                success: function(response) {
+                                    // Update the content in catalogIDCol with the response from catalog.html
+                                    $('.catalogIDCol h4').html(response);
+                                },
+                                error: function() {
+                                    alert('Error fetching data.');
+                                }
+                            });
+                        }
+                        findID();
                     }
                         
                     if (window.location.pathname.includes('help.html')) { //radi

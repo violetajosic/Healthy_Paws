@@ -1,4 +1,4 @@
-<?php //ne izvrsava se uopste
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -18,23 +18,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
     $mncConverted = $_POST['mncConverted'];
 
     // File upload handling
-    $targetDirectory = "img/uploads";  // Change this to your desired upload directory
-    $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
+    if (isset($_FILES["customFile1"]) && $_FILES["customFile1"]["error"] == 0) {
+        $targetDirectory = "img/uploads";
+        $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
 
-    if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {
-        echo "File is valid, and was successfully uploaded.";
-        $imagePath = $targetFile;  // Use the uploaded file path in the database
+        if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {
+            echo "File is valid, and was successfully uploaded.";
+            $imagePath = $targetFile;  // Use the uploaded file path in the database
 
-        $sql = "INSERT INTO pets (image, vet_heading, species, pet_age, age_converted)
-            VALUES ('$imagePath', '$vetHeadingInput', '$speciesInput', $petAgeInput, $mncConverted)";
+            $sql = "INSERT INTO pets (image, vet_heading, species, pet_age, age_converted)
+                VALUES ('$imagePath', '$vetHeadingInput', '$speciesInput', $petAgeInput, $mncConverted)";
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            if ($conn->query($sql) === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Upload failed.";
         }
     } else {
-        echo "Upload failed.";
+        echo "File not found or an error occurred."; //ovo se prikaze
     }
 }
 
