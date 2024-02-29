@@ -29,6 +29,7 @@ function addActiveClassToLink() {
     var linkPath5 = document.querySelector(".ls");
     var linkPath6 = document.querySelector(".helpLink");
     var linkPath7 = document.querySelector(".profileLink");
+    var linkPath8 = document.querySelector(".mncLink");
 
     if (currentPagePath.includes("index.html")) {
       linkPath1.classList.add("active");
@@ -44,6 +45,8 @@ function addActiveClassToLink() {
       linkPath6.classList.add("active");
     }else if (currentPagePath.includes("profile.html")) {
       linkPath7.classList.add("active");
+    }else if (currentPagePath.includes("mnc.html")) {
+      linkPath8.classList.add("active");
     }else {
       console.log("Something went wrong" + error);
     }

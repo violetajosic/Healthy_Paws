@@ -43,7 +43,7 @@ label.form-label.text-white.m-1.mncLabel {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .col-6.petCol {
     display: flex;
@@ -69,6 +69,14 @@ label.form-label.text-white.m-1.mncLabel {
 }
 .petInput {
     width: 100%;
+}
+div#speciesError, div#ageError {
+    width: 100%;
+    text-align: left !important;
+    padding-left: 8px;
+}
+div#ageError {
+    padding-left: 3px;
 }
 @media only screen and (max-width: 1200px) {
     .mncTableWrapper {
