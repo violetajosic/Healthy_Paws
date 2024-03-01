@@ -35,7 +35,7 @@
     text-align: left;
     padding: 0;
 }
-.profileCLID {
+div#profileCLID {
     display: none;
 }
 .profileButton {
@@ -65,12 +65,25 @@
 .profileClinicsBtn {
     display: none;
 }
+.logOutButton {
+    width: 20%;
+}
+.logOutButton button {
+    border: 1px solid #98b5c8;
+    background-color: white;
+}
+.logOutButton h4 {
+    color: #98b5c8;
+}
 @media only screen and (max-width: 1200px) {
     .profileOwnerImg img{
         height: 280px;
     }
     .profileRow {
         width: 90%;
+    }
+    .logOutButton {
+        width: 30%;
     }
 }
 @media only screen and (max-width: 992px) {
@@ -86,10 +99,18 @@
     .profileWrapper {
         gap: 20px;
     }
+    div#profileCLID {
+        justify-content: center;
+    }
 }
 @media only screen and (max-width: 850px) {
     .profileWhiteWrapper {
         width: 70%;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .logOutButton {
+        width: 40%;
     }
 }
 @media only screen and (max-width: 600px) {
@@ -98,6 +119,14 @@
     }
     .profileWhiteWrapper {
         width: 80%;
+    }
+}
+@media only screen and (max-width: 410px) {
+    .profileButton {
+        width: 90%;
+    }
+    .logOutButton {
+        width: 50%;
     }
 }
 @media only screen and (max-width: 500px) {

@@ -96,21 +96,24 @@ document.addEventListener('DOMContentLoaded', function () {
                         
                             // breakpoints za responsive
                             var breakpoints = {
+                                xsmall : 570,
                                 small: 600,
                                 medium: 1000,
                                 xl: 1200,
-                                xxl: 1300
                             };
                             // font size za responsive
                             var fontSizes = {
-                                small: "20px",
+                                xsmall : "25px",
+                                small: "30px",
                                 medium: "35px",
                                 xl: "40px"
                             };
                         
                             //izvrsavanje izmene
                             var fontSize;
-                            if (windowWidth < breakpoints.small) {
+                            if (windowWidth < breakpoints.xsmall) {
+                                fontSize = fontSizes.xsmall;
+                            } else if (windowWidth < breakpoints.small) {
                                 fontSize = fontSizes.small;
                             } else if (windowWidth < breakpoints.medium) {
                                 fontSize = fontSizes.medium;
