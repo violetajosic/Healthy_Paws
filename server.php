@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $stmt->close();
 }
 
-// sign up clinics (dodati da ne sme isti mail)
+// sign up clinics (dodati da ne sme isti mail) //pusti ga na log in page iako je npr prazan znaci ne izvrsi js validaciju
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
     echo "clinics";
     $email = $_POST['myemail'];
@@ -117,11 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
             }
             
         } else {
-            echo "<h1> Login failed. Invalid email or password PRVI.</h1>"; //ovo se prikaze
+            echo "<h1> Login failed. Invalid email or password PRVI.</h1>"; 
             session_destroy();
         }
     } else {
-        echo "<h1> Login failed. Invalid email or password.</h1>";
+        echo "<h1> Login failed. Invalid email or password.</h1>"; //prikazuje ovo umesto da radi js validaciju
     }
     // Zatvaranje stmt_login objekta
     $stmt_login->close();
