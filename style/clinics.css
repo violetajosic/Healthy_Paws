@@ -54,12 +54,6 @@ ul#myUL {
 #myUL li a:hover:not(.header) {
     background-color: #F6F8FB;
 }
-h6, p {
-    margin: 0;
-}
-p {
-    text-align: left;
-}
 .aHSecond {
     letter-spacing: 2px;
 }
@@ -114,17 +108,11 @@ p {
     transition: 0.3s;
 }
 @media only screen and (max-width: 1200px) {
-    h3 {
-        font-size: 1.5rem;
-    }
     .clinicsCity {
         gap: 80px;
     }
 }
 @media only screen and (max-width: 992px) {
-    h3 {
-        font-size: 1.3rem;
-    }
     .clinicsCity {
         gap: 50px;
     }
@@ -133,9 +121,6 @@ p {
     }
 }
 @media only screen and (max-width: 800px) {
-    h3 {
-        font-size: 1.3rem;
-    }
     .clinicsCity {
         gap: 50px;
     }
@@ -161,9 +146,6 @@ p {
 @media only screen and (max-width: 710px) {
     .clinicsCity {
         gap: 30px;
-    }
-    h3 {
-        font-size: 1.2rem;
     }
     .clinics-wrapper {
         padding-bottom: 30px;
@@ -194,9 +176,6 @@ p {
     }
 }
 @media only screen and (max-width: 510px) {
-    h3 {
-        font-size: 1.1rem;
-    }
     #myInput {
         font-size: 0.8rem;
     }

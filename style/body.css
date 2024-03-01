@@ -35,8 +35,20 @@ a, a:hover {
     color: black;
     cursor: url("../img/cursor/cursorPointer.png"), pointer;
 }
+h1 {
+    font-size: 3.2rem;
+}
 h2 {
     font-size: 1.5rem;
+}
+h4 {
+    font-size: 1.3rem;
+}
+h6, p {
+    margin: 0;
+}
+p {
+    text-align: left;
 }
 body::-webkit-scrollbar {
     width: auto;
@@ -51,12 +63,36 @@ body::-webkit-scrollbar-track {
     box-shadow: inset 0 0 10px white; 
     background-color: rgb(77, 95, 102);
 }
+@media only screen and (max-width: 1200px) {
+    h3 {
+        font-size: 1.5rem;
+    }
+}
 @media only screen and (max-width: 992px) {
+    h1 {
+        font-size: 3rem;
+    }
     h2 {
         font-size: 1.3rem;
     }
+    h3 {
+        font-size: 1.3rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
     .mb-5 {
         margin-bottom: 1rem!important;
+    }
+}
+@media only screen and (max-width: 800px) {
+    h3 {
+        font-size: 1.3rem;
+    }
+}
+@media only screen and (max-width: 710px) {
+    h3 {
+        font-size: 1.2rem;
     }
 }
 @media only screen and (max-width: 576px) {
@@ -66,14 +102,26 @@ body::-webkit-scrollbar-track {
     .bodyAbout {
         height: 105vh !important;
     }
+    h1 {
+        font-size: 2.5rem;
+    }
 }
 @media only screen and (max-width: 530px) {
     .bodyAbout {
         height: 110vh !important;
     }
+    h3 {
+        font-size: 1.1rem;
+    }
 }
 @media only screen and (max-width: 480px) {
     .bodyAbout {
         height: 100vh !important;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2, h4 {
+        font-size: 1rem;
     }
 }

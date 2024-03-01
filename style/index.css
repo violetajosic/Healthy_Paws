@@ -67,36 +67,31 @@
     .container {
         max-width: 1000px !important;
     }
-    h1{
-        font-size: 2.8rem !important;
-    }
     .indexBtn, .indexBtnHover {
         height: 95px;
-    }
-    h4 {
-        font-size: 1.3rem !important;
     }
     .indexBtn-abs {
         width: 440px;
         height: 105px;
+    }
+    input.form-control.mr-sm-2.IDSearchClinicInput {
+        width: 190px;
     }
 }
 @media only screen and (max-width: 992px) {
     .container {
         max-width: 900px !important;
     }
-    h1 {
-        font-size: 2.5rem !important;
-    }
     .indexBtn, .indexBtnHover {
         height: 90px;
-    }
-    h4 {
-        font-size: 1rem !important;
     }
     .indexBtn-abs {
         width: 420px;
         height: 100px;
+    }
+    .IDSearchClinic {
+        top: 15px;
+        left: 100px;
     }
 }
 @media only screen and (max-width: 576px) {
@@ -130,16 +125,15 @@
         justify-content: center !important;
     }
     .indexBtn-abs {
-        padding-left: 40px;
+        padding-left: 50px;
+    }
+    form.form-inline.IDSearchClinic {
+        width: 100%;
+        justify-content: center;
+        left: 30px;
     }
 }
 @media only screen and (max-width: 480px) {
-    h1{
-        font-size: 2rem !important;
-    }
-    h2 {
-        font-size: 1.3rem !important;
-    }
     .indexBtn, .indexBtnHover {
         height: 80px;
     }
@@ -149,14 +143,21 @@
     .index-wrapper {
         height: 42vh;
     }
+    form.form-inline.IDSearchClinic {
+        top: 15px;
+    }
+    input.form-control.mr-sm-2.IDSearchClinicInput {
+        width: 170px;
+        height: 50px;
+    }
+    .indexBtn-abs {
+        padding-left: 40px;
+    }
+    input.form-control.mr-sm-2.IDSearchClinicInput::placeholder {
+        font-size: 1rem;
+    }
 }
 @media only screen and (max-width: 420px) {
-    h1 {
-        font-size: 1.7rem !important;
-    }
-    h2 {
-        font-size: 1.2rem !important;
-    }
     .indexBtn, .indexBtnHover {
         height: 70px;
     }
@@ -164,15 +165,15 @@
         height: 80px;
         width: 250px;
     }
-}
-@media only screen and (max-width: 390px) {
-    h2 {
-        font-size: 1.1rem !important;
+    form.form-inline.IDSearchClinic {
+        top: 10px;
     }
-}
-@media only screen and (max-width: 360px) {
-    h2 {
-        font-size: 1rem !important;
+    input.form-control.mr-sm-2.IDSearchClinicInput {
+        width: 150px;
+        padding: 6px;
+    }
+    img.searchIconImg {
+        height: 25px;
     }
 }
 @media only screen and (max-width: 320px) {
