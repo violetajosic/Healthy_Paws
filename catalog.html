@@ -42,7 +42,7 @@
                 <div class="row-12 vetTable">
                     <div class="row-12 vetTableHeading">
                         <div class="col-6 vetTableHeadingCol">
-                            <h6>NAZIV POSLEDNJE BOLESTI</h6>
+                            <h6>DISEASE NAME</h6>
                         </div>
                         <div class="col-6 vetTableHeadingCol vetDate"> <!--datum iz baze vetTable-->
                             <h6>12.01.2015.</h6>
@@ -50,9 +50,10 @@
                     </div>
                     <div class="row-12 vetTableInfo">
                         <ul>
-                            <li class="col-12 vetInfo symptomsInfo">Spisak simptoma</li>
-                            <li class="col-12 vetInfo terapyInfo">Data terapija</li>
-                            <li class="col-12 vetInfo signInfo">Potpis lekara i veterinarske klinike</li>
+                            <li class="col-12 vetInfo symptomsInfo">Symptoms:</li>
+                            <li class="col-12 vetInfo therapyInfo">Therapy:</li>
+                            <li class="col-12 vetInfo signInfo">Doctor signature:</li>
+                            <li class="col-12 vetInfo signInfo2">Clinic ID:</li>
                         </ul>
                     </div>
                 </div>
@@ -60,7 +61,7 @@
                 <div class="row-12 vetTable">
                     <div class="row-12 vetTableHeading">
                         <div class="col-6 vetTableHeadingCol">
-                            <h6>NAZIV POSLEDNJE BOLESTI</h6>
+                            <h6>DISEASE NAME</h6>
                         </div>
                         <div class="col-6 vetTableHeadingCol vetDate"> <!--datum iz baze vetTable-->
                             <h6>12.01.2015.</h6>
@@ -68,9 +69,10 @@
                     </div>
                     <div class="row-12 vetTableInfo">
                         <ul>
-                            <li class="col-12 vetInfo">Spisak simptoma</li>
-                            <li class="col-12 vetInfo">Data terapija</li>
-                            <li class="col-12 vetInfo">Potpis lekara i veterinarske klinike</li>
+                            <li class="col-12 vetInfo symptomsInfo">Symptoms:</li>
+                            <li class="col-12 vetInfo therapyInfo">Therapy:</li>
+                            <li class="col-12 vetInfo signInfo">Doctor signature:</li>
+                            <li class="col-12 vetInfo signInfo2">Clinic ID:</li>
                         </ul>
                     </div>
                 </div>
@@ -87,15 +89,23 @@
                         </div>
                     </div>
                     <div class="row-12 vetTableInfo vetInputTableInfo">
-                        <ul>
-                           <p class="col-12 vetInfo vetInputInfo">Spisak simptoma:</p>
+                        <ul  id="editCatalog">
+                           <p class="col-12 vetInfo vetInputInfo">Symptoms:</p>
                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="symptomsAdd" placeholder="Enter symptoms" autocomplete="off">
-                           <p class="col-12 vetInfo vetInputInfo">Data terapija:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="terapyAdd" placeholder="Enter terapy" autocomplete="off">
-                           <p class="col-12 vetInfo vetInputInfo">Potpis lekara i veterinarske klinike:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name and clinic ID" autocomplete="off">
+                           <p class="col-12 vetInfo vetInputInfo">Therapy:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="therapyAdd" placeholder="Enter terapy" autocomplete="off">
+                           <p class="col-12 vetInfo vetInputInfo">Doctor signature:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name" autocomplete="off">
+                           <p class="col-12 vetInfo vetInputInfo">Clinic ID:</p>
+                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
                         </ul>
                     </div>
+                    <!----
+                    <div class="catalogEdit"> VIDLJIVO SAMO KAD SE IZVRSI FUNKCIJA addNewData()
+                        <button type="submit" id="edit-button">Edit</button> DA MOZE DA EDITUJE U ROKU OD 10 MIN POSLE DUGME NESTAJE
+                        <button type="submit" id="end-editing">Apply</button> OVO DUGME JE KAO APPLY
+                    </div>
+                    ---->
                 </div>
                 <div class="row-12 profileButton catalogBtn">
                     <div class="col-12 profileBtn">

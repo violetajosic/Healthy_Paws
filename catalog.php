@@ -18,10 +18,11 @@ $appointmentDate = $_POST['appointmentDate'];
 $symptoms = $_POST['symptoms'];
 $therapy = $_POST['therapy'];
 $doctorInfo = $_POST['doctorInfo'];
+$clinicIDInfo = $_POST['clinicIDInfo'];
 
 // Insert data into the appointments table
-$sql = "INSERT INTO appointments (disease_name, appointment_date, symptoms, therapy, doctor_info)
-        VALUES ('$diseaseName', '$appointmentDate', '$symptoms', '$therapy', '$doctorInfo')";
+$sql = "INSERT INTO appointments (disease_name, appointment_date, symptoms, therapy, doctor_info, clinicIDInfo)
+        VALUES ('$diseaseName', '$appointmentDate', '$symptoms', '$therapy', '$doctorInfo', '$clinicIDInfo')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

@@ -29,6 +29,7 @@ body {
 }
 body.bodyProfile {
     background-image: url("../img/diseases/diseasesBcg.png");
+    background-repeat: repeat;
 }
 a, a:hover {
     text-decoration: none;
