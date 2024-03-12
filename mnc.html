@@ -43,15 +43,30 @@
                     <div class="row-12 vetTable vetInputTable mncTableWrapper" style="display: flex;">
                         <div class="row-12 vetTableHeading vetInputHeading">
                             <div class="col-12 vetTableHeadingCol vetInputHeadingCol">
-                                <h6>Pet name - owner name:</h6>
-                                <input type="text" name="inpDiseaseName" class="form-control vetHeadingInput" id="vetHeadingInput1" placeholder="Enter pet name - owner name" autocomplete="off">
+                                <h6>Pet name:</h6>
+                                <input type="text" name="inpDiseaseName" class="form-control vetHeadingInput" id="vetHeadingInput1" placeholder="Enter pet name" autocomplete="off">
                                 <div id="nameError" class="error-message"></div>
                             </div>
                         </div>
                         <div class="row-12 vetTableInfo vetInputTableInfo mncTable">
-                               <p class="col-12 vetInfo vetInputInfo">Species:</p>
-                               <input type="text" name="inpDiseaseName" class="form-control vetInfoInput speciesInput" id="vetSpeciesInput" placeholder="Enter which species is the pet" autocomplete="off">
-                               <div id="speciesError" class="error-message"></div>
+                            <div class="row-12 vetSpecies ownerName">
+                                <div class="col-12 vetSpeciesDiv">
+                                    <p class="vetInfo vetInputInfo speciesInputMnc">Owner Name:</p>
+                                </div>
+                                <div class="col-12 vetSpeciesDiv">
+                                    <input type="text" name="inpDiseaseName" class="form-control vetInfoInput speciesInput" id="vetSpeciesInput" placeholder="Enter owner name" autocomplete="off">
+                                    <div id="speciesError" class="error-message"></div>
+                               </div>
+                            </div>
+                            <div class="row-12 vetSpecies">
+                                <div class="col-12 vetSpeciesDiv">
+                                    <p class="vetInfo vetInputInfo speciesInputMnc">Species:</p>
+                                </div>
+                                <div class="col-12 vetSpeciesDiv">
+                                    <input type="text" name="inpDiseaseName" class="form-control vetInfoInput speciesInput" id="vetSpeciesInput" placeholder="Enter which species is the pet" autocomplete="off">
+                                    <div id="speciesError" class="error-message"></div>
+                               </div>
+                            </div>
                             <div class="row-12 petAgeHeading">
                                 <div class="col-6 petCol">
                                     <div class="row-6 petAgeInputHeading">
