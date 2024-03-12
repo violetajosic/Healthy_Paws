@@ -23,7 +23,7 @@ div#lswrapper {
 .clinicsLSBtn:hover h4, .clinicsLSBtn:hover h5, .diseasesBtn button:hover h4 {
     color: white;
 }
-.clientLSBtn:hover, .clinicsLSBtn:hover {
+.clientLSBtn:hover, .clinicsLSBtn:hover{
     background-color: #5087ca;
     cursor: url("../img/cursor/cursorPointer.png"), pointer;
 }
@@ -97,6 +97,61 @@ button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
     font-family:'Chicle', serif;
     letter-spacing: 1px;
 }
+.clientSignUpMembership {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.clientSignUpMembership h5{
+    margin: 0;
+    text-transform: uppercase;
+}
+.clientMembership button.btn.btn-primary.clinicsLSBtn.loginBtn {
+    background-color: #fff8b3;
+    box-shadow: inset 0 0 5px 1px #FFD95A;
+}
+.clientSignUpMembership button {
+    background-color: #34dd5b;
+}
+.payClientMembership {
+    display: none;
+}
+.clientMembershipPage {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.payMembership-card {
+    width: 70%;
+    padding: 20px 0;
+    background-color: #FFD95A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+}
+.payMembershipHeading {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.payMembershipPrice {
+    background-color: #34dd5b;
+    pad: 12px;
+    border-radius: 5px 0 5px 0;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+.payMembershipPrice h3 {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+}
+.payHeading p {
+    text-align: justify;
+}
 @media only screen and (max-width: 1400px) {
     div#lswrapper {
         width: 50%;
@@ -136,6 +191,9 @@ button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
     div#lswrapper {
         width: 70%;
         padding-bottom: 0;
+    }
+    .payMembership-card  {
+        width: 90%;
     }
 }
 @media only screen and (max-width: 480px) {
