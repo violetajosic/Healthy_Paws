@@ -58,18 +58,22 @@ function validateAndRedirect() {
 function validateAndRedirectSignUpCLIENT() {
     var email = document.querySelector("#exampleInputEmail2").value;
     var password = document.querySelector("#exampleInputPassword2").value;
-    var repeatPassword = document.querySelector(".repeatPassword").value;
+    var repeatPassword = document.querySelector("#exampleInputPassword3").value;
+    var accNumID = document.querySelector("#exampleInputAccNumID").value;
     var emailErrorDiv = document.querySelector(".emailError");
     var passwordErrorDiv = document.querySelector(".passwordError");
     var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
+    var accNumIDDiv = document.querySelector(".accNumID");
   
     // Resetovanje prethodnih poruka o greškama i boje teksta
     emailErrorDiv.innerText = "";
-    emailErrorDiv.style.color = ""; // Resetuj boju teksta
+    emailErrorDiv.style.color = "";
     passwordErrorDiv.innerText = "";
-    passwordErrorDiv.style.color = ""; // Resetuj boju teksta
+    passwordErrorDiv.style.color = "";
     repeatPasswordErrorDiv.innerText = "";
-    repeatPasswordErrorDiv.style.color = ""; // Resetuj boju teksta
+    repeatPasswordErrorDiv.style.color = "";
+    accNumIDDiv.innerText = "";
+    accNumIDDiv.style.color = "";
   
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
@@ -103,11 +107,20 @@ function validateAndRedirectSignUpCLIENT() {
       repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
       repeatPasswordErrorDiv.style.color = "red";
     }
-  
+    
+    if (!accNumID.trim()) {
+      accNumIDDiv.innerText = "This field is required.";
+      accNumIDDiv.style.color = "red";
+    } else if (!/\d/.test(accNumID)) {
+      accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
+      accNumIDDiv.style.color = "red";
+    }
+    
     if (
       emailErrorDiv.innerText === "" &&
       passwordErrorDiv.innerText === "" &&
-      repeatPasswordErrorDiv.innerText === ""
+      repeatPasswordErrorDiv.innerText === "" &&
+      accNumIDDiv.innerText === ""
     ) {
       // Ako nema grešaka, preusmeri na client.html
       var clientLogged = true;
@@ -126,6 +139,34 @@ function validateAndRedirectSignUpCLIENT() {
       var diseaseAlertHeading = document.querySelector(".alert-heading");
       diseaseAlertHeading.style.display = "flex";
     }
+}
+//membership
+
+function payClientMembership() {
+  var accNum = document.querySelector(".accNum").value;
+  var accNumDiv = document.querySelector(".accNumError");
+
+  accNumDiv.innerText = "";
+  accNumDiv.style.color = "";
+
+  if (!accNum.trim()) {
+    accNumDiv.innerText = "This field is required.";
+    accNumDiv.style.color = "red";
+  }  else if (!/\d/.test(accNum)) {
+    accNumDiv.innerText = "Ups! Account number should contain numbers only.";
+    accNumDiv.style.color = "red";
+  }
+
+  if (accNumDiv.innerText === "") {
+    var lsHeading = document.querySelector(".lsHeading").style.display="none";
+    var clientMembershipPage = document.querySelector(".clientMembershipPage").style.display="none";
+    var accNumHeadingWrapper = document.querySelector(".accNumHeadingWrapper").style.display="flex";
+    var accNumberButton = document.querySelector(".accNumberButton").style.display="flex";
+  }
+}
+//button back on membership ID page
+function accNumBack() {
+  window.history.back();
 }
 
 // validacija CLINICS

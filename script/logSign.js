@@ -79,6 +79,7 @@ fetch("lsHeader.html")
 })
 .catch((error) => console.error("Error fetching navigation:", error));
 
+//membership
 function clientSignUpMembership() {
     var clientSignUpMembership = document.querySelector(".clientSignUpMembership");
 
@@ -130,6 +131,8 @@ function clientSignUpMembership() {
           //izvrsavanje izmene
           var lsHeadingh1 = document.querySelector(".lsHeading h1");
           lsHeadingh1.style.setProperty("font-size", fontSize, "important");
+          var clientMembershipPay = document.querySelector(".clientMembershipPay").style.display="none";
+          var payClientMembership = document.querySelector(".payClientMembership").style.display="flex";
       }
       
       // izvrsavanje funkcije
@@ -152,5 +155,6 @@ function clientSignUpMembership() {
         var lsSwitchElements = document.querySelectorAll(".lsSwitch"); //ne radi
         lsSwitchElements.forEach(function(element) {
             element.style.display = "none";
-        });    }
+        });    
+      }
 }

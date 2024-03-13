@@ -57,8 +57,13 @@
                 <label class="logInLabel" for="exampleInputPassword3">Repeat password</label>
                 <input type="password" name="repeatpassword" class="form-control repeatPassword" id="exampleInputPassword3" placeholder="Repeat your password." autocomplete="off">
                 <div class="repeatPasswordError" class="error-message"></div>
+            </div>
+            <div class="form-group signUpFormGroup mb-4">
+                <label class="logInLabel" for="exampleInputAccNumID">Account membership ID</label>
+                <input type="text" name="myAccNumID" class="form-control exampleAccNumInput" id="exampleInputAccNumID" placeholder="Enter your Account membership ID." autocomplete="off">
+                <div class="accNumID" class="error-message"></div>
             </div><!--kad neko klikne na ovaj button u bazu se ispisuje user_type client-->
-
+           <!--MEMBERSHIP--> 
             <div class="clientMembershipPage"> <!--payMembership-->
                 <div class="payMembership-card">
                         <div class="row-12 payMembership payMembershipHeading mb-2">
@@ -71,7 +76,7 @@
                                 <h3>5 eur</h3>
                             </div>
                         </div>
-                        <div class="row-12 payMembership payMembershipDesc">
+                        <div class="row-12 payMembership payMembershipDesc mb-3">
                             <div class="col-12 payHeading">
                                 <p>
                                 Secure annual access for just 5 euros to easily track your pet's catalog at the veterinarian. 
@@ -83,7 +88,32 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="row-12 payMembership accountNum">
+                            <div class="col-12 payHeading accNumCol">
+                                <p class="col-12 vetInfo vetInputInfo">Account number:</p>
+                                <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput" id="accNum" placeholder="Enter your account number" autocomplete="off">
+                                <div class="accNumError" class="error-message"></div>
+                            </div>
+                        </div>
                 </div>
+            </div>
+            <!--acc num id-->
+            <div class="row-12 accNumHeadingWrapper">
+                <div class="row-12 accNumIDHeading">
+                    <div class="col-12 accNumIDHeading-heading">
+                        <h2>This is your account membership ID</h2>
+                        <h4>You should enter it on sign up page in account membership ID input.</h4>
+                    </div>
+                </div>
+                <div class="row-12 accNumIDHeading">
+                    <div class="col-12 accNumIDHeading-ID">
+                        <h1>123456</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clientSignUpMembership accNumberButton">
+                <button onclick="accNumBack()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>Back to Sign Up</h5></button>
             </div>
 
             <div class="clientSignUpMembership clientMembershipPay">

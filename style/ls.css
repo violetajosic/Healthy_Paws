@@ -152,6 +152,28 @@ button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
 .payHeading p {
     text-align: justify;
 }
+.row-12.payMembership.accountNum {
+    width: 100%;
+}
+.col-12.payHeading.accNumCol {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.accNumHeadingWrapper, .accNumberButton {
+    display: none;
+}
+.accNumberButton button {
+    background-color: #FFD95A;
+}
+.accNumIDHeading-heading h2 {
+    font-weight: bold;
+}
+.accNumIDHeading-ID h1 {
+    color: #34dd5b;
+    font-weight: bold;
+}
 @media only screen and (max-width: 1400px) {
     div#lswrapper {
         width: 50%;
@@ -202,5 +224,8 @@ button.btn.btn-primary.clinicsLSBtn.loginBtn:focus{
     }
     .loginBtn {
         padding: 10px;
+    }
+    button.btn.btn-primary.clinicsLSBtn.loginBtn.mt-4 {
+        width: 60%;
     }
 }
