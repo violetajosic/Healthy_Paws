@@ -16,7 +16,7 @@ Postoji mogućnost pravljenja profila kao klijent (CLIENT) ili kao klinika (CLIN
 U zavisnosti od toga da li ste fizičko ili pravno lice, odlazite na narednu stranu - SIGN UP
 
 Sign Up CLIENT:
-Kao klijent imate obavezu da unesete svoj email, šifru, kao i da potvrdite prethodno unešenu šifru.
+Kao klijent imate obavezu da unesete svoj email, šifru, da potvrdite prethodno unešenu šifru, kao i da unesete account membership ID koji dobijate nakon uplate godišnje pretplate (klikom na dugme pay membership - pay).
 Ukoliko podaci nisu ispravni, ispod nevalidnog polja će se ispisati crvena slova - uputstvo šta treba izmeniti kako bi polje postalo validno.
 Ukoliko su podaci validni, odlazite na LOG IN stranu.
 
