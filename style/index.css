@@ -58,6 +58,16 @@
 .IDSearchClinicInput {
     text-align: center;
 }
+.btn-outline-success {
+    border-color: transparent;
+}
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-success:active {
+    border-color: transparent !important;
+    box-shadow: none !important; 
+    outline: none !important;
+}
 @media only screen and (max-width: 1400px) {
     .container {
         max-width: 1200px !important;
