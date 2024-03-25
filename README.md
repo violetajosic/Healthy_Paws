@@ -42,6 +42,7 @@ Profil CLIENT:
 3. diseases page - strana na kojoj možete da čekirate simptome i saznate koja je (ili koje su) moguća bolest
 4. help page - objasnjenje sajta (aplikacije), sve njegove mogućnosti i uputstvo za lakše korišćenje (snalaženje)
 5. profile page - strana na kojoj možete da vidite podatke vašeg profila: fotografiju, email i šifra kojom ste ulogovani, dan početka i dan isteka članarine, kao i spisak svih katalog ID-jeva koje poseduje (jedan ID katalog po ljubimcu). Ispod svega postoji mogućnost produžetka članarine, kao i log out dugme na kom možete da se izlogujete sa profila
+
 *Klijent ima pristup samo ID-jevima njegovih životinja, koji se prikazuju u spisku na njegovom profilu
 
 Profil CLINIC:
@@ -50,4 +51,5 @@ Profil CLINIC:
 3. mnc page (make new catalog) - strana na kojoj klinika može da formira i sačuva novi katalog tj. da u bazu ubaci novog ljubimca. U katalog je neophodno uneti sledeće podatke: fotografiju ljubimca, ime ljubimca, ime vlasnika, vrsta ljubimca, kao i starost ljubimca (pored koje se automatski računaju te godine u ljudskim godinama)
 4. help page - objasnjenje sajta (aplikacije), sve njegove mogućnosti i uputstvo za lakše korišćenje (snalaženje)
 5. profile page - strana na kojoj možete da vidite podatke vašeg profila: logo fotografija klinike, email i šifra kojom ste ulogovani, dan početka saradnje, kao i ID veterinarske ustanove. Ispod svega postoji log out dugme na kom možete da se izlogujete sa profila
+
 *Promena u meniju jeste dodata search opcija, za lakše i brže pretraživanje kataloga, unošenjem njegovog ID-ja (nema potrebe za vraćanjem na home page).
