@@ -42,6 +42,7 @@ Profil CLIENT:
 3. diseases page - strana na kojoj možete da čekirate simptome i saznate koja je (ili koje su) moguća bolest
 4. help page - objasnjenje sajta (aplikacije), sve njegove mogućnosti i uputstvo za lakše korišćenje (snalaženje)
 5. profile page - strana na kojoj možete da vidite podatke vašeg profila: fotografiju, email i šifra kojom ste ulogovani, dan početka i dan isteka članarine, kao i spisak svih katalog ID-jeva koje poseduje (jedan ID katalog po ljubimcu). Ispod svega postoji mogućnost produžetka članarine, kao i log out dugme na kom možete da se izlogujete sa profila
+*Klijent ima pristup samo ID-jevima njegovih životinja, koji se prikazuju u spisku na njegovom profilu
 
 Profil CLINIC:
 1. home page - mogućnost pretraživanja kataloga, unošenjem njegovog ID-ja
