@@ -54,92 +54,93 @@ function validateAndRedirect() {
 }
 
 
-//SIGNUP validacija CLIENT
 function validateAndRedirectSignUpCLIENT() {
-    var email = document.querySelector("#exampleInputEmail2").value;
-    var password = document.querySelector("#exampleInputPassword2").value;
-    var repeatPassword = document.querySelector("#exampleInputPassword3").value;
-    var accNumID = document.querySelector("#exampleInputAccNumID").value;
-    var emailErrorDiv = document.querySelector(".emailError");
-    var passwordErrorDiv = document.querySelector(".passwordError");
-    var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
-    var accNumIDDiv = document.querySelector(".accNumID");
-  
-    // Resetovanje prethodnih poruka o greškama i boje teksta
-    emailErrorDiv.innerText = "";
-    emailErrorDiv.style.color = "";
-    passwordErrorDiv.innerText = "";
-    passwordErrorDiv.style.color = "";
-    repeatPasswordErrorDiv.innerText = "";
-    repeatPasswordErrorDiv.style.color = "";
-    accNumIDDiv.innerText = "";
-    accNumIDDiv.style.color = "";
-  
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-    // Provera praznih polja
-    if (!email.trim()) {
-      emailErrorDiv.innerText = "This field is required.";
-      emailErrorDiv.style.color = "red";
-    } else if (!emailRegex.test(email)) {
-      emailErrorDiv.innerText =
-        "Ups! Email Address is incorrect, it should contain @ and .com";
-      emailErrorDiv.style.color = "red";
-    }
-  
-    if (!password.trim()) {
-      passwordErrorDiv.innerText = "This field is required.";
-      passwordErrorDiv.style.color = "red";
-    } else if (
-      password.length < 8 ||
-      !/[A-Z]/.test(password) ||
-      !/\d/.test(password)
-    ) {
-      passwordErrorDiv.innerText =
-        "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
-      passwordErrorDiv.style.color = "red";
-    }
-  
-    if (!repeatPassword.trim()) {
-      repeatPasswordErrorDiv.innerText = "This field is required.";
-      repeatPasswordErrorDiv.style.color = "red";
-    } else if (repeatPassword.trim() !== password.trim()) {
-      repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
-      repeatPasswordErrorDiv.style.color = "red";
-    }
-    
-    if (!accNumID.trim()) {
-      accNumIDDiv.innerText = "This field is required.";
-      accNumIDDiv.style.color = "red";
-    } else if (!/\d/.test(accNumID)) {
-      accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
-      accNumIDDiv.style.color = "red";
-    }
-    
-    if (
-      emailErrorDiv.innerText === "" &&
-      passwordErrorDiv.innerText === "" &&
-      repeatPasswordErrorDiv.innerText === "" &&
-      accNumIDDiv.innerText === ""
-    ) {
-      // Ako nema grešaka, preusmeri na client.html
-      var clientLogged = true;
-      window.location.href = "index.html";
-    }
+  var email = document.querySelector("#exampleInputEmail2").value;
+  var password = document.querySelector("#exampleInputPassword2").value;
+  var repeatPassword = document.querySelector("#exampleInputPassword3").value;
+  var accNumID = document.querySelector("#exampleInputAccNumID").value;
+  var emailErrorDiv = document.querySelector(".emailError");
+  var passwordErrorDiv = document.querySelector(".passwordError");
+  var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
+  var accNumIDDiv = document.querySelector(".accNumID");
 
-    if (clientLogged){
-      fetch("clientHeader.html")
-      .then((response) => response.text())
-      .then((html) => {
-      // promena navigacije ukoliko je ulogovan kao klijent
-      document.getElementById("lsNavigation").innerHTML = html;
-      addActiveClassToLink(); //dodavanje aktive klase za linije
-    })
-      .catch((error) => console.error("Error fetching navigation:", error));
-      var diseaseAlertHeading = document.querySelector(".alert-heading");
-      diseaseAlertHeading.style.display = "flex";
-    }
+  // Resetovanje prethodnih poruka o greškama i boje teksta
+  emailErrorDiv.innerText = "";
+  emailErrorDiv.style.color = "";
+  passwordErrorDiv.innerText = "";
+  passwordErrorDiv.style.color = "";
+  repeatPasswordErrorDiv.innerText = "";
+  repeatPasswordErrorDiv.style.color = "";
+  accNumIDDiv.innerText = "";
+  accNumIDDiv.style.color = "";
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Provera praznih polja
+  if (!email.trim()) {
+    emailErrorDiv.innerText = "This field is required.";
+    emailErrorDiv.style.color = "red";
+  } else if (!emailRegex.test(email)) {
+    emailErrorDiv.innerText =
+      "Ups! Email Address is incorrect, it should contain @ and .com";
+    emailErrorDiv.style.color = "red";
+  }
+
+  if (!password.trim()) {
+    passwordErrorDiv.innerText = "This field is required.";
+    passwordErrorDiv.style.color = "red";
+  } else if (
+    password.length < 8 ||
+    !/[A-Z]/.test(password) ||
+    !/\d/.test(password)
+  ) {
+    passwordErrorDiv.innerText =
+      "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
+    passwordErrorDiv.style.color = "red";
+  }
+
+  if (!repeatPassword.trim()) {
+    repeatPasswordErrorDiv.innerText = "This field is required.";
+    repeatPasswordErrorDiv.style.color = "red";
+  } else if (repeatPassword.trim() !== password.trim()) {
+    repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
+    repeatPasswordErrorDiv.style.color = "red";
+  }
+  
+  if (!accNumID.trim()) {
+    accNumIDDiv.innerText = "This field is required.";
+    accNumIDDiv.style.color = "red";
+  } else if (!/\d/.test(accNumID)) {
+    accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
+    accNumIDDiv.style.color = "red";
+  }
+  
+  if (
+    emailErrorDiv.innerText === "" &&
+    passwordErrorDiv.innerText === "" &&
+    repeatPasswordErrorDiv.innerText === "" &&
+    accNumIDDiv.innerText === ""
+  ) {
+    // Ako nema grešaka, preusmeri na client.html
+    var clientLogged = true;
+    // Manually submit the form
+    document.getElementById("clientSignUpForm").submit();
+  }
+
+  if (clientLogged){
+    fetch("clientHeader.html")
+    .then((response) => response.text())
+    .then((html) => {
+    // promena navigacije ukoliko je ulogovan kao klijent
+    document.getElementById("lsNavigation").innerHTML = html;
+    addActiveClassToLink(); //dodavanje aktive klase za linije
+  })
+    .catch((error) => console.error("Error fetching navigation:", error));
+    var diseaseAlertHeading = document.querySelector(".alert-heading");
+    diseaseAlertHeading.style.display = "flex";
+  }
 }
+
 //membership
 
 function payClientMembership() {

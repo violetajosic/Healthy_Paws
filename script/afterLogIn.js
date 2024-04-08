@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         findID();
                     }
-                    if (window.location.pathname.includes('profile.html')) { //dodavanje informacija o tome ko je ulogovan
+                   /* if (window.location.pathname.includes('profile.html')) { //dodavanje informacija o tome ko je ulogovan
                         var profileEmail = document.querySelector("#profileEmail h5");
                         profileEmail.innerHTML = "EMAIL: " + response.emailClient.toUpperCase();
                         var profilePassword = document.querySelector("#profilePassword h5");
                         profilePassword.innerHTML = "PASSWORD: " + response.passwordClient.toUpperCase();
-                    }
+                    }*/
                 } else if (userData.loginClinics) {
                     // uradi nesto ako je ulogovan kao klinika
                     console.log('Clinic is logged in.'); 

@@ -68,6 +68,9 @@
     box-shadow: none !important; 
     outline: none !important;
 }
+input.form-control.mr-sm-2.IDSearchClinicInput {
+    color: black;
+}
 @media only screen and (max-width: 1400px) {
     .container {
         max-width: 1200px !important;
