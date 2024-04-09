@@ -42,7 +42,7 @@
         <div class="col-12 mb-5 signUpHeading1">
             <h3>Client</h3>
         </div>
-        <form action="server.php" onsubmit="return validateAndSubmit(event)" class="row mb-5 signUpFormClient" id="clientSignUpForm">
+        <form action="server.php" method="POST" class="row mb-5 signUpFormClient" id="clientSignUpForm">
             <div class="form-group mb-4 signUpFormGroup">
                 <label class="logInLabel" for="exampleInputEmail2">Email address</label>
                 <input type="email" name="myemail" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
@@ -125,7 +125,7 @@
                 <button onclick="payClientMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>pay</h5></button>
             </div>
 
-            <button name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
+            <button onclick="validateAndRedirectSignUpCLIENT()" name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
         </form>
 
 
