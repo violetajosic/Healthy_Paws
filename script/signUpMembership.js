@@ -81,15 +81,16 @@ function clientSignUpMembership() {
 function payClientMembership() {
     var accNum = document.getElementById("accNum").value;
     var accNumDiv = document.getElementById("accNumError");
-  
+    var regExp =/^[0-9]{4}[-]{0,1}[0-9]{4}[-]{0,1}[0-9]{4}[-]{0,1}[0-9]{4}$/;
+
     accNumDiv.innerText = "";
     accNumDiv.style.color = "";
   
     if (!accNum.trim()) {
       accNumDiv.innerText = "This field is required.";
       accNumDiv.style.color = "red";
-    }  else if (!/\d/.test(accNum)) {
-      accNumDiv.innerText = "Ups! Account number should contain numbers only.";
+    }else if(!regExp.test(accNum)) {
+      accNumDiv.innerText = "Ups! Incorrect account number.";
       accNumDiv.style.color = "red";
     }
     if (accNumDiv.innerText === "") {

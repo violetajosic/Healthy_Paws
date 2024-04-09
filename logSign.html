@@ -42,7 +42,7 @@
         <div class="col-12 mb-5 signUpHeading1">
             <h3>Client</h3>
         </div>
-        <form onsubmit="validateAndSubmit(event)" class="row mb-5 signUpFormClient" id="clientSignUpForm">
+        <form action="server.php" onsubmit="return validateAndSubmit(event)" class="row mb-5 signUpFormClient" id="clientSignUpForm">
             <div class="form-group mb-4 signUpFormGroup">
                 <label class="logInLabel" for="exampleInputEmail2">Email address</label>
                 <input type="email" name="myemail" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
@@ -91,7 +91,7 @@
                         <div class="row-12 payMembership accountNum">
                             <div class="col-12 payHeading accNumCol">
                                 <p class="col-12 vetInfo vetInputInfo">Account number:</p>
-                                <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput" id="accNum" placeholder="Enter your account number" autocomplete="off">
+                                <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput" id="accNum" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
                                 <div id="accNumError" class="error-message"></div>
                             </div>
                         </div>
