@@ -53,8 +53,10 @@ function validateAndRedirect() {
   return false; // Sprečava slanje forme
 }
 
+//sign up client
+function validateAndSubmit(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-function validateAndRedirectSignUpCLIENT() {
   var email = document.querySelector("#exampleInputEmail2").value;
   var password = document.querySelector("#exampleInputPassword2").value;
   var repeatPassword = document.querySelector("#exampleInputPassword3").value;
@@ -64,7 +66,7 @@ function validateAndRedirectSignUpCLIENT() {
   var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
   var accNumIDDiv = document.querySelector(".accNumID");
 
-  // Resetovanje prethodnih poruka o greškama i boje teksta
+  // Reset previous error messages and text color
   emailErrorDiv.innerText = "";
   emailErrorDiv.style.color = "";
   passwordErrorDiv.innerText = "";
@@ -76,98 +78,80 @@ function validateAndRedirectSignUpCLIENT() {
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Provera praznih polja
+  // Check for empty fields and email format
   if (!email.trim()) {
-    emailErrorDiv.innerText = "This field is required.";
-    emailErrorDiv.style.color = "red";
+      emailErrorDiv.innerText = "This field is required.";
+      emailErrorDiv.style.color = "red";
   } else if (!emailRegex.test(email)) {
-    emailErrorDiv.innerText =
-      "Ups! Email Address is incorrect, it should contain @ and .com";
-    emailErrorDiv.style.color = "red";
+      emailErrorDiv.innerText =
+          "Ups! Email Address is incorrect, it should contain @ and .com";
+      emailErrorDiv.style.color = "red";
   }
 
   if (!password.trim()) {
-    passwordErrorDiv.innerText = "This field is required.";
-    passwordErrorDiv.style.color = "red";
+      passwordErrorDiv.innerText = "This field is required.";
+      passwordErrorDiv.style.color = "red";
   } else if (
-    password.length < 8 ||
-    !/[A-Z]/.test(password) ||
-    !/\d/.test(password)
+      password.length < 8 ||
+      !/[A-Z]/.test(password) ||
+      !/\d/.test(password)
   ) {
-    passwordErrorDiv.innerText =
-      "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
-    passwordErrorDiv.style.color = "red";
+      passwordErrorDiv.innerText =
+          "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
+      passwordErrorDiv.style.color = "red";
   }
 
   if (!repeatPassword.trim()) {
-    repeatPasswordErrorDiv.innerText = "This field is required.";
-    repeatPasswordErrorDiv.style.color = "red";
+      repeatPasswordErrorDiv.innerText = "This field is required.";
+      repeatPasswordErrorDiv.style.color = "red";
   } else if (repeatPassword.trim() !== password.trim()) {
-    repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
-    repeatPasswordErrorDiv.style.color = "red";
+      repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
+      repeatPasswordErrorDiv.style.color = "red";
   }
   
   if (!accNumID.trim()) {
-    accNumIDDiv.innerText = "This field is required.";
-    accNumIDDiv.style.color = "red";
+      accNumIDDiv.innerText = "This field is required.";
+      accNumIDDiv.style.color = "red";
   } else if (!/\d/.test(accNumID)) {
-    accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
-    accNumIDDiv.style.color = "red";
+      accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
+      accNumIDDiv.style.color = "red";
   }
-  
+
+  // If all fields are valid, submit the form data asynchronously
   if (
-    emailErrorDiv.innerText === "" &&
-    passwordErrorDiv.innerText === "" &&
-    repeatPasswordErrorDiv.innerText === "" &&
-    accNumIDDiv.innerText === ""
+      emailErrorDiv.innerText === "" &&
+      passwordErrorDiv.innerText === "" &&
+      repeatPasswordErrorDiv.innerText === "" &&
+      accNumIDDiv.innerText === ""
   ) {
-    // Ako nema grešaka, preusmeri na client.html
-    var clientLogged = true;
-    // Manually submit the form
-    document.getElementById("clientSignUpForm").submit();
+      fetch("server.php", {
+        method: "POST",
+        body: new FormData(document.getElementById("clientSignUpForm"))
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.text();
+      })
+      .then(data => {
+        // Log the response from the server
+        console.log(data);
+        // Check if the response indicates success
+        if (data.trim() === 'Registration successful') {
+            // Redirect the user upon successful registration
+            window.location.href = 'log.html'; // Redirect to log.html
+        } else {
+            // Handle errors or other responses here
+            console.error('Registration failed:', data); // Log the error
+        }
+      })
+      .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Handle errors here
+      });
+  
   }
-
-  if (clientLogged){
-    fetch("clientHeader.html")
-    .then((response) => response.text())
-    .then((html) => {
-    // promena navigacije ukoliko je ulogovan kao klijent
-    document.getElementById("lsNavigation").innerHTML = html;
-    addActiveClassToLink(); //dodavanje aktive klase za linije
-  })
-    .catch((error) => console.error("Error fetching navigation:", error));
-    var diseaseAlertHeading = document.querySelector(".alert-heading");
-    diseaseAlertHeading.style.display = "flex";
-  }
-}
-
-//membership
-
-function payClientMembership() {
-  var accNum = document.querySelector(".accNum").value;
-  var accNumDiv = document.querySelector(".accNumError");
-
-  accNumDiv.innerText = "";
-  accNumDiv.style.color = "";
-
-  if (!accNum.trim()) {
-    accNumDiv.innerText = "This field is required.";
-    accNumDiv.style.color = "red";
-  }  else if (!/\d/.test(accNum)) {
-    accNumDiv.innerText = "Ups! Account number should contain numbers only.";
-    accNumDiv.style.color = "red";
-  }
-
-  if (accNumDiv.innerText === "") {
-    var lsHeading = document.querySelector(".lsHeading").style.display="none";
-    var clientMembershipPage = document.querySelector(".clientMembershipPage").style.display="none";
-    var accNumHeadingWrapper = document.querySelector(".accNumHeadingWrapper").style.display="flex";
-    var accNumberButton = document.querySelector(".accNumberButton").style.display="flex";
-  }
-}
-//button back on membership ID page
-function accNumBack() {
-  window.history.back();
 }
 
 // validacija CLINICS

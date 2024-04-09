@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+session_start();
+//radi
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -8,58 +8,39 @@ $database = "healthypawsusers";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
+//radi
 
 // sign up client
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $email = $_POST['myemail'];
-    $mypassword = $_POST['mypassword'];
+    $password = $_POST['mypassword'];
 
-    // Check if the email already exists
-    $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt_check_email->bind_param("s", $email);
+    // Prepare and bind the SQL statement
+    $stmt = $conn->prepare("INSERT INTO users (email, password, user_type) VALUES (?, ?, 'client')");
+    $stmt->bind_param("ss", $email, $password);
 
-    // Execute the query
-    if (!$stmt_check_email->execute()) {
-        // Display any errors
-        echo "Error executing email check query: " . $stmt_check_email->error;
-        exit();
-    }
-
-    // Get the query result
-    $result_check_email = $stmt_check_email->get_result();
-
-    // Check if any rows were returned
-    if ($result_check_email->num_rows > 0) {
-        // Email already exists, handle error
-        echo "Error: Email already exists. Please use a different email address.";
-        exit();
-    }
-
-    // Email doesn't exist, proceed with sign up
-    $sql = "INSERT INTO users (email, password, user_type) VALUES (?, ?, 'client')";
-    $stmt = $conn->prepare($sql);
-
-    if (!$stmt) {
-        die("Error preparing SQL query: " . $conn->error);
-    }
-
-    $stmt->bind_param("ss", $email, $mypassword);
-
+    // Execute the statement
     if ($stmt->execute()) {
-        header("Location: log.html");
-        exit();
+        // Registration successful
+        $_SESSION['email'] = $email; // Store email in session for redirection
+        echo "Registration successful";
     } else {
-        echo "Error executing SQL query: " . $stmt->error;
+        // Registration failed
+        echo "Error: " . $conn->error;
     }
 
+    // Close statement and connection
     $stmt->close();
+    $conn->close();
+} else {
+    // Invalid request
+    echo "Invalid request";
 }
 
 
-
-// sign up clinics (dodati da ne sme isti mail) //pusti ga na log in page iako je npr prazan znaci ne izvrsi js validaciju
+// sign up clinics (dodati da ne sme isti mail)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
-    echo "clinics";
+    echo "clinic";
     $email = $_POST['myemail'];
     $mypassword = $_POST['mypassword'];
     $clinicsId = $_POST['clinics_id'];
@@ -86,8 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
     // Close the statement
     $stmt->close();
 }
-
-session_start();
 
 // LOG IN RADI
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
@@ -160,7 +139,7 @@ if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) {
     echo json_encode(['data' => ['loginClinics' => 1]]);
    
 } else { //ako je izlogovan
-    echo json_encode(['status' => 'error', 'message' => 'Invalid session state']); //ovo se prikaze
+    echo json_encode(['User is not logged']); 
     
 }
 }

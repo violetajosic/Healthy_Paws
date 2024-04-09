@@ -23,6 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url("../img/ls/lsBcg.png");
+    background-repeat: repeat !important;
 }
 .bodyHelp {
     background-image: url("../img/help/helpBcg.jpg");
