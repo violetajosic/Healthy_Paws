@@ -11,6 +11,7 @@ $(document).ready(function() {
 
                 // Populate user information in HTML
                 $('#currentUserEmail').text(userData.email);
+                $('#currentUserPassword').text(userData.password);
                 $('#currentUserStartDate').text(userData.start_date);
                 $('#currentUserExpiringDate').text(userData.expiring_date);
                 $('#currentCatalogID').text(userData.catalog_id);

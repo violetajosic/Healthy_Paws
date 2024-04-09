@@ -118,6 +118,10 @@ div#profileCLID {
     div#profileCLID {
         justify-content: center;
     }
+    .profileInfo {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 @media only screen and (max-width: 850px) {
     .profileWhiteWrapper {
