@@ -62,6 +62,11 @@ div#profileCLID {
 div#profileCLID {
     justify-content: flex-start;
 }
+div#profileSDClinic {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .profileButton button {
     width: 100%;
     padding: 5px;
@@ -129,6 +134,11 @@ div#profileCLID {
     }
     div#profileCLID {
         justify-content: flex-start;
+    }
+    div#profileSDClinic {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 }
 @media only screen and (max-width: 850px) {

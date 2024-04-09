@@ -12,10 +12,11 @@ $(document).ready(function() {
                 // Populate user information in HTML
                 $('#currentUserEmail').text(userData.email);
                 $('#currentUserPassword').text(userData.password);
-                $('#currentUserStartDate').text(userData.start_date);
-                $('#currentUserExpiringDate').text(userData.expiring_date);
-                $('#currentCatalogID').text(userData.catalog_id);
+                $('#currentUserStartDate').text(userData.start_date); //iz membershipa kad je platio
+                $('#currentUserExpiringDate').text(userData.expiring_date); //iz membershipa kad istice uplata
+                $('#currenClinicStartDate').text(userData.created_at);
                 $('#currentClinicID').text(userData.clinics_id);
+                $('#currentCatalogID').text(userData.catalog_id);
             } else {
                 console.error('Error fetching user information: ' + response.message);
             }

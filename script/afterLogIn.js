@@ -61,13 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         findID();
                     }
-                   /* if (window.location.pathname.includes('profile.html')) { //dodavanje informacija o tome ko je ulogovan
-                        var profileEmail = document.querySelector("#profileEmail h5");
-                        profileEmail.innerHTML = "EMAIL: " + response.emailClient.toUpperCase();
-                        var profilePassword = document.querySelector("#profilePassword h5");
-                        profilePassword.innerHTML = "PASSWORD: " + response.passwordClient.toUpperCase();
-                    }*/
-                } else if (userData.loginClinics) {
+                    if (window.location.pathname.includes('profile.html')) {
+                        var profileSD = document.querySelector("#profileSD").style.display="flex";
+                        var profileSDClinic = document.querySelector("#profileSDClinic").style.display="none";
+                    }
+                } //ako je klinika
+                else if (userData.loginClinics) {
                     // uradi nesto ako je ulogovan kao klinika
                     console.log('Clinic is logged in.'); 
   
@@ -178,6 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         var profileClientBtn = document.querySelector(".profileButton").style.display="none";
                         var profileClientBtn = document.querySelector("#profileED").style.display="none";
                         var profileClientBtn = document.querySelector("#profileCID").style.display="none";
+                        var profileSD = document.querySelector("#profileSD").style.display="none";
+                        var profileSDClinic = document.querySelector("#profileSDClinic").style.display="flex";
                         var profileClientBtn = document.querySelector("#profileCLID").style.display="flex";
                     }   
                         
