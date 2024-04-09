@@ -59,6 +59,9 @@ div#profileCLID {
 .profileInfoSpan {
     font-size: 18px;
 }
+div#profileCLID {
+    justify-content: flex-start;
+}
 .profileButton button {
     width: 100%;
     padding: 5px;
@@ -123,6 +126,9 @@ div#profileCLID {
     .profileInfo {
         flex-direction: row;
         align-items: center;
+    }
+    div#profileCLID {
+        justify-content: flex-start;
     }
 }
 @media only screen and (max-width: 850px) {

@@ -15,7 +15,7 @@ $(document).ready(function() {
                 $('#currentUserStartDate').text(userData.start_date);
                 $('#currentUserExpiringDate').text(userData.expiring_date);
                 $('#currentCatalogID').text(userData.catalog_id);
-                $('#currentClinicID').text(userData.clinic_id);
+                $('#currentClinicID').text(userData.clinics_id);
             } else {
                 console.error('Error fetching user information: ' + response.message);
             }
