@@ -53,6 +53,8 @@ div#profileCLID {
 }
 .profileInfo h5 {
     margin: 0;
+    color: #98b5c8;
+    font-weight: bold;
 }
 .profileInfoSpan {
     font-size: 18px;
