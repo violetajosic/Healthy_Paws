@@ -1,5 +1,6 @@
-function setUserInfo() {
-    // Use AJAX to fetch user information from the server
+$(document).ready(function() {
+    console.log("pokrenuto");
+    // Fetch user information when the document is ready
     $.ajax({
         url: 'getUserInfo.php',
         method: 'GET',
@@ -9,17 +10,18 @@ function setUserInfo() {
                 var userData = response.data;
 
                 // Populate user information in HTML
-                document.getElementById("profileEmail").innerHTML += '<span>' + userData.email + '</span>';
-                document.getElementById("profileSD").innerHTML += '<span>' + userData.start_date + '</span>';
-                document.getElementById("profileED").innerHTML += '<span>' + userData.expiring_date + '</span>';
-                document.getElementById("profileCID").innerHTML += '<span>' + userData.catalog_id + '</span>';
-                document.getElementById("profileCLID").innerHTML += '<span>' + userData.clinic_id + '</span>';
+                $('#currentUserEmail').text(userData.email);
+                $('#currentUserStartDate').text(userData.start_date);
+                $('#currentUserExpiringDate').text(userData.expiring_date);
+                $('#currentCatalogID').text(userData.catalog_id);
+                $('#currentClinicID').text(userData.clinic_id);
             } else {
                 console.error('Error fetching user information: ' + response.message);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.error('AJAX error: ' + textStatus + ' - ' + errorThrown);
+            console.error('AJAX error: ' + textStatus, errorThrown);
         }
     });
-}
+    console.log("zavrseno");
+});
