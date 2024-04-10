@@ -14,6 +14,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $email = $_POST['myemail'];
     $mypassword = $_POST['mypassword'];
+    $accMemId = $_POST['myAccNumID'];
 
     // Check if the email already exists
     $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -37,14 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     }
 
     // Email doesn't exist, proceed with sign up
-    $sql = "INSERT INTO users (email, password, user_type) VALUES (?, ?, 'client')";
+    $sql = "INSERT INTO users (email, password, accMem_id, user_type) VALUES (?, ?, ?, 'client')";
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
         die("Error preparing SQL query: " . $conn->error);
     }
 
-    $stmt->bind_param("ss", $email, $mypassword);
+    $stmt->bind_param("ssi", $email, $mypassword, $accMemId);
 
     if ($stmt->execute()) {
         header("Location: log.html");
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
     $clinicsId = $_POST['clinics_id'];
 
     // SQL query to add clinic to the table
-    $sql = "INSERT INTO users (email, password, clinics_id, user_type) VALUES (?, ?, ?, 'clinics')";
+    $sql = "INSERT INTO users (email, password, clinic_id, user_type) VALUES (?, ?, ?, 'clinics')";
     $stmt = $conn->prepare($sql);
 
     // Check if the prepare was successful
