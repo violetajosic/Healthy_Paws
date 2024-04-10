@@ -161,7 +161,7 @@ if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) {
     echo json_encode(['data' => ['loginClinics' => 1]]);
    
 } else { //ako je izlogovan
-    echo json_encode(['status' => 'error', 'message' => 'Invalid session state']); //ovo se prikaze
+    echo json_encode(['message' => 'User is not logged in']); 
     
 }
 }
