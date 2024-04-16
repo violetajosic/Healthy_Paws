@@ -209,8 +209,6 @@ function validateAndRedirectSignUpCLINICS() {
       // Ako nema grešaka, preusmeri na index.html
       window.location.href = "index.html";
     }
-    //ako se neko prijavljuje kao klijent na disease strani se pojavljuje klasa alert-heading
-    //treba da se doda da je flex i ako nije uopste ulogovan niko
     if (clinicsLogged){
       fetch("clinicsHeader.html")
       .then((response) => response.text())
