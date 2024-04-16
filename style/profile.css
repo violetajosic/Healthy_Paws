@@ -97,6 +97,34 @@ div#profileSDClinic {
 .logOutButton h4 {
     color: #98b5c8;
 }
+#profileSD {
+    flex-direction: column;
+    align-items: flex-start;
+}
+#profileSDClinic {
+    flex-direction: column;
+    align-items: flex-start;
+}
+#profileED {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.profileMembershipAfter {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.profileMemAfterInput {
+    width: 400px !important;
+}
+.profileAfterBtn {
+    display: none;
+}
+.profileAfterBtn a {
+    margin: 0 auto;
+    width: 50%;
+}
 @media only screen and (max-width: 1200px) {
     .profileOwnerImg img{
         height: 280px;
@@ -146,6 +174,11 @@ div#profileSDClinic {
         width: 70%;
     }
 }
+@media only screen and (max-width: 700px) {
+    .profileMemAfterInput {
+        width: 300px !important;
+    }
+}
 @media only screen and (max-width: 650px) {
     .logOutButton {
         width: 40%;
@@ -159,17 +192,20 @@ div#profileSDClinic {
         width: 80%;
     }
 }
+@media only screen and (max-width: 500px) {
+    .profileOwnerImg img{
+        height: 180px;
+    }
+    .profileMemAfterInput {
+        width: 200px !important;
+    }
+}
 @media only screen and (max-width: 410px) {
     .profileButton {
         width: 90%;
     }
     .logOutButton {
         width: 50%;
-    }
-}
-@media only screen and (max-width: 500px) {
-    .profileOwnerImg img{
-        height: 180px;
     }
 }
 @media only screen and (max-width: 375px) {

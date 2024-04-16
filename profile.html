@@ -27,20 +27,43 @@
                     <div class="col profileCol profileOwnerImg">
                         <img src="img/profile/dogWithOwner.jpg" alt="Client image with his pet.">
                     </div>
-                    <div class="col profileCol"><!--OVDE IZMENITI DA SE POSLE: DODAJU PODACI U H4-->
+                    <div class="col profileCol">
                         <div class="row-12 mb-3 profileInfo" id="profileEmail"><h5>EMAIL:</h5><span id="currentUserEmail" class="profileInfoSpan"></span></div>
                         <div class="row-12 mb-3 profileInfo" id="profilePassword"><h5>PASSWORD:</h5><span id="currentUserPassword" class="profileInfoSpan"></span></div>
-                        <div class="row-12 mb-3 profileInfo" id="profileCLID"><h5>CLINIC ID:</h5><span id="currentClinicID" class="profileInfoSpan"></span></div><!--clinic id iz baze-->
-                        <div class="row-12 mb-3 profileInfo" id="profileSDClinic"><h5>START DATE:</h5><span id="currenClinicStartDate" class="profileInfoSpan"></span></div><!--dan kad je osnovano-->
-                        <div class="row-12 mb-3 profileInfo" id="profileSD"><h5>START DATE:</h5><span id="currentUserStartDate" class="profileInfoSpan"></span></div><!--dan kad je uplaceno-->
-                        <div class="row-12 mb-3 profileInfo" id="profileED"><h5>EXPIRING DATE:</h5><span id="currentUserExpiringDate" class="profileInfoSpan"></span></div><!--mesec unapred od kad je uplaceno-->
-                        <div class="row-12 profileInfo" id="profileCID"><h5>CATALOG ID:</h5><span id="currentCatalogID" class="profileInfoSpan"></span></div><!--id kataloga na ovaj email-->
+                        <div class="row-12 mb-3 profileInfo" id="profileCLID"><h5>CLINIC ID:</h5><span id="currentClinicID" class="profileInfoSpan"></span></div>
+                        <div class="row-12 mb-3 profileInfo" id="profileSDClinic"><h5>START DATE:</h5><span id="currenClinicStartDate" class="profileInfoSpan"></span></div>
+                        <div class="row-12 mb-3 profileInfo" id="profileSD"><h5>START DATE:</h5><span id="currentUserStartDate" class="profileInfoSpan"></span></div>
+                        <div class="row-12 mb-3 profileInfo" id="profileED"><h5>EXPIRING DATE:</h5><span id="currentUserExpiringDate" class="profileInfoSpan"></span></div>
+                        <div class="row-12 profileInfo" id="profileCID"><h5>CATALOG ID:</h5><span id="currentCatalogID" class="profileInfoSpan"></span></div>
                     </div>
                 </div>
                 <div class="row-12 profileButton">
                     <div class="col-12 profileBtn">
-                        <button type="submit" class="profileClientBtn"><h4>Pay membership fee</h4></button>
+                        <button onclick="profileMembership()" type="submit" class="profileClientBtn"><h4>Pay membership fee</h4></button>
                     </div>
+                </div>
+                <!--ovo se vidi klikom na gornje dugme-->
+                <div class="profileMembershipAfter">
+                    <div class="row-12 profileMembershipAfterRow">
+                        <div class="col-12 mb-3 profileMembershipAfterCol">
+                            <h3>Thank you for your trust</h3>
+                        </div>
+                        <div class="col-12 mb-5 profileMembershipAfterCol">
+                            <h4>Here you can pay for another month of membership</h4>
+                        </div>
+                    </div>
+                    <div class="row-12 profileMembershipAfterRow">
+                        <div class="col-12 profileMembershipAfterInput">
+                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput profileMemAfterInput" id="accNum" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="row-12 profileButton profileAfterBtn">
+                    <a href="profile.html">
+                        <div class="col-12 profileBtn">
+                            <button type="submit" class="profileClientBtn"><h4>Back</h4></button>
+                        </div>
+                    </a>
                 </div>
                 <div class="row-12 profileButton logOutButton">
                     <div class="col-12 profileBtn logOutBtn">
@@ -61,6 +84,7 @@
     <script src="script/afterLogIn.js"></script>
     <script src="script/profileInfo.js"></script>
     <script src="script/logOut.js"></script>
+    <script src="script/profileMem.js"></script>
     <script src="server.php"></script><!--jel ovo treba ovde?-->
 </body>
 </html>
