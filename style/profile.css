@@ -116,12 +116,21 @@ div#profileSDClinic {
     flex-direction: column;
 }
 .profileMemAfterInput {
-    width: 400px !important;
+    width: 500px !important;
 }
 .profileAfterBtn {
     display: none;
+    width: 100% !important;
 }
 .profileAfterBtn a {
+    margin: 0 auto;
+    width: 20%;
+}
+.profileAfterBtnPay {
+    display: none;
+    width: 100%;
+}
+.profileAfterBtnPay a {
     margin: 0 auto;
     width: 50%;
 }
@@ -138,6 +147,9 @@ div#profileSDClinic {
     .profileInfo {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .profileMemAfterInput {
+        width: 400px !important;
     }
 }
 @media only screen and (max-width: 992px) {
@@ -168,10 +180,24 @@ div#profileSDClinic {
         flex-direction: row;
         align-items: center;
     }
+    .profileAfterBtnPay a {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 920px) {
+    .profileAfterBtn a {
+        width: 25% !important;
+    }
 }
 @media only screen and (max-width: 850px) {
     .profileWhiteWrapper {
         width: 70%;
+    }
+    .profileMemAfterInput {
+        width: 350px !important;
+    }
+    .profileAfterBtnPay a {
+        width: 50%;
     }
 }
 @media only screen and (max-width: 700px) {
@@ -191,6 +217,12 @@ div#profileSDClinic {
     .profileWhiteWrapper {
         width: 80%;
     }
+    .profileAfterBtnPay a {
+        width: 60%;
+    }
+    .profileAfterBtn a {
+        width: 30% !important;
+    }
 }
 @media only screen and (max-width: 500px) {
     .profileOwnerImg img{
@@ -199,6 +231,9 @@ div#profileSDClinic {
     .profileMemAfterInput {
         width: 200px !important;
     }
+    .profileAfterBtn a {
+        width: 35% !important;
+    }
 }
 @media only screen and (max-width: 410px) {
     .profileButton {
@@ -206,6 +241,12 @@ div#profileSDClinic {
     }
     .logOutButton {
         width: 50%;
+    }
+    .profileAfterBtnPay a {
+        width: 70%;
+    }
+    .profileAfterBtn a {
+        width: 40% !important;
     }
 }
 @media only screen and (max-width: 375px) {

@@ -15,7 +15,7 @@
     <link rel="icon" type="image/x-icon" a href="img/logo/icon.png">
 </head>
 <body class="bodyProfile">
-
+    
     <div id="navigation"></div>
     <div class="help-wrapper profile">
         <div class="profileWhiteWrapper catalogWhiteWrapper">
@@ -33,11 +33,11 @@
                     <div class="col-12 mb-4 profileCol profileOwnerImg">
                         <img src="img/profile/dogWithOwner.jpg" alt="User (client) image with his pet."><!--SLIKA IZ BAZE ZA TAJ ID-->
                     </div>
-                    <div class="col-12 catalogInfoCol">
-                        <h5 id="catalogPetName">IME ZIVOTINJE</h5>
-                        <h5 id="catalogOwnerName">Ime i prezime valsnika</h5>
-                        <p id="catalogSpecies">Vrsta i rasa zivotinje</p>
-                        <p id="catalogAge">Starost zivotinje - starost kao ljudske godine</p>
+                    <div class="col-12 catalogInfoCol"><!--DA SE PRIKAZE IZ KATALOGA KOJI IMA ID OD GORE-->
+                        <h5 id="catalogPetName"><span style="font-weight: bold;">Pet name:</span> Lola</h5>
+                        <h5 id="catalogOwnerName"><span style="font-weight: bold;">Owner name:</span> Violeta Josic</h5> <!--DA BUDE MEJL OD PROFILA-->
+                        <p id="catalogSpecies"><span style="font-weight: bold;">Species / breed:</span> Bichon Bolognese dog</p>
+                        <p id="catalogAge"><span style="font-weight: bold;">Age:</span> 7 years old - 49 human years</p> <!--DA se abdejtuje ako moze-->
                     </div>
                 </div>
                 <div class="row-12 vetTable">
@@ -101,12 +101,6 @@
                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
                         </ul>
                     </div>
-                    <!----
-                    <div class="catalogEdit"> VIDLJIVO SAMO KAD SE IZVRSI FUNKCIJA addNewData()
-                        <button type="submit" id="edit-button">Edit</button> DA MOZE DA EDITUJE U ROKU OD 10 MIN POSLE DUGME NESTAJE
-                        <button type="submit" id="end-editing">Apply</button> OVO DUGME JE KAO APPLY
-                    </div>
-                    ---->
                 </div>
                 <div class="row-12 profileButton catalogBtn">
                     <div class="col-12 profileBtn">

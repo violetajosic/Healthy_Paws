@@ -45,8 +45,8 @@ function addNewData() {
             </ul>
         </div>
         <div class="catalogEdit">
-            <button type="submit" class="edit-button">Edit</button>
-            <button type="submit" class="end-editing">Apply</button>
+            <button type="submit" class="edit-button" id="editBtn">Edit</button>
+            <button type="submit" class="end-editing" id="applyBtn">Apply</button>
         </div>
     `;
 
@@ -63,7 +63,7 @@ function addNewData() {
     saveDataToDatabase(diseaseName, formattedDate, symptoms, therapy, doctorInfo, clinicIDInfo);
 
     //edit deo
-    const editCatalog = document.querySelector(".čeditCatalog"); //deo koji moze da se edituje
+    const editCatalog = document.querySelector(".editCatalog"); //deo koji moze da se edituje
     const edit_button = document.getElementById("edit-button");
     const end_button = document.getElementById("end-editing");
 
@@ -77,3 +77,34 @@ function addNewData() {
         paragraph.style.backgroundColor = "#ffe44d";
     })
 }
+// Function to toggle between displaying existing data and input fields
+function toggleEdit() {
+    const editFields = document.querySelectorAll('.editable');
+    editFields.forEach(field => {
+        field.contentEditable = true;
+        field.style.backgroundColor = "#dddbdb";
+    });
+}
+
+// Function to update existing data with new input values
+function applyChanges() {
+    const symptoms = document.getElementById('symptomsAdd').value;
+    const therapy = document.getElementById('therapyAdd').value;
+    const doctorInfo = document.getElementById('signAdd').value;
+    const clinicIDInfo = document.getElementById('signAdd2').value;
+
+    // Update existing data with new values
+    const symptomsSpan = document.querySelector('.symptomsInfo span.editable');
+    const therapySpan = document.querySelector('.therapyInfo span.editable');
+    const doctorSpan = document.querySelector('.signInfo span.editable');
+    const clinicIDSpan = document.querySelector('.signInfo2 span.editable');
+
+    symptomsSpan.textContent = symptoms;
+    therapySpan.textContent = therapy;
+    doctorSpan.textContent = doctorInfo;
+    clinicIDSpan.textContent = clinicIDInfo;
+}
+
+// Event listeners for Edit and Apply buttons
+document.getElementById('editBtn').addEventListener('click', toggleEdit);
+document.getElementById('applyBtn').addEventListener('click', applyChanges);

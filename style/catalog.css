@@ -104,6 +104,26 @@
     box-shadow:  2px 2px 3px 1px #728796;
     border-color: #728796;
 }
+.catalogEdit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 0 5px 5px 5px;
+}
+.catalogEdit button {
+    border-radius: 4px;
+    border: 1px solid #98b5c8;
+    background-color: white;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5))
+}
+.catalogEdit button:hover, .catalogEdit button:focus{
+    background-color: #98b5c8;
+    color: white;
+    cursor: pointer;
+    cursor: url("../img/cursor/cursorPointer.png"), pointer;
+    outline: none;
+}
 @media only screen and (max-width: 992px) {
     .catalogIDCol {
         justify-content: center;
