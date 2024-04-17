@@ -16,8 +16,6 @@ function displaySelectedImage(event, elementId) {
 //count age
 var petInput = document.querySelector(".petInput"); // uzima se referenca na polje za unos godina
 var mncConverted = document.querySelector(".mncConverted"); // ovde će se prikazivati izračunato
-var speciesInput = document.querySelector(".speciesInput").value; // input vrste
-var vetHeadingInput = document.querySelector(".vetHeadingInput").value; //input imena
 
 petInput.addEventListener("input", function() {
     var petAge = parseInt(petInput.value); // konvertuje se vrednost unosa u broj
@@ -42,36 +40,42 @@ document.querySelector(".speciesInput").addEventListener("input", function() {
 function mnc() {
     var imageError = document.getElementById("imageError");
     var nameError = document.getElementById("nameError");
+    var ownerError = document.getElementById("ownerError");
     var speciesError = document.getElementById("speciesError");
     var ageError = document.getElementById("ageError");
     var petInput = document.querySelector(".petInput");
     var speciesInput = document.querySelector(".speciesInput").value;
     var vetHeadingInput = document.querySelector(".vetHeadingInput").value;
+    var vetOwnerInput = document.querySelector(".vetOwnerInput").value;
 
     imageError.innerText = "";
     imageError.style.color = "";
     nameError.innerText = "";
     nameError.style.color = "";
+    ownerError.innerText = "";
+    ownerError.style.color = "";
     speciesError.innerText = "";
     speciesError.style.color = "";
     ageError.innerText = "";
     ageError.style.color = "";
 
     var selectedImage = document.getElementById("selectedImage");
+    var regExsp = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
 
     if (!selectedImage.src || selectedImage.src.endsWith("uploadImg.jpg")) {
         imageError.innerText = "An image must be chosen and it must be in .jpg format.";
         imageError.style.color = "red";
     }
-    if (!vetHeadingInput.trim() || !vetHeadingInput.includes("-")) {
-        nameError.innerText = "Pet name and owner name must be separated by - sign.";
+    if (!vetHeadingInput.trim()) {
+        nameError.innerText = "This field is required.";
         nameError.style.color = "red";
-    } else {
-        const parts = vetHeadingInput.split("-");
-        if (parts.length < 2 || !parts[1].trim()) {
-            nameError.innerText = "After the '-' sign owner name should be written.";
-            nameError.style.color = "red";
-        }
+    }
+    if (!vetOwnerInput.trim()) {
+        ownerError.innerText = "This field is required.";
+        ownerError.style.color = "red";
+    }else if(!regExsp.test(vetOwnerInput)) {
+        ownerError.innerText = "Owner full name should be separated by space.";
+        ownerError.style.color = "red";
     }
     if (!speciesInput.trim()) {
         speciesError.innerText = "This field is required.";
@@ -85,6 +89,7 @@ function mnc() {
     if (
         imageError.innerText === "" &&
         nameError.innerText === "" &&
+        ownerError.innerText === "" &&
         speciesError.innerText === "" &&
         ageError.innerText === ""
     ) {

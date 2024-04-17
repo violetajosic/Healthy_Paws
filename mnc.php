@@ -12,9 +12,10 @@ if ($conn->connect_error) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction'])) {
     // Assuming you have already sanitized and validated your inputs
-    $vetHeadingInput = $_POST['vetHeadingInput1'];
-    $speciesInput = $_POST['vetSpeciesInput'];
-    $petAgeInput = $_POST['petAgeInput1'];
+    $petName = $_POST['petName'];
+    $ownerName = $_POST['ownerName'];
+    $speciesName = $_POST['speciesName'];
+    $petAgeInput = $_POST['petAge'];
     $mncConverted = $_POST['mncConverted'];
 
     // File upload handling
@@ -26,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
             echo "File is valid, and was successfully uploaded.";
             $imagePath = $targetFile;  // Use the uploaded file path in the database
 
-            $sql = "INSERT INTO pets (image, vet_heading, species, pet_age, age_converted)
-                VALUES ('$imagePath', '$vetHeadingInput', '$speciesInput', $petAgeInput, $mncConverted)";
+            $sql = "INSERT INTO pets (image, pet_name, owner_name, species, pet_age, age_converted)
+                VALUES ('$imagePath', '$petName', '$$ownerName', '$speciesInput', $petAgeInput, $mncConverted)";
 
             if ($conn->query($sql) === TRUE) {
                 echo "New record created successfully";
