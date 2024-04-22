@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to load headers
     function loadHeaders() {
         $.ajax({
-            url: 'server.php', 
+            url: 'server.php', //ako ovde stavim logIn ili SignUp ne radi
             method: 'GET',
             dataType: 'json',
             success: function (response) {
