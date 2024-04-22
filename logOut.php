@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logOut'])) {
     unset($_SESSION);
     session_destroy();
     session_write_close();
-    die("Logout successful"); //radi sve ali ovo ne dobijem nigde i nema ga u networku
+    die("Logout successful");
 }
 
 ?>

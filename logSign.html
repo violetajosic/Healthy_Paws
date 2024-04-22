@@ -23,16 +23,16 @@
         <form action="server.php" method="post" class="row mb-5 logInForm" >
             <div class="form-group mb-4 logInFormGroup">
                 <label class="logInLabel" for="exampleInputEmail1">Email address</label>
-                <input type="email" name="myemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                <input type="email" name="myemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                 <div id="emailError" class="error-message"></div>
             </div>
             <div class="form-group logInFormGroup">
                 <label class="logInLabel" for="exampleInputPassword1">Password</label>
-                <input type="password" name="my2password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" autocomplete="off">
+                <input type="password" name="my2password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
                 <div id="passwordError" class="error-message"></div>
             </div>
             <div class="form-group form-check logInFormGroup">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
                 <label class="logInLabel" class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
             <button onclick="validateAndRedirect()" name="logInFormCheck" type="submit" class="btn btn-primary clinicsLSBtn loginBtn enterBtn"><h5>Log in</h5></button>

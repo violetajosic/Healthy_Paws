@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
 
 // LOG IN RADI
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
-    
+
     $email = $_POST['myemail'];
     $my2password = $_POST['my2password'];
 
@@ -111,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
     echo "Num Rows: " . $result_login->num_rows; // Output number of rows for debugging
 
-
     // Provjera je li pronađen korisnik
     if ($result_login->num_rows === 1) {
 
@@ -120,26 +119,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
         $storedPassword = $row_login['password'];
         // Direct comparison for debugging purposes (remove in production)
         if ($my2password === $storedPassword) {
-        
+
             // Lozinke se podudaraju - prijava uspešna
             if ($row_login['user_type'] === 'client') {
                 echo "sesija pocela kao klijent";
-                 
+
                 $_SESSION['loginClient'] = "1";
                 $_SESSION['type'] = 'client';
                 $_SESSION['emailClient'] = $email;
-                header("Location: index.html"); 
-                
+                header("Location: index.html");
+
             } elseif ($row_login['user_type'] === 'clinics') {
-                echo "sesija pocela kao klinika"; 
+                echo "sesija pocela kao klinika";
                 $_SESSION['loginClinics'] = "1";
                 $_SESSION['type'] = 'clinics';
                 $_SESSION['emailClinics'] = $email;
-                header("Location: index.html"); 
+                header("Location: index.html");
             }
-            
+
         } else {
-            echo "<h1> Login failed. Invalid email or password PRVI.</h1>"; 
+            echo "<h1> Login failed. Invalid email or password PRVI.</h1>";
             session_destroy();
         }
     } else {
@@ -149,6 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
     $stmt_login->close();
 }
 
+
+//za povezivanje sa js
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     header('Content-Type: application/json');
 if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
@@ -165,7 +166,32 @@ if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) {
     
 }
 }
+//checkbox remember me NE RADI
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $rememberMe = isset($_POST["remember"]) ? true : false; // Check if the "Remember me" checkbox is checked
+    $email = $_POST["myemail"];
+    $password = $_POST["my2password"];
 
+    if ($email === "example@example.com" && $password === "password") {
+        $_SESSION["email"] = $email;
+
+        // If Remember Me is checked, set a cookie
+        if ($rememberMe) {
+            setcookie("email", $email, time() + (86400 * 30), "/"); // 30 days
+        } else {
+            // If Remember Me is not checked, unset the cookie
+            if (isset($_COOKIE["email"])) {
+                setcookie("email", "", time() - 3600, "/");
+            }
+        }
+
+        // Redirect to a logged-in page
+        header("Location: index.html");
+        exit; //da li ovo treba?
+    } else {
+        echo "Invalid email or password"; //ovde treba da odradi js validaciju samo istu kao i za obican log in
+    }
+}
 // Close the connection
 $conn->close();
 ?>

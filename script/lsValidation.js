@@ -1,3 +1,30 @@
+// Remember me checkbox
+function handleRememberMe() {
+  var rememberCheckbox = document.querySelector("#exampleCheck1");
+  var emailInput = document.querySelector("#exampleInputEmail1");
+  var passwordInput = document.querySelector("#exampleInputPassword1");
+
+  rememberCheckbox.addEventListener("change", function() {
+      if (rememberCheckbox.checked) {
+          localStorage.setItem("remember_me", "true");
+          localStorage.setItem("email", emailInput.value);
+          localStorage.setItem("password", passwordInput.value);
+      } else {
+          localStorage.removeItem("remember_me");
+          localStorage.removeItem("email");
+          localStorage.removeItem("password");
+      }
+  });
+
+  // Check if "Remember me" was previously checked
+  var rememberMe = localStorage.getItem("remember_me");
+  if (rememberMe === "true") {
+      rememberCheckbox.checked = true;
+      emailInput.value = localStorage.getItem("email");
+      passwordInput.value = localStorage.getItem("password");
+  }
+}
+
 // LOGIN validacija
 function validateAndRedirect() {
   var email = document.querySelector("#exampleInputEmail1").value;
@@ -40,18 +67,27 @@ function validateAndRedirect() {
       // If no errors, redirect to index.html
       if (rememberMe) {
           // Set a cookie to remember the user
-          document.cookie = "remember_me=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-          console.log("Remember me cookie cleared");
+          localStorage.setItem("remember_me", "true");
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
       } else {
           // Clear the existing cookie
-          document.cookie = "remember_me=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-          console.log("Remember me cookie cleared");
+          localStorage.removeItem("remember_me");
+          localStorage.removeItem("email");
+          localStorage.removeItem("password");
       }
+
       window.location.href = "index.html";
   }
 
   return false; // Sprečava slanje forme
 }
+
+// Call the function when the DOM is ready
+document.addEventListener("DOMContentLoaded", function() {
+  handleRememberMe();
+});
+
 
 
 function validateAndRedirectSignUpCLIENT() {
@@ -141,7 +177,7 @@ function validateAndRedirectSignUpCLIENT() {
   }
 }
 
-// validacija CLINICS
+// validacija CLINIC
 function validateAndRedirectSignUpCLINICS() {
     var email = document.querySelector("#exampleInputEmail3").value;
     var password = document.querySelector("#exampleInputPassword4").value;
