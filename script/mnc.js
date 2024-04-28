@@ -1,4 +1,4 @@
-//upload image
+//upload image - treba da se cuva u bazu
 function displaySelectedImage(event, elementId) {
     const selectedImage = document.getElementById(elementId);
     const fileInput = event.target;
@@ -14,11 +14,11 @@ function displaySelectedImage(event, elementId) {
     }
 }
 //count age
-var petInput = document.querySelector(".petInput"); // uzima se referenca na polje za unos godina
-var mncConverted = document.querySelector(".mncConverted"); // ovde će se prikazivati izračunato
+var petInput = document.querySelector(".petInput");
+var mncConverted = document.querySelector(".mncConverted");
 
 petInput.addEventListener("input", function() {
-    var petAge = parseInt(petInput.value); // konvertuje se vrednost unosa u broj
+    var petAge = parseInt(petInput.value);
 
     if (speciesInput !== "cat") {
         if (petAge < 2) {
@@ -27,14 +27,13 @@ petInput.addEventListener("input", function() {
             mncConverted.textContent = 2 * 10.5 + (petAge - 2) * 4;
         }
     } else {
-        mncConverted.textContent = 15 + 9 * (petAge - 1); //drugacije racunanje za macke
+        mncConverted.textContent = 15 + 9 * (petAge - 1);
     }
 });
 
-// Dodajte dodatnu proveru za "speciesInput" kada se vrednost promeni
 document.querySelector(".speciesInput").addEventListener("input", function() {
     speciesInput = document.querySelector(".speciesInput").value;
-    mncConverted.textContent = "0"; // Resetujte prikaz prilikom promene vrste
+    mncConverted.textContent = "0";
 });
 
 function mnc() {
@@ -93,7 +92,7 @@ function mnc() {
         speciesError.innerText === "" &&
         ageError.innerText === ""
     ) {
-        // Pošalji podatke na server koristeći AJAX
+        // send to php
         $.ajax({
             type: 'POST',
             url: 'mnc.php',
@@ -102,17 +101,15 @@ function mnc() {
                 vetHeadingInput1: vetHeadingInput,
                 vetSpeciesInput: speciesInput,
                 petAgeInput1: petInput.value,
-                mncConverted: 0,  // Ovde postavi vrednost koja vam je potrebna za age_converted
-                // Možete dodati ostale podatke koje želite poslati
+                mncConverted: 0,  
+                
             },
             success: function(response) {
-                // Ovde možete obraditi odgovor sa servera, ako je potrebno
                 console.log(response);
             },
             error: function(error) {
-                // Ovde možete obraditi greške koje se dese tokom AJAX poziva
                 console.log(error);
-            }
+            } //ukoliko je uspesno poslato na php i to je uneto u bazu, iz php treba da vrati ponovo u js (moze i novi fajl) koji ce da ispise na ekranu: uspesno ste napravili katalog, ovo je vas katalog id i da je id broj izvucen iz baze kao redni broj koji se automatski sam pravi
         });
     }
 }
