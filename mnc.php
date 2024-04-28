@@ -26,20 +26,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
             $imagePath = $targetFile;
 
             $sql = "INSERT INTO pets (image, pet_name, owner_name, species, pet_age, age_converted)
-                VALUES ('$imagePath', '$petName', '$$ownerName', '$speciesInput', $petAgeInput, $mncConverted)";
+                VALUES ('$imagePath', '$petName', '$ownerName', '$speciesName', $petAgeInput, $mncConverted)";
 
             if ($conn->query($sql) === TRUE) {
                 echo "New record created successfully";
+                // Izvršavanje upita za dohvatanje "id"
+                $result = $conn->query("SELECT id FROM mnc");
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $id = $row['id'];
+                    // Prikaz "id" kao JavaScript promenljive // u bazi stavi da je automatski
+                    echo "<script>var catalogId = '$id';</script>";
+                } else {
+                    // Ukoliko ne postoji "id", prikaži odgovarajuću poruku
+                    echo "<script>var catalogId = 'ID not found';</script>";
+                }
+                // Dodavanje funkcije koja se izvršava u mncAfter.js
+                echo "<script>mncAfter();</script>";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-
-        //dohvati js fajl koji ce da..pise na kraju mnc.js
         } else {
             echo "Upload failed.";
         }
     } else {
-        echo "File not found or an error occurred."; //ovo se prikaze jer nece da ubaci sliku u bazu
+        echo "File not found or an error occurred.";
     }
 }
 
