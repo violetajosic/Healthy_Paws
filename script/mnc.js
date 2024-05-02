@@ -26,7 +26,7 @@ petInput.addEventListener("input", function() {
         } else if (petAge >= 2) {
             mncConverted.textContent = 2 * 10.5 + (petAge - 2) * 4;
         }
-    } else {
+    } else { //for cats
         mncConverted.textContent = 15 + 9 * (petAge - 1);
     }
 });
@@ -59,7 +59,7 @@ function mnc() {
     ageError.style.color = "";
 
     var selectedImage = document.getElementById("selectedImage");
-    var regExsp = /^[A-Z][a-z]+\s[A-Z][a-z]+$/;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!selectedImage.src || selectedImage.src.endsWith("uploadImg.jpg")) {
         imageError.innerText = "An image must be chosen and it must be in .jpg format.";
@@ -72,8 +72,8 @@ function mnc() {
     if (!vetOwnerInput.trim()) {
         ownerError.innerText = "This field is required.";
         ownerError.style.color = "red";
-    }else if(!regExsp.test(vetOwnerInput)) {
-        ownerError.innerText = "Owner full name should be separated by space.";
+    }else if(!emailRegex.test(vetOwnerInput)) {
+        ownerError.innerText = "Invalid email adress.";
         ownerError.style.color = "red";
     }
     if (!speciesInput.trim()) {
