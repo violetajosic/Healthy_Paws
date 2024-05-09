@@ -2,16 +2,17 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "addApointment";
+$database = "addapointment";
 
-//konekcija
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-//provera konekcije
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Retrieve data from POST request
 $diseaseName = $_POST['catalogDiseaseName'];
 $appointmentDate = $_POST['catolgDate'];
 $symptoms = $_POST['catalogSympt'];
@@ -19,14 +20,18 @@ $therapy = $_POST['catalogTherapy'];
 $doctorInfo = $_POST['catalogDoctor'];
 $clinicIDInfo = $_POST['catalogClinicID'];
 
+// Prepare and execute SQL statement
 $sql = "INSERT INTO appointments (disease_name, appointment_date, symptoms, therapy, doctor_info, clinic_id)
-        VALUES ('$diseaseName', '$appointmentDate', '$symptoms', '$therapy', '$doctorInfo', '$clinicIDInfo')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+        VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssssi", $diseaseName, $appointmentDate, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
+if ($stmt->execute()) {
+    echo "uspesno sacuvano php";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $stmt->error;
 }
 
+// Close connection
+$stmt->close();
 $conn->close();
 ?>

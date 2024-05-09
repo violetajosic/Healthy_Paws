@@ -129,6 +129,12 @@
     width: 100% !important; 
     margin-bottom: 10px;
 }
+.vetTableInfo ul span {
+    width: 100%;
+    display: flex;
+    padding-left: 4px;
+    justify-content: flex-start;
+}
 @media only screen and (max-width: 992px) {
     .catalogIDCol {
         justify-content: center;
