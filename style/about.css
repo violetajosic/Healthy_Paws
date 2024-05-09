@@ -3,7 +3,7 @@
     color: #FFD95A;
 }
 .about-wrapper {
-    margin: 50px 0;
+    margin: 20px 0;
 }
 .smallContainer {
     background-color: rgba(255, 255, 255, 0.363);
@@ -21,7 +21,7 @@
 }
 @media only screen and (max-width: 1500px) {
     .about-wrapper {
-        margin-top: 20px;
+        margin-top: 0;
     }
 }
 @media only screen and (max-width: 992px) {

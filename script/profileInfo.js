@@ -1,6 +1,5 @@
 $(document).ready(function() {
     console.log("pokrenuto");
-    // Fetch user information when the document is ready
     $.ajax({
         url: 'getUserInfo.php',
         method: 'GET',
@@ -14,13 +13,13 @@ $(document).ready(function() {
                 startDate.setMonth(startDate.getMonth() + 1);
 
 
-                // Populate user information in HTML
+                // prikazivanje podataka trenutno ulogovanog korisnika iz baze
                 $('#currentUserEmail').text(userData.email);
                 $('#currentUserPassword').text(userData.password);
                 $('#currentUserStartDate').text(userData.created_at);
                 $('#currentUserExpiringDate').text(startDate.toISOString().slice(0, 10)); // istice mesec nakon dana
                 $('#currenClinicStartDate').text(userData.created_at);
-                $('#currentClinicID').text(userData.clinics_id);
+                $('#currentClinicID').text(userData.clinic_id);
                 $('#currentCatalogID').text(userData.catalog_id);
             } else {
                 console.error('Error fetching user information: ' + response.message);
@@ -32,4 +31,4 @@ $(document).ready(function() {
     });
     console.log("zavrseno");
 });
-//pocetni datum treba da se menja, svaki put kad istekne, pocetni datum postaje dan uplate
+//pocetni datum treba da se menja, svaki put kad istekne, pocetni datum postaje dan uplate i to samo kod client profila

@@ -22,17 +22,12 @@
 }
 .profileRow {
     width: 80%;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-}
-.profileOwnerImg img{
-    height: 300px;
-    border-radius: 10px;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
 .profileCol {
-    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 0;
 }
 div#profileCLID {
@@ -64,8 +59,8 @@ div#profileCLID {
 }
 div#profileSDClinic {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
 }
 .profileButton button {
     width: 100%;
@@ -135,9 +130,6 @@ div#profileSDClinic {
     width: 50%;
 }
 @media only screen and (max-width: 1200px) {
-    .profileOwnerImg img{
-        height: 280px;
-    }
     .profileRow {
         width: 90%;
     }
@@ -145,17 +137,14 @@ div#profileSDClinic {
         width: 30%;
     }
     .profileInfo {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
     }
     .profileMemAfterInput {
         width: 400px !important;
     }
 }
 @media only screen and (max-width: 992px) {
-    .profileOwnerImg img{
-        height: 230px;
-    }
     .profileRow {
         flex-direction: column;
     }
@@ -209,11 +198,14 @@ div#profileSDClinic {
     .logOutButton {
         width: 40%;
     }
+    .profileInfo {
+        flex-direction: column;
+    }
+    div#profileSDClinic {
+        flex-direction: column;
+    }
 }
 @media only screen and (max-width: 600px) {
-    .profileOwnerImg img{
-        height: 200px;
-    }
     .profileWhiteWrapper {
         width: 80%;
     }
@@ -225,9 +217,6 @@ div#profileSDClinic {
     }
 }
 @media only screen and (max-width: 500px) {
-    .profileOwnerImg img{
-        height: 180px;
-    }
     .profileMemAfterInput {
         width: 200px !important;
     }
