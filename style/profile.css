@@ -129,7 +129,15 @@ div#profileSDClinic {
     margin: 0 auto;
     width: 50%;
 }
+.profileOwnerImg img{
+    height: 300px;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
 @media only screen and (max-width: 1200px) {
+    .profileOwnerImg img{
+        height: 280px;
+    }
     .profileRow {
         width: 90%;
     }
@@ -145,6 +153,9 @@ div#profileSDClinic {
     }
 }
 @media only screen and (max-width: 992px) {
+    .profileOwnerImg img{
+        height: 230px;
+    }
     .profileRow {
         flex-direction: column;
     }
@@ -206,6 +217,9 @@ div#profileSDClinic {
     }
 }
 @media only screen and (max-width: 600px) {
+    .profileOwnerImg img{
+        height: 200px;
+    }
     .profileWhiteWrapper {
         width: 80%;
     }
@@ -217,6 +231,9 @@ div#profileSDClinic {
     }
 }
 @media only screen and (max-width: 500px) {
+    .profileOwnerImg img{
+        height: 180px;
+    }
     .profileMemAfterInput {
         width: 200px !important;
     }
