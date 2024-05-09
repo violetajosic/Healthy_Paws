@@ -79,6 +79,9 @@ function mnc() {
     if (!speciesInput.trim()) {
         speciesError.innerText = "This field is required.";
         speciesError.style.color = "red";
+    }else if(!speciesInput.includes(" / ")){
+        speciesError.innerText = "Please enter informations in this format: Species / breed";
+        speciesError.style.color = "red";
     }
     if (!petInput || !petInput.value.trim() || isNaN(petInput.value.trim())) {
         ageError.innerText = "This field is required and must contain only numeric values.";
