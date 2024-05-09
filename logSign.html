@@ -1,4 +1,5 @@
-<div class="lswrapper"> <!-- OVO JE I LOG I SIGN UP PAGE ZA MENJANJE TEKSTA UZ JS-->
+<!--odavde se u zavisnosti od potrebe prikazuje log in ili sign up i odvojeno za client i clinic-->
+<div class="lswrapper">
     <div id="lsNavigation"></div>
     <div class="container lsContainer">
         <div class="row mt-5 mb-5 lsHeading">
@@ -9,7 +10,7 @@
                 <h5>As a</h5>
             </div>
         </div>
-        <!--SIGN UP DEO-->
+        <!--SIGN UP DEO ZA BIRANJE CLIENT / CLINIC-->
         <div class="row mb-5 lsButtons">
             <div class="col-6 leftBtnLS">
                <button type="button" onclick="signUpChoose()" class="btn btn-primary clientLSBtn"><h4>client</h4></button>
@@ -62,9 +63,9 @@
                 <label class="logInLabel" for="exampleInputAccNumID">Account membership ID</label>
                 <input type="text" name="myAccNumID" class="form-control exampleAccNumInput" id="exampleInputAccNumID" placeholder="Enter your Account membership ID." autocomplete="off">
                 <div class="accNumID" class="error-message"></div>
-            </div><!--kad neko klikne na ovaj button u bazu se ispisuje user_type client-->
+            </div>
            <!--MEMBERSHIP--> 
-            <div class="clientMembershipPage"> <!--payMembership-->
+            <div class="clientMembershipPage">
                 <div class="payMembership-card">
                         <div class="row-12 payMembership payMembershipHeading mb-2">
                             <div class="col-12 payHeading">
@@ -124,12 +125,11 @@
             <div class="clientSignUpMembership payClientMembership">
                 <button onclick="payClientMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>pay</h5></button>
             </div>
-
+            <!--kad neko klikne na ovaj button u bazu se ispisuje user_type client zbog register-client-->
             <button onclick="validateAndRedirectSignUpCLIENT()" name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
         </form>
 
-
-        <!--CLINICS SIGN UP-->
+        <!--CLINIC SIGN UP-->
         <div class="col-12 mb-5 signUpHeading2">
             <h3>Clinic</h3>
         </div>
@@ -154,11 +154,12 @@
                 <label class="logInLabel" for="exampleInputPassword6">Clinic ID</label>
                 <input type="text" name="clinics_id" class="form-control clinicsID" id="exampleInputPassword6" placeholder="Your unique number" autocomplete="off">
                 <div class="clinicsId" class="error-message"></div>
-             </div><!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics-->
+             </div>
+             <!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics zbog register-clinics-->
             <button onclick="validateAndRedirectSignUpCLINICS()" name="register-clinics" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn"><h5>Sign Up</h5></button>
         </form>
         
-        <!--SWITCH-->
+        <!--promena teksta u zavisnosti da li ima profil ili ne tj promena iz log in u sign up i obrnuto-->
         <div class="row mb-5 lsSwitch">
             <div class="col-12">
                 <h6>Already have an account? <a href="log.html"><span class="lsLogInBtn" style="color: #FFD95A;">Log in</span></a></h6>
