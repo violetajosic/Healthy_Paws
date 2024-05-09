@@ -20,13 +20,13 @@
     <div class="help-wrapper profile">
         <div class="profileWhiteWrapper catalogWhiteWrapper">
             <div class="help-secondWrapper profileWrapper mncWrapper">
-                <div class="row-12 catalogExitRow"> <!--samo za kliniku-->
+                <div class="row-12 catalogExitRow">
                     <div class="col-12 catalogExit">
                        <a href="index.html"><img src="img/exitIcon/exit.png" alt="This is exit button" class="exitBtn"></a>
                        <a href="index.html"><img src="img/exitIcon/exitHover.png" alt="This is exit button" class="exitBtnHover"></a> 
                     </div>
                 </div>
-                <form class="row-12 mb-2 catalogInfoRow mncInfoRow" action="mnc.php" method="post" enctype="multipart/form-data"> <!--ovde je metoda-->
+                <form class="row-12 mb-2 catalogInfoRow mncInfoRow" action="mnc.php" method="post" enctype="multipart/form-data">
                     <div class="row-12 mb-5 mncImg">
                         <div class="mb-4 d-flex justify-content-center profileOwnerImg">
                             <img id="selectedImage" src="img/catalog/uploadImg.jpg"
@@ -82,18 +82,18 @@
                                         <p class="vetInfo vetInputInfo converted">Converted into human' age:</p>
                                     </div>
                                     <div class="col-6 petAgeConverted">
-                                        <p class="vetInfo vetInputInfo mncConverted" name="mncConverted">0</p><!--kako ko kuca tako se automatski racuna-->
+                                        <p class="vetInfo vetInputInfo mncConverted" name="mncConverted">0</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="row-12 profileButton catalogBtn">
-                    <div class="col-12 profileBtn">
-                        <button onclick="mnc()" type="submit" class="profileClientBtn" name="mncButtonFunction"><h4>Make new catalog</h4></button> <!--upisuje podatke u bazu vetID i prikazuje ID koji dobija iz baze a to je zapravo id u bazi kao pk-->
+                    <div class="row-12 profileButton catalogBtn mncButton">
+                        <div class="col-12 profileBtn">
+                            <button onclick="mnc()" type="submit" class="profileClientBtn" name="mncButtonFunction"><h4>Make new catalog</h4></button> <!--upisuje podatke u bazu mnc i prikazuje ID koji dobija iz baze a to je zapravo id u bazi kao pk-->
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

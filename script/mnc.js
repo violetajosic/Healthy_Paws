@@ -13,7 +13,7 @@ function displaySelectedImage(event, elementId) {
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
-//count age
+
 var petInput = document.querySelector(".petInput");
 var mncConverted = document.querySelector(".mncConverted");
 
@@ -26,13 +26,13 @@ petInput.addEventListener("input", function() {
         } else if (petAge >= 2) {
             mncConverted.textContent = 2 * 10.5 + (petAge - 2) * 4;
         }
-    } else { //for cats
+    } else { //za macke
         mncConverted.textContent = 15 + 9 * (petAge - 1);
     }
 });
 
 document.querySelector(".speciesInput").addEventListener("input", function() {
-    speciesInput = document.querySelector(".speciesInput").value;
+    speciesInput = document.querySelector(".speciesInput").value; // OVO TREBA DA SE POSALJE U PHP POD NAZIVOM $mncConverted = $_POST['mncConverted']; tj kad se prvo ovde u js izvrsi
     mncConverted.textContent = "0";
 });
 
@@ -92,7 +92,7 @@ function mnc() {
         speciesError.innerText === "" &&
         ageError.innerText === ""
     ) {
-        // send to php
+        // poslati na php
         $.ajax({
             type: 'POST',
             url: 'mnc.php',

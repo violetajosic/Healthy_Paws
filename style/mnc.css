@@ -97,6 +97,10 @@ p.vetInfo.vetInputInfo.converted {
 input#vetSpeciesInput {
     width: 100%;
 }
+.row-12.profileButton.catalogBtn.mncButton {
+    width: 80% !important;
+    margin: 20px 0 0 0 !important;
+}
 @media only screen and (max-width: 1200px) {
     .mncTableWrapper {
         width: 95%;

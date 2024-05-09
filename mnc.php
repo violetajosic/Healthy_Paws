@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
                     // Prikaz "id" kao JavaScript promenljive // u bazi stavi da je automatski
                     echo "<script>var catalogId = '$id';</script>";
                 } else {
-                    // Ukoliko ne postoji "id", prikaži odgovarajuću poruku
                     echo "<script>var catalogId = 'ID not found';</script>";
                 }
                 // Dodavanje funkcije koja se izvršava u mncAfter.js
