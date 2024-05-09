@@ -81,7 +81,7 @@ function clientSignUpMembership() {
 function payClientMembership() {
     var accNum = document.getElementById("accNum").value;
     var accNumDiv = document.getElementById("accNumError");
-    var regExp =/^[0-9]{4}[-]{0,1}[0-9]{4}[-]{0,1}[0-9]{4}[-]{0,1}[0-9]{4}$/;
+    var regExp =/^[1-9-]{4}-[1-9-]{4}-[1-9-]{4}-[1-9-]{4}$/;
 
     accNumDiv.innerText = "";
     accNumDiv.style.color = "";

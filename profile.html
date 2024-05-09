@@ -51,14 +51,15 @@
                     </div>
                     <div class="row-12 profileMembershipAfterRow">
                         <div class="col-12 profileMembershipAfterInput">
-                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput profileMemAfterInput" id="accNum" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput profileMemAfterInput" id="profileMemInput" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+                            <span id="errorProfileMem"></span>
                         </div>
                     </div>
                 </div>
                 <div class="row-12 profileButton profileAfterBtnPay">
                     <a href="#">
                         <div class="col-12 profileBtn">
-                            <button type="submit" class="profileClientBtn"><h4>Pay</h4></button>
+                            <button onclick="profileMemInput()" type="submit" class="profileClientBtn"><h4>Pay</h4></button>
                         </div>
                     </a>
                 </div>
