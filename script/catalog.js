@@ -1,9 +1,7 @@
 var vetInputTable = document.querySelector(".vetInputTable").style.display="flex";
 
-//dodavanje novog pregleda
 document.querySelector(".vetInputTable").style.display = "flex";
 
-//dodavanje novog pregleda funkcija
 function addNewData() {
     var diseaseName = document.getElementById('diseaseNameInput').value;
     var symptoms = document.getElementById('symptomsAdd').value;
@@ -104,4 +102,3 @@ function addNewData() {
         }
     }
 }
-//ako u html obrisem action i post, a ovde ostavim, js se odradi u sekundi i odmah refresuje stranicu

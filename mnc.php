@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $id = $row['id'];
-                    // Prikaz "id" kao JavaScript promenljive // u bazi stavi da je automatski
+                    // Prikaz "id" kao JavaScript promenljive // u bazi stavi da je automatski odnosno da je to pk primarni kljuc auto increment
                     echo "<script>var catalogId = '$id';</script>";
                 } else {
                     echo "<script>var catalogId = 'ID not found';</script>";

@@ -21,11 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $accMemId = $_POST['myAccNumID'];
 
     // Validate form data
-    // Example validation, replace with your own validation logic
     if (empty($email)) {
         $errors['emailError'] = "This field is required.";
     }
-    // Perform similar validation for other form fields
 
     if (empty($errors)) {
         // Insert data into the database

@@ -2,7 +2,7 @@
 session_start();
 require_once 'connection.php';
 
-// LOG IN RADI
+// LOG IN 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
     $email = $_POST['myemail'];

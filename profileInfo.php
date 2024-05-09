@@ -14,7 +14,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Assuming you have a session variable storing the user_id
 $user_id = $_SESSION['user_id'];
 
 // SQL query to get user information based on the user_id
@@ -42,7 +41,6 @@ if ($result->num_rows === 1) {
 
 // Close the statement
 $stmt->close();
-
 // Close the connection
 $conn->close();
 

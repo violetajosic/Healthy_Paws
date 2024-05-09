@@ -1,4 +1,4 @@
-// Remember me checkbox
+// Remember me checkbox NE RADI
 function handleRememberMe() {
   var rememberCheckbox = document.querySelector("#exampleCheck1");
   var emailInput = document.querySelector("#exampleInputEmail1");
@@ -29,22 +29,21 @@ function handleRememberMe() {
 function validateAndRedirect() {
   var email = document.querySelector("#exampleInputEmail1").value;
   var password = document.querySelector("#exampleInputPassword1").value;
-  var rememberMe = document.querySelector("#exampleCheck1").checked; // Get the state of the "Remember me" checkbox
+  var rememberMe = document.querySelector("#exampleCheck1").checked;
   var emailErrorDiv = document.getElementById("emailError");
   var passwordErrorDiv = document.getElementById("passwordError");
 
-  // Resetovanje prethodnih poruka o greškama i boje teksta
   emailErrorDiv.innerText = "";
-  emailErrorDiv.style.color = ""; // Resetuj boju teksta
+  emailErrorDiv.style.color = "";
   passwordErrorDiv.innerText = "";
-  passwordErrorDiv.style.color = ""; // Resetuj boju teksta
+  passwordErrorDiv.style.color = "";
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // Provera praznih polja
   if (!email.trim()) {
       emailErrorDiv.innerText = "This field is required.";
-      emailErrorDiv.style.color = "red"; // Postavi boju teksta na crvenu
+      emailErrorDiv.style.color = "red";
   } else if (!emailRegex.test(email)) {
       emailErrorDiv.innerText =
           "Ups! Email Address is incorrect, it should contain @ and .com";
@@ -60,11 +59,10 @@ function validateAndRedirect() {
       !/\d/.test(password)
   ) {
       passwordErrorDiv.innerText = "Ups! Password is incorrect.";
-      passwordErrorDiv.style.color = "red"; // Postavi boju teksta na crvenu
+      passwordErrorDiv.style.color = "red";
   }
 
   if (emailErrorDiv.innerText === "" && passwordErrorDiv.innerText === "") {
-      // If no errors, redirect to index.html
       if (rememberMe) {
           // Set a cookie to remember the user
           localStorage.setItem("remember_me", "true");
@@ -83,7 +81,6 @@ function validateAndRedirect() {
   return false; // Sprečava slanje forme
 }
 
-// Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", function() {
   handleRememberMe();
 });
@@ -100,7 +97,6 @@ function validateAndRedirectSignUpCLIENT() {
   var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
   var accNumIDDiv = document.querySelector(".accNumID");
 
-  // Resetovanje prethodnih poruka o greškama i boje teksta
   emailErrorDiv.innerText = "";
   emailErrorDiv.style.color = "";
   passwordErrorDiv.innerText = "";
@@ -112,7 +108,6 @@ function validateAndRedirectSignUpCLIENT() {
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Provera praznih polja
   if (!email.trim()) {
     emailErrorDiv.innerText = "This field is required.";
     emailErrorDiv.style.color = "red";
@@ -157,19 +152,18 @@ function validateAndRedirectSignUpCLIENT() {
     repeatPasswordErrorDiv.innerText === "" &&
     accNumIDDiv.innerText === ""
   ) {
-    // Ako nema grešaka, preusmeri na client.html
     var clientLogged = true;
     // Manually submit the form
     document.getElementById("clientSignUpForm").submit();
   }
 
+  // promena navigacije ukoliko je ulogovan kao klijent
   if (clientLogged){
     fetch("clientHeader.html")
     .then((response) => response.text())
     .then((html) => {
-    // promena navigacije ukoliko je ulogovan kao klijent
     document.getElementById("lsNavigation").innerHTML = html;
-    addActiveClassToLink(); //dodavanje aktive klase za linije
+    addActiveClassToLink();
   })
     .catch((error) => console.error("Error fetching navigation:", error));
     var diseaseAlertHeading = document.querySelector(".alert-heading");
@@ -188,19 +182,18 @@ function validateAndRedirectSignUpCLINICS() {
     var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError2");
     var clinicsIDErrorDiv = document.querySelector(".clinicsId");
   
-    // Resetovanje prethodnih poruka o greškama i boje teksta
+
     emailErrorDiv.innerText = "";
-    emailErrorDiv.style.color = ""; // Resetuj boju teksta
+    emailErrorDiv.style.color = "";
     passwordErrorDiv.innerText = "";
-    passwordErrorDiv.style.color = ""; // Resetuj boju teksta
+    passwordErrorDiv.style.color = "";
     repeatPasswordErrorDiv.innerText = "";
-    repeatPasswordErrorDiv.style.color = ""; // Resetuj boju teksta
+    repeatPasswordErrorDiv.style.color = "";
     clinicsIDErrorDiv.innerText = "";
-    clinicsIDErrorDiv.style.color = ""; // Resetuj boju teksta
+    clinicsIDErrorDiv.style.color = "";
   
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
-    // Provera praznih polja
     if (!email.trim()) {
       emailErrorDiv.innerText = "This field is required.";
       emailErrorDiv.style.color = "red";
@@ -242,16 +235,15 @@ function validateAndRedirectSignUpCLINICS() {
       repeatPasswordErrorDiv.innerText === "" &&
       clinicsIDErrorDiv.innerText === ""
     ) {
-      // Ako nema grešaka, preusmeri na index.html
       window.location.href = "index.html";
     }
+    // promena navigacije ukoliko je ulogovan kao klinika
     if (clinicsLogged){
       fetch("clinicsHeader.html")
       .then((response) => response.text())
       .then((html) => {
-      // promena navigacije ukoliko je ulogovan kao klinika
       document.getElementById("lsNavigation").innerHTML = html;
-      addActiveClassToLink(); //dodavanje aktive klase za linije
+      addActiveClassToLink();
     })
       .catch((error) => console.error("Error fetching navigation:", error));
     }

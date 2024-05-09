@@ -13,7 +13,7 @@ function mncAfter() {
     newH2.textContent = "This is your catalog ID:";
     newH3.appendChild(newH2);
     
-//prikazivanje broja kataloga iz mnc baze
+//prikazivanje broja kataloga iz mnc baze - znaci ovaj id treba da se prikaze da je primarni kljuc pk autoinkrement koji se sam pravi redom kako se pravi katalog
     var newH2CatalogId = document.createElement('h2');
     newH2CatalogId.textContent = catalogId;
     document.body.appendChild(newH2CatalogId);

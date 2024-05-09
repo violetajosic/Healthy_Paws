@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
 
 
 
-// sign up clinics (dodati da ne sme isti mail) //pusti ga na log in page iako je npr prazan znaci ne izvrsi js validaciju
+// sign up clinics (dodati da ne sme isti mail)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
     echo "clinics";
     $email = $_POST['myemail'];
@@ -166,6 +166,7 @@ if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) {
     
 }
 }
+/*
 //checkbox remember me NE RADI
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rememberMe = isset($_POST["remember"]) ? true : false; // Check if the "Remember me" checkbox is checked
@@ -191,7 +192,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Invalid email or password"; //ovde treba da odradi js validaciju samo istu kao i za obican log in
     }
-}
+}*/
+
 // Close the connection
 $conn->close();
 ?>

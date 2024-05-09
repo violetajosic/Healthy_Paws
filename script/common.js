@@ -1,4 +1,4 @@
-//navigacija deffault
+//navigacija default
 fetch("header.html")
   .then((response) => response.text())
   .then((html) => {

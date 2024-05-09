@@ -15,19 +15,16 @@ fetch("logSign.html")
 
 //funkcija za promenu teksta ukoliko si na log html
 function applyChangesToLogHTML() {
-    //sakrivanje dugmadi
     var lsButtons = (document.querySelector(".lsButtons").style.display = "none");
     var lsAS = (document.querySelector(".lsAs").style.display = "none");
     var logInForm = (document.querySelector(".logInForm").style.display = "flex");
   
-    // Promena teksta za lsHeading h1 u log in
     var lsHeading = document.querySelector(".lsHeading h1");
     if (lsHeading) {
       lsHeading.innerHTML =
         '<span style="font-family:\'Chicle\', serif;">Log <span style="color: #FFD95A; letter-spacing: 2px;">In</span></span>';
     }
   
-    // Promena teksta za lsSwitch h6
     var lsSwitch = document.querySelector(".lsSwitch h6");
     if (lsSwitch) {
       lsSwitch.innerHTML =
@@ -35,7 +32,7 @@ function applyChangesToLogHTML() {
     }
   }
 
-//ukoliko na sign up klikne na client ili clinics salje na odredjeni sign up
+//odabir client / clinic sign up
 function signUpChoose() {
     var clientLSBtn = document.querySelector(".clientLSBtn");
     var clinicsLSBtn = document.querySelector(".clinicsLSBtn");
@@ -46,8 +43,8 @@ function signUpChoose() {
         "none");
       var logInForm = (document.querySelector(".logInForm").style.display =
         "none");
-      lsHeading.classList.remove("mb-5"); // Remove existing margin
-      lsHeading.classList.add("mb-4"); // Add new margin
+      lsHeading.classList.remove("mb-5");
+      lsHeading.classList.add("mb-4");
     }
   
     if (clientLSBtn && clinicsLSBtn) {
@@ -55,7 +52,6 @@ function signUpChoose() {
       var signUpFormClinics = document.querySelector(".signUpFormClinics");
       var bodyLs = document.querySelector(".bodyLS").style.height="auto";
   
-      // Prikazi signUpFormClient ili signUpFormClinics, zavisno od dugmeta koje je kliknuto
       if (clientLSBtn.contains(event.target)) {
         var signUpHeading = (document.querySelector(
           ".signUpHeading1"
@@ -74,19 +70,15 @@ function signUpChoose() {
 fetch("lsHeader.html")
 .then((response) => response.text())
 .then((html) => {
-  // Insert the HTML content into the navigation container
   document.getElementById("lsNavigation").innerHTML = html;
 })
 .catch((error) => console.error("Error fetching navigation:", error));
 
-//enter key
+//enter na tastaturi
 var enterBtn = document.querySelector(".enterBtn");
 enterBtn.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    // Cancel the default action, if needed
     event.preventDefault();
-    // Trigger the button element with a click
     document.getElementById("enterBtn").click();
   }
 });

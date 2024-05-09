@@ -4,7 +4,6 @@ $username = "root";
 $password = "";
 $database = "addapointment";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection

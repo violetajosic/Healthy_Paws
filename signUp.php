@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
 
 
 
-// sign up clinics (dodati da ne sme isti mail) //pusti ga na log in page iako je npr prazan znaci ne izvrsi js validaciju
+// sign up clinics (dodati da ne sme isti mail)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
     echo "clinics";
     $email = $_POST['myemail'];

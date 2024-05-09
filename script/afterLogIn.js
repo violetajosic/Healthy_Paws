@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to load headers
     function loadHeaders() {
         $.ajax({
-            url: 'server.php', //ako ovde stavim logIn ili SignUp ne radi
+            url: 'server.php', //ako ovde stavim logIn ili SignUp ne radi tj te razdvojene php fajlove
             method: 'GET',
             dataType: 'json',
             success: function (response) {
@@ -29,20 +29,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                         .catch((error) => console.error("Error fetching clientHeader:", error));
                     
-                    if (window.location.pathname.includes('index.html')) { //samo na home page index.html
+                    if (window.location.pathname.includes('index.html')) {
                         var indexH1 = document.querySelector(".indexH1 h1");
                         indexH1.innerHTML = 'Wellcome to the <span style="font-family: Chicle, serif;"><span style="color: black; letter-spacing: 1px;">Healthy</span> <span style="color: #FFD95A; letter-spacing: 1px;">Paws</span></span>';
                         var indexH2 = document.querySelector(".indexH1 h2");
                         indexH2.innerHTML = 'Type below the <span style="color:#FFD95A; font-weight:bold">CATALOG ID</span> that you got from a veterinarian.';
                         var indexH3 = document.querySelector(".indexBtn-abs h4");
-                        indexH3.innerHTML = 'Type your ID here..'; //ovo mora da je input za catalog
+                        indexH3.innerHTML = 'Type your ID here..';
                         var buttonText = document.querySelector(".indexBtn-abs");
                         buttonText.style.display="none";
 
-                        var newSearch = document.querySelector(".IDSearchClinic"); //klikom na ovo salje na catalog.html sa odredjenim podacima iz baze UKOLIKO JE MEMBERSHIP PLACEN, UKOLIKO NIJE IZLAZI ALERT ILI NEKI NASLOV DA MORAJU DA PLATE
+                        var newSearch = document.querySelector(".IDSearchClinic");
                         newSearch.style.display="flex";
                         function findID() { //pretraga catalog ID-ja ALI SAMO ZA ONE KOJI IMAJU TAJ EMAIL
-                            // Get the value from the input field
                             var catalogID = document.getElementById('searchInput').value;
                         
                             // Use jQuery to send an AJAX request to catalog.html
@@ -65,9 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         var profileSD = document.querySelector("#profileSD").style.display="flex";
                         var profileSDClinic = document.querySelector("#profileSDClinic").style.display="none";
                     }
-                } //ako je klinika
+                }
+                //ako je klinika
                 else if (userData.loginClinics) {
-                    // uradi nesto ako je ulogovan kao klinika
                     console.log('Clinic is logged in.'); 
   
                     // Load clinics header
@@ -85,22 +84,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         .catch((error) => console.error("Error fetching clinicsHeader:", error));
                     
                     if (window.location.pathname.includes('index.html')) {
-                        // kod samo za index stranu
-                        var indexH1 = document.querySelector(".indexH1 h1"); //radi
+                        var indexH1 = document.querySelector(".indexH1 h1");
                         indexH1.innerHTML = 'Thank you for contributing to a better society <br> and safety of our loved ones <br> with <span style="font-family: Chicle, serif; color:black; font-weight:bold; letter-spacing: 1px;">Healthy <span style="color:#FFD95A; letter-spacing: 1px;">Paws</span></span>';
                         
-                        function adjustFontSize() { //promena velicine h1 naslova
-                            // uzimanje velicine ekrana za responsive
+                        function adjustFontSize() {
                             var windowWidth = window.innerWidth;
                         
-                            // breakpoints za responsive
                             var breakpoints = {
                                 xsmall : 570,
                                 small: 600,
                                 medium: 1000,
                                 xl: 1200,
                             };
-                            // font size za responsive
+
                             var fontSizes = {
                                 xsmall : "25px",
                                 small: "30px",
@@ -108,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 xl: "40px"
                             };
                         
-                            //izvrsavanje izmene
                             var fontSize;
                             if (windowWidth < breakpoints.xsmall) {
                                 fontSize = fontSizes.xsmall;
@@ -120,19 +115,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                 fontSize = fontSizes.xl;
                             }
                         
-                            //izvrsavanje izmene
                             indexH1.style.fontSize = fontSize;
                         }
                         
-                        // izvrsavanje funkcije
                         adjustFontSize();
                         
-                        // dodavanje eventlistenera da bi se funkcija izvrsila
                         window.addEventListener('resize', adjustFontSize);
 
-                        var indexH2 = document.querySelector(".indexH1 h2"); //radi
+                        var indexH2 = document.querySelector(".indexH1 h2");
                         indexH2.style.display = "none";
-                        var indexH3 = document.querySelector(".indexBtn-abs h4"); //radi
+                        var indexH3 = document.querySelector(".indexBtn-abs h4");
                         indexH3.innerHTML = 'Type catalog ID..'; 
                         
                         var buttonText = document.querySelector(".indexBtn-abs");
@@ -142,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         newSearch.style.display="flex";
 
                         function findID() { //pretraga catalog ID-ja
-                            // Get the value from the input field
                             var catalogID = document.getElementById('searchInput').value;
                         
                             // Use jQuery to send an AJAX request to catalog.html
@@ -162,16 +153,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         findID();
                     }
                         
-                    if (window.location.pathname.includes('help.html')) { //radi
-                        // kod samo za help stranu
-                        var mNC = document.querySelector('.mNC'); //dodavanje row make new catalog
+                    if (window.location.pathname.includes('help.html')) {
+                        var mNC = document.querySelector('.mNC');
                         mNC.style.display = "flex";
                     }
                     
-                    if (window.location.pathname.includes('diseases.html')) { //radi
-                        // kod samo za diseases stranu
+                    if (window.location.pathname.includes('diseases.html')) {
                         var diseaseAlert = document.querySelector(".alert-heading");
-                        diseaseAlert.style.display = "none"; //sakriva alert crveni ako je klinika usla
+                        diseaseAlert.style.display = "none";
                     }
                     if (window.location.pathname.includes('profile.html')) {
                         var profileClientBtn = document.querySelector(".profileButton").style.display="none";
@@ -206,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }});
     }
   
-    // Function to add active class to navigation links
     addActiveClassToLink();
   
     // Call the loadHeaders function when the DOM is fully loaded
