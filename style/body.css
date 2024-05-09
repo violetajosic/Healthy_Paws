@@ -22,14 +22,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../img/ls/lsBcg.png");
+    background-image: url("../img/ls/lsBcg.jpg");
     background-repeat: repeat !important;
 }
 .bodyHelp {
-    background-image: url("../img/help/helpBcg.jpg");
+    background-image: url("../img/help/helpBcg.png");
 }
 body.bodyProfile {
-    background-image: url("../img/diseases/diseasesBcg.png");
+    background-image: url("../img//diseases/diseasesBcg.png");
     background-repeat: repeat;
 }
 a, a:hover {

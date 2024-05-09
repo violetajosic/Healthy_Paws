@@ -29,6 +29,7 @@ input[type="checkbox"] {
 .diseases-example-wrapper {
     display: none;
     width: 90%;
+    background-color: #ffffff7d;
     padding: 20px;
     border-radius: 15px;
     box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.1);
