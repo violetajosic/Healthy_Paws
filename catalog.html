@@ -78,35 +78,35 @@
                     </div>
                 </div>
                 <!--input u bazu vetTable-->
-                <div class="row-12 vetTable vetInputTable">
+                <form action="catalog.php" method="POST" class="row-12 vetTable vetInputTable">
                     <div class="row-12 vetTableHeading vetInputHeading">
                         <div class="col-6 vetTableHeadingCol vetInputHeadingCol">
                             <h6>Disease name:</h6>
-                            <input type="text" name="inpDiseaseName" class="form-control vetHeadingInput" id="diseaseNameInput" placeholder="Enter disease name" autocomplete="off">
+                            <input type="text" name="catalogDiseaseName" class="form-control vetHeadingInput" id="diseaseNameInput" placeholder="Enter disease name" autocomplete="off">
                         </div>
                         <div class="col-6 vetTableHeadingCol vetDate vetInputHeadingCol"> <!--datum iz baze vetTable-->
                             <h6>Date:</h6>
-                            <input type="text" name="inpDiseaseName" class="form-control vetHeadingInput" id="currentApointmentDate" placeholder="Here would be displayed current date." autocomplete="off" readonly>
+                            <input type="text" name="catolgDate" class="form-control vetHeadingInput" id="currentApointmentDate" placeholder="Here would be displayed current date." autocomplete="off" readonly>
                         </div>
                     </div>
                     <div class="row-12 vetTableInfo vetInputTableInfo">
                         <ul  id="editCatalog">
                            <p class="col-12 vetInfo vetInputInfo">Symptoms:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="symptomsAdd" placeholder="Enter symptoms" autocomplete="off">
+                           <input type="text" name="catalogSympt" class="form-control vetInfoInput" id="symptomsAdd" placeholder="Enter symptoms" autocomplete="off">
                            <p class="col-12 vetInfo vetInputInfo">Therapy:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="therapyAdd" placeholder="Enter terapy" autocomplete="off">
+                           <input type="text" name="catalogTherapy" class="form-control vetInfoInput" id="therapyAdd" placeholder="Enter terapy" autocomplete="off">
                            <p class="col-12 vetInfo vetInputInfo">Doctor signature:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name" autocomplete="off">
+                           <input type="text" name="catalogDoctor" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name" autocomplete="off">
                            <p class="col-12 vetInfo vetInputInfo">Clinic ID:</p>
-                           <input type="text" name="inpDiseaseName" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
+                           <input type="text" name="catalogClinicID" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
                         </ul>
+                        <div class="row-12 profileButton catalogBtn">
+                            <div class="col-12 profileBtn catalogBtn">
+                                <button onclick="addNewData()" type="submit" class="profileClientBtn"><h4>Add new appointment data</h4></button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row-12 profileButton catalogBtn">
-                    <div class="col-12 profileBtn">
-                        <button onclick="addNewData()" type="submit" class="profileClientBtn"><h4>Add new appointment data</h4></button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
