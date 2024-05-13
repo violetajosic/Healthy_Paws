@@ -131,17 +131,18 @@ div#profileSDClinic {
     margin: 0 auto;
     width: 50%;
 }
+.profileOwnerImg {
+    width: 100% !important;
+}
 .profileOwnerImg img{
     height: 300px;
     border-radius: 10px;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
-@media only screen and (max-width: 1200px) { 
+@media only screen and (max-width: 1200px) {
     .profileCol {
         width: 70%;
     }
-}
-@media only screen and (max-width: 1200px) {
     .profileOwnerImg img{
         height: 280px;
     }
@@ -160,6 +161,10 @@ div#profileSDClinic {
     }
 }
 @media only screen and (max-width: 992px) {
+    .col-12.mb-4.profileCol.profileOwnerImg {
+        display: flex;
+        align-items: center;
+    }
     .profileOwnerImg img{
         height: 230px;
     }
