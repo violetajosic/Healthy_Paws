@@ -86,27 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 function validateAndRedirectSignUpCLIENT() {
   var email = document.querySelector("#exampleInputEmail2");
   var password = document.querySelector("#exampleInputPassword2");
   var repeatPassword = document.querySelector("#exampleInputPassword3");
   var accNumID = document.querySelector("#exampleInputAccNumID");
-
-
-  var emailErrorDiv = document.querySelector(".emailError");
-  var passwordErrorDiv = document.querySelector(".passwordError");
-  var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
-  var accNumIDDiv = document.querySelector(".accNumID");
-
-  emailErrorDiv.innerText = "";
-  emailErrorDiv.style.color = "";
-  passwordErrorDiv.innerText = "";
-  passwordErrorDiv.style.color = "";
-  repeatPasswordErrorDiv.innerText = "";
-  repeatPasswordErrorDiv.style.color = "";
-  accNumIDDiv.innerText = "";
-  accNumIDDiv.style.color = "";
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
@@ -115,103 +99,50 @@ function validateAndRedirectSignUpCLIENT() {
 
   for (var i = 0; i < fields.length; i++) {
       var fieldValue = fields[i].value.trim();
-       
       var errorFields = fields[i].nextElementSibling;
 
-      if(!fieldValue){
+      if (!fieldValue) {
         isValid = false;
         errorFields.innerText = "This field is required.";
         errorFields.style.color = "red";
+      } else if (fields[i] === email && !emailRegex.test(fieldValue)) {
+        isValid = false;
+        errorFields.innerText = "Ups! Email Address is incorrect, it should contain @ and .com";
+        errorFields.style.color = "red";
+      } else if (fields[i] === password && (fieldValue.length < 8 || !/[A-Z]/.test(fieldValue) || !/\d/.test(fieldValue))) {
+        isValid = false;
+        errorFields.innerText = "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
+        errorFields.style.color = "red";
+      } else if (fields[i] === repeatPassword && fieldValue !== password.value.trim()) {
+        isValid = false;
+        errorFields.innerText = "Ups! Passwords don't match.";
+        errorFields.style.color = "red";
+      } else if (fields[i] === accNumID && !/^\d+$/.test(fieldValue)) {
+        isValid = false;
+        errorFields.innerText = "Ups! Account membership ID should contain numbers only.";
+        errorFields.style.color = "red";
+      }else {
+        errorFields.innerText = "✅";
       }
-  }
+  }//ako ne probam prvo sa praznim vec nalupam slova za email onda ne izbaci nikakvu gresku nigde iako su druga polja prazna i iako email ne valja
+//ostatak odradi jedino kad email bude unesen kako treba do tad pise samo kao da su prazna polja
   var clientLogged = true;
   return isValid;
-
-
-
-
-
-
-/*
-
-  } else if (!emailRegex.test(email)) {
-    emailErrorDiv.innerText =
-      "Ups! Email Address is incorrect, it should contain @ and .com";
-    emailErrorDiv.style.color = "red";
-    return false;
-  }*/
-
-  /*if (!password.trim()) {
-    passwordErrorDiv.innerText = "This field is required.";
-    passwordErrorDiv.style.color = "red";
-    return false;
-  } else if (
-    password.length < 8 ||
-    !/[A-Z]/.test(password) ||
-    !/\d/.test(password)
-  ) {
-    passwordErrorDiv.innerText =
-      "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
-    passwordErrorDiv.style.color = "red";
-    return false;
-  }
-
-  if (!repeatPassword.trim()) {
-    repeatPasswordErrorDiv.innerText = "This field is required.";
-    repeatPasswordErrorDiv.style.color = "red";
-    return false;
-  } else if (repeatPassword.trim() !== password.trim()) {
-    repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
-    repeatPasswordErrorDiv.style.color = "red";
-    return false;
-  }
-  
-  if (!accNumID.trim()) {
-    accNumIDDiv.innerText = "This field is required.";
-    accNumIDDiv.style.color = "red";
-    return false;
-  } else if (!/\d/.test(accNumID)) {
-    accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
-    accNumIDDiv.style.color = "red";
-    return false;
-  }*/
-  
-  if (
-    emailErrorDiv.innerText === "" &&
-    passwordErrorDiv.innerText === "" &&
-    repeatPasswordErrorDiv.innerText === "" &&
-    accNumIDDiv.innerText === ""
-  ) {
-    var clientLogged = true;
-    return true;
-    // Manually submit the form
-    //document.getElementById("clientSignUpForm").submit();
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  // promena navigacije ukoliko je ulogovan kao klijent
-  if (clientLogged){
-    fetch("clientHeader.html")
-    .then((response) => response.text())
-    .then((html) => {
-    document.getElementById("lsNavigation").innerHTML = html;
-    addActiveClassToLink();
-  })
-    .catch((error) => console.error("Error fetching navigation:", error));
-    var diseaseAlertHeading = document.querySelector(".alert-heading");
-    diseaseAlertHeading.style.display = "flex";
-  }
 }
+
+//promena navigacije ukoliko je ulogovan kao klijent
+if (clientLogged){
+  fetch("clientHeader.html")
+  .then((response) => response.text())
+  .then((html) => {
+  document.getElementById("lsNavigation").innerHTML = html;
+  addActiveClassToLink();
+})
+  .catch((error) => console.error("Error fetching navigation:", error));
+  var diseaseAlertHeading = document.querySelector(".alert-heading");
+  diseaseAlertHeading.style.display = "flex";
+}
+
 
 // validacija CLINIC
 function validateAndRedirectSignUpCLINICS() {
