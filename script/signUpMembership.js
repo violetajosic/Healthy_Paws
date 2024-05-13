@@ -88,31 +88,19 @@ function payClientMembership() {
       var lsHeading = document.querySelector(".lsHeading").style.display="none";
       var clientMembershipPage = document.querySelector(".clientMembershipPage").style.display="none";
       var payClientMembership = document.querySelector(".payClientMembership");
-      payClientMembership.style.display="none";
+      if (payClientMembership) {
+          payClientMembership.style.setProperty("display", "none", "important"); //ne radi
+      }
       var accNumHeadingWrapper = document.querySelector(".accNumHeadingWrapper");
       accNumHeadingWrapper.style.cssText += "display: flex; flex-direction: column; gap: 10px;";
       var accNumberButton = document.querySelector(".accNumberButton").style.display="flex";
-      var lsWrapper = document.querySelector("div#lswrapper").style.marginTop="50px";
+      var lsWrapper = document.getElementById("lswrapper");
+      lsWrapper.style.marginTop = "200px";
+      lsWrapper.style.setProperty("margin-top", "150px", "important");
     }
 }
   
-//button back NE PRIKAZUJE SE
+//button back
 function accNumBack() {
-    var accNumHeadingWrapper = document.querySelector(".accNumHeadingWrapper").style.display="none";
-    var accNumberButton = document.querySelector(".accNumberButton").style.display="none";
-    var signUpHeading = document.querySelector(".signUpHeading1").style.setProperty("display", "flex", "important"); //ne radi
-
-    var lsHeading = document.querySelector(".lsHeading").style.display="flex";
-    lsHeading.innerHTML = "SIGN UP"; //ne radi
-    var lsAs = document.querySelector(".lsAs").style.display="flex"; //ne radi
-    
-    var signUpFormGroup = document.querySelectorAll(".signUpFormGroup");
-    signUpFormGroup.forEach(function(element){
-        element.style.display="block";
-    });
-    var singUpBtn = document.getElementById("singUpBtn");
-    if (singUpBtn) {
-        singUpBtn.style.display = "flex";
-        singUpBtn.style.justifyContent = "center";
-    }
+    window.location.href = "ls.html";
 }

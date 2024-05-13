@@ -64,70 +64,73 @@
                 <input type="text" name="myAccNumID" class="form-control exampleAccNumInput" id="exampleInputAccNumID" placeholder="Enter your Account membership ID." autocomplete="off">
                 <div class="accNumID" class="error-message"></div>
             </div>
-           <!--MEMBERSHIP CEO OVAJ DEO TREBA VAN FORME
-            <div class="clientMembershipPage">
-                <div class="payMembership-card">
-                        <div class="row-12 payMembership payMembershipHeading mb-2">
-                            <div class="col-12 payHeading">
-                                <h2>Yearly membership</h2>
-                            </div>
-                        </div>
-                        <div class="row-12 payMembership payMembershipPrice mb-3">
-                            <div class="col-12 payHeading">
-                                <h3>5 eur</h3>
-                            </div>
-                        </div>
-                        <div class="row-12 payMembership payMembershipDesc mb-3">
-                            <div class="col-12 payHeading">
-                                <p>
-                                Secure annual access for just 5 euros to easily track your pet's catalog at the veterinarian. 
-                                With our subscription, you can conveniently review your pet's past illnesses, dates of previous check-ups, and treatments. 
-                                This helps you clearly explain your pet's medical history to the veterinarian, facilitating diagnosis and treatment. 
-                                Rest assured, your pet's information is safe and confidential. 
-                                Join today for comprehensive pet care and peace of mind.
-                                <br><br>Please note that you'll need to renew your membership each year.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row-12 payMembership accountNum">
-                            <div class="col-12 payHeading accNumCol">
-                                <p class="col-12 vetInfo vetInputInfo">Account number:</p>
-                                <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput" id="accNum" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
-                                <div id="accNumError" class="error-message"></div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-           // acc num id
-            <div class="row-12 accNumHeadingWrapper">
-                <div class="row-12 accNumIDHeading">
-                    <div class="col-12 accNumIDHeading-heading">
-                        <h2>This is your account membership ID</h2>
-                        <h4>You should enter it on sign up page in account membership ID input.</h4>
-                    </div>
-                </div>
-                <div class="row-12 accNumIDHeading">
-                    <div class="col-12 accNumIDHeading-ID">
-                        <h1>123456</h1>
-                    </div>
-                </div>
-            </div> -->
-            <!--kad neko klikne na ovaj button u bazu se ispisuje user_type client zbog register-client-->
+<!--kad neko klikne na ovaj button u bazu se ispisuje user_type client zbog register-client-->
             <button onclick="validateAndRedirectSignUpCLIENT()" name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
         </form>
-      <!-- <div class="clientSignUpMembership accNumberButton">
-            <button onclick="accNumBack()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4" id="backToSignUpBtn"><h5>Back to Sign Up</h5></button>
-        </div>
-    -->
+
         <div class="clientSignUpMembership clientMembershipPay">
-            <button onclick="clientSignUpMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-2 mb-4"><h5>pay membership</h5></button>
+            <button onclick="clientSignUpMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mb-4"><h5>pay membership</h5></button>
         </div>
 
-        <!--
+<!--MEMBERSHIP-->
+        <div class="clientMembershipPage">
+            <div class="payMembership-card">
+                    <div class="row-12 payMembership payMembershipHeading mb-2">
+                        <div class="col-12 payHeading">
+                            <h2>Yearly membership</h2>
+                        </div>
+                    </div>
+                    <div class="row-12 payMembership payMembershipPrice mb-3">
+                        <div class="col-12 payHeading">
+                            <h3>5 eur</h3>
+                        </div>
+                    </div>
+                    <div class="row-12 payMembership payMembershipDesc mb-3">
+                        <div class="col-12 payHeading">
+                            <p>
+                            Secure annual access for just 5 euros to easily track your pet's catalog at the veterinarian. 
+                            With our subscription, you can conveniently review your pet's past illnesses, dates of previous check-ups, and treatments. 
+                            This helps you clearly explain your pet's medical history to the veterinarian, facilitating diagnosis and treatment. 
+                            Rest assured, your pet's information is safe and confidential. 
+                            Join today for comprehensive pet care and peace of mind.
+                            <br><br>Please note that you'll need to renew your membership each year.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row-12 payMembership accountNum">
+                        <div class="col-12 payHeading accNumCol">
+                            <p class="col-12 vetInfo vetInputInfo">Account number:</p>
+                            <input type="text" name="inpDiseaseName" class="form-control vetInfoInput accNumInput" id="accNum" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+                            <div id="accNumError" class="error-message"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            
         <div class="clientSignUpMembership payClientMembership">
-            <button onclick="payClientMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4"><h5>pay</h5></button>
+            <button onclick="payClientMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 mb-4"><h5>pay</h5></button>
+        </div>
+       <!--acc num id prikazuje se nakon uplate tj klika na dugme pay iznad-->
+        <div class="row-12 accNumHeadingWrapper">
+            <div class="row-12 accNumIDHeading">
+                <div class="col-12 accNumIDHeading-heading">
+                    <h2>This is your account membership ID</h2>
+                    <h4>You should enter it on sign up page in account membership ID input.</h4>
+                </div>
+            </div>
+            <div class="row-12 accNumIDHeading">
+                <div class="col-12 accNumIDHeading-ID">
+                    <h1>123456</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clientSignUpMembership accNumberButton">
+            <button onclick="accNumBack()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 mb-4" id="backToSignUpBtn"><h5>Back to Sign Up</h5></button>
+        </div>
 
-kad ovo dodam onda se u clinic ne vidi forma ni switch-->
+
+
 
 
         <!--CLINIC SIGN UP-->
