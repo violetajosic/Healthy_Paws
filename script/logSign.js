@@ -66,7 +66,7 @@ function signUpChoose() {
     }
 
     if (clientLSBtn){
-      var clientMembershipPay = document.querySelector(".clientMembershipPay").style.display="flex"; //ne radi
+      var clientMembershipPay = document.querySelector(".clientMembershipPay").style.setProperty("display", "flex", "important"); //ne radi
     }
   }
 

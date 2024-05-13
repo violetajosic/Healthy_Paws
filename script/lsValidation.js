@@ -1,4 +1,4 @@
-// Remember me checkbox NE RADI
+/* Remember me checkbox NE RADI
 function handleRememberMe() {
   var rememberCheckbox = document.querySelector("#exampleCheck1");
   var emailInput = document.querySelector("#exampleInputEmail1");
@@ -23,7 +23,7 @@ function handleRememberMe() {
       emailInput.value = localStorage.getItem("email");
       passwordInput.value = localStorage.getItem("password");
   }
-}
+}*/
 
 // LOGIN validacija
 function validateAndRedirect() {
