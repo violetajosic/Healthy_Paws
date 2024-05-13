@@ -97,6 +97,13 @@ function payClientMembership() {
       var lsWrapper = document.getElementById("lswrapper");
       lsWrapper.style.marginTop = "200px";
       lsWrapper.style.setProperty("margin-top", "150px", "important");
+
+      var accNumElement = document.querySelector('.accNumIDHeading-ID h1');
+
+      var randomNumberText = document.getElementById("randomNumberText");
+      var randomNumber = Math.floor(Math.random() * 900000) + 100000;
+
+      randomNumberText.textContent = randomNumber;
     }
 }
   
