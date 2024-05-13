@@ -46,7 +46,7 @@ function signUpChoose() {
       lsHeading.classList.remove("mb-5");
       lsHeading.classList.add("mb-4");
     }
-  
+
     if (clientLSBtn && clinicsLSBtn) {
       var signUpFormClient = document.querySelector(".signUpFormClient");
       var signUpFormClinics = document.querySelector(".signUpFormClinics");
@@ -63,6 +63,10 @@ function signUpChoose() {
         ).style.display = "flex");
         signUpFormClinics.style.display = "flex";
       }
+    }
+
+    if (clientLSBtn){
+      var clientMembershipPay = document.querySelector(".clientMembershipPay").style.display="flex"; //ne radi
     }
   }
 
