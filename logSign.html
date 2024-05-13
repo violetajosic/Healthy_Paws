@@ -43,29 +43,29 @@
         <div class="col-12 mb-5 signUpHeading1">
             <h3>Client</h3>
         </div>
-        <form action="server.php" method="POST" class="row mb-5 signUpFormClient" id="clientSignUpForm">
+        <form action="server.php" onsubmit="return validateAndRedirectSignUpCLIENT()" method="POST" class="row mb-5 signUpFormClient" id="clientSignUpForm">
             <div class="form-group mb-4 signUpFormGroup">
                 <label class="logInLabel" for="exampleInputEmail2">Email address</label>
                 <input type="email" name="myemail" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
-                <div class="emailError" class="error-message"></div>
+                <div class="emailError error-message"></div>
             </div>
             <div class="form-group signUpFormGroup">
                 <label class="logInLabel" for="exampleInputPassword2">Create password</label>
                 <input type="password" name="mypassword" class="form-control" id="exampleInputPassword2" placeholder="Create a strong password." autocomplete="off">
-                <div class="passwordError" class="error-message"></div>
+                <div class="passwordError error-message"></div>
             </div>
             <div class="form-group signUpFormGroup mb-4">
                 <label class="logInLabel" for="exampleInputPassword3">Repeat password</label>
                 <input type="password" name="repeatpassword" class="form-control repeatPassword" id="exampleInputPassword3" placeholder="Repeat your password." autocomplete="off">
-                <div class="repeatPasswordError" class="error-message"></div>
+                <div class="repeatPasswordError error-message"></div>
             </div>
             <div class="form-group signUpFormGroup mb-4">
                 <label class="logInLabel" for="exampleInputAccNumID">Account membership ID</label>
                 <input type="text" name="myAccNumID" class="form-control exampleAccNumInput" id="exampleInputAccNumID" placeholder="Enter your Account membership ID." autocomplete="off">
-                <div class="accNumID" class="error-message"></div>
+                <div class="accNumID error-message"></div>
             </div>
 <!--kad neko klikne na ovaj button u bazu se ispisuje user_type client zbog register-client-->
-            <button onclick="validateAndRedirectSignUpCLIENT()" name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
+            <button name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
         </form>
 
         <div class="clientSignUpMembership clientMembershipPay">

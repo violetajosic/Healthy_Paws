@@ -88,10 +88,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function validateAndRedirectSignUpCLIENT() {
-  var email = document.querySelector("#exampleInputEmail2").value;
-  var password = document.querySelector("#exampleInputPassword2").value;
-  var repeatPassword = document.querySelector("#exampleInputPassword3").value;
-  var accNumID = document.querySelector("#exampleInputAccNumID").value;
+  var email = document.querySelector("#exampleInputEmail2");
+  var password = document.querySelector("#exampleInputPassword2");
+  var repeatPassword = document.querySelector("#exampleInputPassword3");
+  var accNumID = document.querySelector("#exampleInputAccNumID");
+
+
   var emailErrorDiv = document.querySelector(".emailError");
   var passwordErrorDiv = document.querySelector(".passwordError");
   var repeatPasswordErrorDiv = document.querySelector(".repeatPasswordError");
@@ -107,19 +109,42 @@ function validateAndRedirectSignUpCLIENT() {
   accNumIDDiv.style.color = "";
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  var fields = [email, password, repeatPassword, accNumID];
+  var isValid = true;
 
-  if (!email.trim()) {
-    emailErrorDiv.innerText = "This field is required.";
-    emailErrorDiv.style.color = "red";
+  for (var i = 0; i < fields.length; i++) {
+      var fieldValue = fields[i].value.trim();
+       
+      var errorFields = fields[i].nextElementSibling;
+
+      if(!fieldValue){
+        isValid = false;
+        errorFields.innerText = "This field is required.";
+        errorFields.style.color = "red";
+      }
+  }
+  var clientLogged = true;
+  return isValid;
+
+
+
+
+
+
+/*
+
   } else if (!emailRegex.test(email)) {
     emailErrorDiv.innerText =
       "Ups! Email Address is incorrect, it should contain @ and .com";
     emailErrorDiv.style.color = "red";
-  }
+    return false;
+  }*/
 
-  if (!password.trim()) {
+  /*if (!password.trim()) {
     passwordErrorDiv.innerText = "This field is required.";
     passwordErrorDiv.style.color = "red";
+    return false;
   } else if (
     password.length < 8 ||
     !/[A-Z]/.test(password) ||
@@ -128,23 +153,28 @@ function validateAndRedirectSignUpCLIENT() {
     passwordErrorDiv.innerText =
       "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
     passwordErrorDiv.style.color = "red";
+    return false;
   }
 
   if (!repeatPassword.trim()) {
     repeatPasswordErrorDiv.innerText = "This field is required.";
     repeatPasswordErrorDiv.style.color = "red";
+    return false;
   } else if (repeatPassword.trim() !== password.trim()) {
     repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
     repeatPasswordErrorDiv.style.color = "red";
+    return false;
   }
   
   if (!accNumID.trim()) {
     accNumIDDiv.innerText = "This field is required.";
     accNumIDDiv.style.color = "red";
+    return false;
   } else if (!/\d/.test(accNumID)) {
     accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
     accNumIDDiv.style.color = "red";
-  }
+    return false;
+  }*/
   
   if (
     emailErrorDiv.innerText === "" &&
@@ -153,9 +183,21 @@ function validateAndRedirectSignUpCLIENT() {
     accNumIDDiv.innerText === ""
   ) {
     var clientLogged = true;
+    return true;
     // Manually submit the form
-    document.getElementById("clientSignUpForm").submit();
+    //document.getElementById("clientSignUpForm").submit();
   }
+
+
+
+
+
+
+
+
+
+
+
 
   // promena navigacije ukoliko je ulogovan kao klijent
   if (clientLogged){

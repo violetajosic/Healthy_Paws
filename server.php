@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     // Check if any rows were returned
     if ($result_check_email->num_rows > 0) {
         // Email already exists, handle error
-        echo "Error: Email already exists. Please use a different email address."; //da ne ispisuje ovo vec da izbaci obican js alert
+        echo "Error: Email already exists. Please use a different email address."; //da ne ispisuje ovo vec da ispise ispod tog inputa crveno
         exit();
     }
 
