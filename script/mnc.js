@@ -13,9 +13,10 @@ function displaySelectedImage(event, elementId) {
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
-
-var petInput = document.querySelector(".petInput");
+//prestalo da radi
+var petInput = document.getElementById("petAgeInput1");
 var mncConverted = document.querySelector(".mncConverted");
+var vetSpeciesInput = document.getElementById("vetSpeciesInput").value;
 
 petInput.addEventListener("input", function() {
     var petAge = parseInt(petInput.value);

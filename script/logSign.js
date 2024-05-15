@@ -73,7 +73,7 @@ function signUpChoose() {
       }
     }
 
-    if (clinicsLSBtn) {
+    if (clinicsLSBtn) { //TREBA SAMO OVDE DA SE SKLONI A NE I GORE
       var clientMembershipPay = document.querySelector(".clientMembershipPay").style.setProperty("display", "none", "important");
     }
   }
