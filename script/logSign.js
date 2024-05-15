@@ -72,6 +72,10 @@ function signUpChoose() {
           signUpFormClient.style.setProperty("margin-bottom", "20px", "important");
       }
     }
+
+    if (clinicsLSBtn) {
+      var clientMembershipPay = document.querySelector(".clientMembershipPay").style.setProperty("display", "none", "important");
+    }
   }
 
 //ubacivanje ls headera za ove strane (samo logo)
