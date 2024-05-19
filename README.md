@@ -1,4 +1,4 @@
-# Diplomski rad
+# Healthy Paws (Zdrave šape)
 Za pokretanje projekta neophodno je da se on nalazi u xampp - htdocs folderu.
 Xampp Apache i MySQL moraju biti startovani.
 U pregledaču (chrome) kucati localhost/hp/index.html za početnu stranu.
