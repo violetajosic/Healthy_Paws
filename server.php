@@ -57,8 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $stmt->close();
 }
 
-
-
 // sign up clinic (dodati da ne sme isti mail)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
     echo "clinics";
@@ -118,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
  }
 
 
-// LOG IN RADI
+// LOG IN
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
     $email = $_POST['myemail'];
@@ -127,17 +125,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
     $stmt_login = $conn->prepare("SELECT * FROM users WHERE BINARY email = ?");
     $stmt_login->bind_param("s", $email);
 
-    echo "Email: " . $email; // Output email for debugging
-
-    // Izvršavanje upita
     if (!$stmt_login->execute()) {
         echo "Error: " . $stmt_login->error;
     }
 
-    // Dohvaćanje rezultata upita
     $result_login = $stmt_login->get_result();
-
-    echo "Num Rows: " . $result_login->num_rows; // Output number of rows for debugging
 
     // Provjera je li pronađen korisnik
     if ($result_login->num_rows === 1) {
@@ -145,10 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
         $row_login = $result_login->fetch_assoc();
 
         $storedPassword = $row_login['password'];
-        // Direct comparison for debugging purposes (remove in production)
         if ($my2password === $storedPassword) {
 
-            // Lozinke se podudaraju - prijava uspešna
             if ($row_login['user_type'] === 'client') {
                 echo "sesija pocela kao klijent";
 
@@ -166,13 +156,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
             }
 
         } else {
-            echo "<h1> Login failed. Invalid email or password PRVI.</h1>";
+            echo "<h1> Login failed. Invalid email or password.</h1>"; //ovo da se ne prikazuje kao echo nego kao alert
             session_destroy();
         }
     } else {
-        echo "<h1> Login failed. Invalid email or password.</h1>"; //prikazuje ovo umesto da radi js validaciju
+        echo "<h1> Login failed. Invalid email or password.</h1>"; //ovo da se ne prikazuje kao echo nego kao alert
     }
-    // Zatvaranje stmt_login objekta
     $stmt_login->close();
 }
 

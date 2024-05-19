@@ -30,29 +30,29 @@ function validateAndRedirect() {
   var email = document.querySelector("#exampleInputEmail1").value;
   var password = document.querySelector("#exampleInputPassword1").value;
   var rememberMe = document.querySelector("#exampleCheck1").checked;
+
   var emailErrorDiv = document.getElementById("emailError");
   var passwordErrorDiv = document.getElementById("passwordError");
 
-  emailErrorDiv.innerText = "";
-  emailErrorDiv.style.color = "";
-  passwordErrorDiv.innerText = "";
-  passwordErrorDiv.style.color = "";
-
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var isValid = true;
 
-  // Provera praznih polja
   if (!email.trim()) {
       emailErrorDiv.innerText = "This field is required.";
       emailErrorDiv.style.color = "red";
+      var isValid = false;
   } else if (!emailRegex.test(email)) {
       emailErrorDiv.innerText =
           "Ups! Email Address is incorrect, it should contain @ and .com";
-      emailErrorDiv.style.color = "red"; // Postavi boju teksta na crvenu
+      emailErrorDiv.style.color = "red";
+      var isValid = false;
+  }else {
+    emailErrorDiv.innerText = "✅";
   }
-
   if (!password.trim()) {
       passwordErrorDiv.innerText = "This field is required.";
-      passwordErrorDiv.style.color = "red"; // Postavi boju teksta na crvenu
+      passwordErrorDiv.style.color = "red";
+      var isValid = false;
   } else if (
       password.length < 8 ||
       !/[A-Z]/.test(password) ||
@@ -60,25 +60,23 @@ function validateAndRedirect() {
   ) {
       passwordErrorDiv.innerText = "Ups! Password is incorrect.";
       passwordErrorDiv.style.color = "red";
+      var isValid = false;
+  }else {
+    passwordErrorDiv.innerText = "✅";
   }
 
-  if (emailErrorDiv.innerText === "" && passwordErrorDiv.innerText === "") {
-      if (rememberMe) {
-          // Set a cookie to remember the user
-          localStorage.setItem("remember_me", "true");
-          localStorage.setItem("email", email);
-          localStorage.setItem("password", password);
-      } else {
-          // Clear the existing cookie
-          localStorage.removeItem("remember_me");
-          localStorage.removeItem("email");
-          localStorage.removeItem("password");
-      }
-
-      window.location.href = "index.html";
+  if (rememberMe) {
+      // Set a cookie to remember the user
+      localStorage.setItem("remember_me", "true");
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+  } else {
+      // Clear the existing cookie
+      localStorage.removeItem("remember_me");
+      localStorage.removeItem("email");
+      localStorage.removeItem("password");
   }
-
-  return false; // Sprečava slanje forme
+  return isValid;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -98,7 +96,6 @@ function validateAndRedirectSignUpCLIENT() {
   var accNumIDDiv = document.querySelector(".accNumID");
 
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
   var isValid = true;
 
   if (!email.trim()) {
