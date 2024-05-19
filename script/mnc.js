@@ -13,7 +13,7 @@ function displaySelectedImage(event, elementId) {
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
-//prestalo da radi
+
 var petInput = document.getElementById("petAgeInput1");
 var mncConverted = document.querySelector(".mncConverted");
 var vetSpeciesInput = document.getElementById("vetSpeciesInput").value;
@@ -38,82 +38,64 @@ document.querySelector(".speciesInput").addEventListener("input", function() {
 });
 
 function mnc() {
+    var selectedImage = document.getElementById("selectedImage");
+    var vetHeadingInput = document.querySelector(".vetHeadingInput").value;
+    var vetOwnerInput = document.querySelector(".vetOwnerInput").value;
+    var speciesInput = document.querySelector(".speciesInput").value;
+    var petInput = document.querySelector(".petInput").value;
+
     var imageError = document.getElementById("imageError");
     var nameError = document.getElementById("nameError");
     var ownerError = document.getElementById("ownerError");
     var speciesError = document.getElementById("speciesError");
     var ageError = document.getElementById("ageError");
-    var petInput = document.querySelector(".petInput");
-    var speciesInput = document.querySelector(".speciesInput").value;
-    var vetHeadingInput = document.querySelector(".vetHeadingInput").value;
-    var vetOwnerInput = document.querySelector(".vetOwnerInput").value;
 
-    imageError.innerText = "";
-    imageError.style.color = "";
-    nameError.innerText = "";
-    nameError.style.color = "";
-    ownerError.innerText = "";
-    ownerError.style.color = "";
-    speciesError.innerText = "";
-    speciesError.style.color = "";
-    ageError.innerText = "";
-    ageError.style.color = "";
-
-    var selectedImage = document.getElementById("selectedImage");
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var isValid = true;
 
     if (!selectedImage.src || selectedImage.src.endsWith("uploadImg.jpg")) {
         imageError.innerText = "An image must be chosen and it must be in .jpg format.";
         imageError.style.color = "red";
-    }
+        var isValid = false;
+    }else {
+        imageError.innerText = "✅";
+      }
     if (!vetHeadingInput.trim()) {
         nameError.innerText = "This field is required.";
         nameError.style.color = "red";
-    }
+        var isValid = false;
+    }else {
+        nameError.innerText = "✅";
+      }
     if (!vetOwnerInput.trim()) {
         ownerError.innerText = "This field is required.";
         ownerError.style.color = "red";
+        var isValid = false;
     }else if(!emailRegex.test(vetOwnerInput)) {
         ownerError.innerText = "Invalid email adress.";
         ownerError.style.color = "red";
-    }
+        var isValid = false;
+    }else {
+        ownerError.innerText = "✅";
+      }
     if (!speciesInput.trim()) {
         speciesError.innerText = "This field is required.";
         speciesError.style.color = "red";
+        var isValid = false;
     }else if(!speciesInput.includes(" / ")){
         speciesError.innerText = "Please enter informations in this format: Species / breed";
         speciesError.style.color = "red";
-    }
+        var isValid = false;
+    }else {
+        speciesError.innerText = "✅";
+      }
     if (!petInput || !petInput.value.trim() || isNaN(petInput.value.trim())) {
         ageError.innerText = "This field is required and must contain only numeric values.";
         ageError.style.color = "red";
-    }
+        var isValid = false;
+    }else {
+        ageError.innerText = "✅";
+      }
 
-    if (
-        imageError.innerText === "" &&
-        nameError.innerText === "" &&
-        ownerError.innerText === "" &&
-        speciesError.innerText === "" &&
-        ageError.innerText === ""
-    ) {
-        // poslati na php
-        $.ajax({
-            type: 'POST',
-            url: 'mnc.php',
-            data: {
-                mncButtonFunction: true,
-                vetHeadingInput1: vetHeadingInput,
-                vetSpeciesInput: speciesInput,
-                petAgeInput1: petInput.value,
-                mncConverted: 0,  
-                
-            },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            } //ukoliko je uspesno poslato na php i to je uneto u bazu, iz php treba da vrati ponovo u js (moze i novi fajl) koji ce da ispise na ekranu: uspesno ste napravili katalog, ovo je vas katalog id i da je id broj izvucen iz baze kao redni broj koji se automatski sam pravi
-        });
-    }
+    return isValid;
 }

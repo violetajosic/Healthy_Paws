@@ -26,7 +26,7 @@
                        <a href="index.html"><img src="img/exitIcon/exitHover.png" alt="This is exit button" class="exitBtnHover"></a> 
                     </div>
                 </div>
-                <form class="row-12 mb-2 catalogInfoRow mncInfoRow" action="mnc.php" method="post" enctype="multipart/form-data">
+                <form action="mnc.php" method="post" onsubmit="return mnc()" class="row-12 mb-2 catalogInfoRow mncInfoRow" enctype="multipart/form-data">
                     <div class="row-12 mb-5 mncImg">
                         <div class="mb-4 d-flex justify-content-center profileOwnerImg">
                             <img id="selectedImage" src="img/catalog/uploadImg.jpg"
@@ -90,7 +90,7 @@
                     </div>
                     <div class="row-12 profileButton catalogBtn mncButton">
                         <div class="col-12 profileBtn">
-                            <button onclick="mnc()" type="submit" class="profileClientBtn" name="mncButtonFunction"><h4>Make new catalog</h4></button> <!--upisuje podatke u bazu mnc i prikazuje ID koji dobija iz baze a to je zapravo id u bazi kao pk-->
+                            <button  type="submit" class="profileClientBtn" name="mncButtonFunction"><h4>Make new catalog</h4></button> <!--upisuje podatke u bazu mnc i prikazuje ID koji dobija iz baze a to je zapravo id u bazi kao pk-->
                         </div>
                     </div>
                 </form>
