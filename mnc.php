@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
     $mncConverted = $_POST['mncConverted'];
 
     if (isset($_FILES["customFile1"]) && $_FILES["customFile1"]["error"] == 0) {
-        $targetDirectory = "img/uploads";
+        $targetDirectory = "img/mncUploads"; //cuva na laptopu
         $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
 
         if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {

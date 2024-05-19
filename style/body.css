@@ -26,7 +26,7 @@ body {
     background-repeat: repeat !important;
 }
 .bodyHelp {
-    background-image: url("../img/help/helpBcg.png");
+    background-image: url("../img/diseases/diseasesBcg.png");
 }
 body.bodyProfile {
     background-image: url("../img//diseases/diseasesBcg.png");
