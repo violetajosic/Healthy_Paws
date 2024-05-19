@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $accMemId = $_POST['myAccNumID'];
 
     // Check if the email already exists
-    $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?"); //ne radi
     $stmt_check_email->bind_param("s", $email);
 
     // Execute the query
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     // Check if any rows were returned
     if ($result_check_email->num_rows > 0) {
         // Email already exists, handle error
-        echo "Error: Email already exists. Please use a different email address."; //da ne ispisuje ovo vec da ispise ispod tog inputa crveno
+        echo "<script>document.querySelector('.emailError').innerHTML = 'Email already exists. Please use a different email adress.';</script>"; //da ne ispisuje ovo vec da ispise ispod tog inputa crveno
         exit();
     }
 
@@ -66,28 +66,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
     $mypassword = $_POST['mypassword'];
     $clinicsId = $_POST['clinics_id'];
 
-    // SQL query to add clinic to the table
-    $sql = "INSERT INTO users (email, password, clinic_id, user_type) VALUES (?, ?, ?, 'clinics')";
-    $stmt = $conn->prepare($sql);
+    // Check if the email already exists
+    $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt_check_email->bind_param("s", $email);
 
-    // Check if the prepare was successful
-    if (!$stmt) {
-        die("Error preparing SQL query: " . $conn->error);
+    if (!$stmt_check_email->execute()) {
+        echo "Error executing email check query: " . $stmt_check_email->error;
+        exit();
     }
 
-    // Bind parameters
-    $stmt->bind_param("ssi", $email, $mypassword, $clinicsId);
+    $result_check_email = $stmt_check_email->get_result();
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        header("Location: log.html");
-    } else {
-        echo "Error executing SQL query: " . $stmt->error;
+    if ($result_check_email->num_rows > 0) {
+        echo "<script>document.querySelector('.emailError2').innerHTML = Email already exists. Please use a different email adress.';</script>"; //da ne ispisuje ovo vec da ispise ispod tog inputa crveno
+        exit();
     }
 
-    // Close the statement
-    $stmt->close();
-}
+     // Check if the clinics_id already exists
+     $stmt_check_clinic_id = $conn->prepare("SELECT * FROM users WHERE clinic_id = ?");
+     $stmt_check_clinic_id->bind_param("i", $clinicsId);
+ 
+     if (!$stmt_check_clinic_id->execute()) {
+         echo "Error executing clinic_id check query: " . $stmt_check_clinic_id->error;
+         exit();
+     }
+ 
+     $result_check_clinic_id = $stmt_check_clinic_id->get_result();
+ 
+     if ($result_check_clinic_id->num_rows > 0) {
+         // Error: Clinic ID already exists
+         echo "<script>document.getElementById('clinic-id-error').innerHTML = 'Error: Clinic ID already exists. Please use a different clinic ID.';</script>";
+         exit();
+     }
+ 
+     $sql = "INSERT INTO users (email, password, clinic_id, user_type) VALUES (?, ?, ?, 'clinic')";
+     $stmt = $conn->prepare($sql);
+ 
+     if (!$stmt) {
+         die("Error preparing SQL query: " . $conn->error);
+     }
+ 
+     $stmt->bind_param("ssi", $email, $mypassword, $clinicsId);
+ 
+     if ($stmt->execute()) {
+         header("Location: log.html");
+     } else {
+         echo "Error executing SQL query: " . $stmt->error;
+     }
+ 
+     $stmt->close();
+ }
 
 
 // LOG IN RADI

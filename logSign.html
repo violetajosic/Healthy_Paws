@@ -43,7 +43,7 @@
         <div class="col-12 mb-5 signUpHeading1">
             <h3>Client</h3>
         </div>
-        <form action="server.php" onsubmit="return validateAndRedirectSignUpCLIENT()" method="POST" class="row mb-5 signUpFormClient" id="clientSignUpForm">
+        <form action="server.php" method="POST" onsubmit="return validateAndRedirectSignUpCLIENT()" class="row mb-5 signUpFormClient" id="clientSignUpForm">
             <div class="form-group mb-4 signUpFormGroup">
                 <label class="logInLabel" for="exampleInputEmail2">Email address</label>
                 <input type="email" name="myemail" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
@@ -138,7 +138,7 @@
             <h3>Clinic</h3>
         </div>
         
-        <form action="server.php" method="post" class="row mb-5 signUpFormClinics">
+        <form action="server.php" method="post" onsubmit="return validateAndRedirectSignUpCLINIC()" class="row mb-5 signUpFormClinics">
             <div class="form-group signUpFormGroup">
                 <label class="logInLabel" for="exampleInputEmail3">Email address</label>
                 <input type="email" name="myemail" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
@@ -159,8 +159,8 @@
                 <input type="text" name="clinics_id" class="form-control clinicsID" id="exampleInputPassword6" placeholder="Your unique number" autocomplete="off">
                 <div class="clinicsId" class="error-message"></div>
              </div>
-             <!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics zbog register-clinics-->
-            <button onclick="validateAndRedirectSignUpCLINICS()" name="register-clinics" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn"><h5>Sign Up</h5></button>
+<!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics zbog register-clinics-->
+            <button name="register-clinics" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn"><h5>Sign Up</h5></button>
         </form>
         
         <!--promena teksta u zavisnosti da li ima profil ili ne tj promena iz log in u sign up i obrnuto-->
