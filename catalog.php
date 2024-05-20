@@ -1,4 +1,5 @@
 <?php
+//catalog appointments
 $servername = "localhost";
 $username = "root";
 $password = "";

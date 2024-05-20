@@ -33,10 +33,9 @@ petInput.addEventListener("input", function() {
 });
 
 document.querySelector(".speciesInput").addEventListener("input", function() {
-    speciesInput = document.querySelector(".speciesInput").value; // OVO TREBA DA SE POSALJE U PHP POD NAZIVOM $mncConverted = $_POST['mncConverted']; tj kad se prvo ovde u js izvrsi
+    speciesInput = document.querySelector(".speciesInput").value; 
     mncConverted.textContent = "0";
 });
-
 function mnc() {
     var selectedImage = document.getElementById("selectedImage");
     var vetHeadingInput = document.querySelector(".vetHeadingInput").value;
@@ -56,46 +55,46 @@ function mnc() {
     if (!selectedImage.src || selectedImage.src.endsWith("uploadImg.jpg")) {
         imageError.innerText = "An image must be chosen and it must be in .jpg format.";
         imageError.style.color = "red";
-        var isValid = false;
-    }else {
+        isValid = false;
+    } else {
         imageError.innerText = "✅";
-      }
+    }
     if (!vetHeadingInput.trim()) {
         nameError.innerText = "This field is required.";
         nameError.style.color = "red";
-        var isValid = false;
-    }else {
+        isValid = false;
+    } else {
         nameError.innerText = "✅";
-      }
+    }
     if (!vetOwnerInput.trim()) {
         ownerError.innerText = "This field is required.";
         ownerError.style.color = "red";
-        var isValid = false;
-    }else if(!emailRegex.test(vetOwnerInput)) {
-        ownerError.innerText = "Invalid email adress.";
+        isValid = false;
+    } else if (!emailRegex.test(vetOwnerInput)) {
+        ownerError.innerText = "Invalid email address.";
         ownerError.style.color = "red";
-        var isValid = false;
-    }else {
+        isValid = false;
+    } else {
         ownerError.innerText = "✅";
-      }
+    }
     if (!speciesInput.trim()) {
         speciesError.innerText = "This field is required.";
         speciesError.style.color = "red";
-        var isValid = false;
-    }else if(!speciesInput.includes(" / ")){
-        speciesError.innerText = "Please enter informations in this format: Species / breed";
+        isValid = false;
+    } else if (!speciesInput.includes(" / ")) {
+        speciesError.innerText = "Please enter information in this format: Species / breed";
         speciesError.style.color = "red";
-        var isValid = false;
-    }else {
+        isValid = false;
+    } else {
         speciesError.innerText = "✅";
-      }
+    }
     if (!petInput || !petInput.value.trim() || isNaN(petInput.value.trim())) {
         ageError.innerText = "This field is required and must contain only numeric values.";
         ageError.style.color = "red";
-        var isValid = false;
-    }else {
+        isValid = false;
+    } else {
         ageError.innerText = "✅";
-      }
+    }
 
     return isValid;
 }

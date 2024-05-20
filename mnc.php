@@ -12,35 +12,39 @@ if ($conn->connect_error) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction'])) {
     $petName = $_POST['petName'];
-    $ownerName = $_POST['ownerName'];
+    $ownerEmail = $_POST['ownerEmail'];
     $speciesName = $_POST['speciesName'];
     $petAgeInput = $_POST['petAge'];
-    $mncConverted = $_POST['mncConverted'];
+
+    // Calculate human equivalent age
+    if (strtolower($speciesName) !== "cat") {
+        if ($petAgeInput < 2) {
+            $mncConverted = $petAgeInput * 10.5;
+        } else {
+            $mncConverted = 2 * 10.5 + ($petAgeInput - 2) * 4;
+        }
+    } else {
+        $mncConverted = 15 + 9 * ($petAgeInput - 1);
+    }
 
     if (isset($_FILES["customFile1"]) && $_FILES["customFile1"]["error"] == 0) {
-        $targetDirectory = "img/mncUploads"; //cuva na laptopu
+        $targetDirectory = "img/mncUploads/";
         $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
 
         if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {
-            echo "File is valid, and was successfully uploaded.";
+            echo "File is valid, and was successfully uploaded."; //ovo se prikaze
             $imagePath = $targetFile;
 
-            $sql = "INSERT INTO pets (image, pet_name, owner_name, species, pet_age, age_converted)
-                VALUES ('$imagePath', '$petName', '$ownerName', '$speciesName', $petAgeInput, $mncConverted)";
+            $sql = "INSERT INTO pets (image, pet_name, owner_email, species, pet_age, age_converted)
+                VALUES ('$imagePath', '$petName', '$ownerEmail', '$speciesName', $petAgeInput, $mncConverted)";
 
-            if ($conn->query($sql) === TRUE) {
-                echo "New record created successfully";
-                // Izvršavanje upita za dohvatanje "id"
-                $result = $conn->query("SELECT id FROM mnc");
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    $id = $row['id'];
-                    // Prikaz "id" kao JavaScript promenljive // u bazi stavi da je automatski odnosno da je to pk primarni kljuc auto increment
-                    echo "<script>var catalogId = '$id';</script>";
-                } else {
-                    echo "<script>var catalogId = 'ID not found';</script>";
-                }
-                // Dodavanje funkcije koja se izvršava u mncAfter.js
+            if ($conn->query($sql) === TRUE) { 
+                echo "New record created successfully"; //ovo se prikaze
+                // Get the ID of the last inserted row 
+                $last_id = $conn->insert_id;
+                // Display the ID
+                echo "<script>var catalogId = '$last_id';</script>";
+                // Add a function that executes in mncAfter.js
                 echo "<script>mncAfter();</script>";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -49,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
             echo "Upload failed.";
         }
     } else {
-        echo "File not found or an error occurred.";
+        echo "File upload error: " . $_FILES["customFile1"]["error"]; 
     }
 }
 

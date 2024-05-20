@@ -35,7 +35,7 @@
                         <div class="d-flex justify-content-center mncButton">
                             <div class="btn btn-primary btn-rounded mncBtn">
                                 <label class="form-label text-white m-1 mncLabel" for="customFile1">Choose file</label>
-                                <input type="file" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                                <input type="file" class="form-control d-none" id="customFile1" name="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
                                 <div id="imageError" class="error-message"></div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                     <p class="vetInfo vetInputInfo speciesInputMnc">Owner email adress:</p>
                                 </div>
                                 <div class="col-12 vetSpeciesDiv">
-                                    <input type="text" name="ownerName" class="form-control vetInfoInput vetOwnerInput" id="vetOwnerInput" placeholder="Enter owner name" autocomplete="off">
+                                    <input type="text" name="ownerEmail" class="form-control vetInfoInput vetOwnerInput" id="vetOwnerInput" placeholder="Enter owner email adress" autocomplete="off">
                                     <div id="ownerError" class="error-message"></div>
                                </div>
                             </div>
@@ -104,6 +104,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="script/common.js"></script>
     <script src="script/mnc.js"></script>
+    <script src="script/findCatalog.js"></script>
     <script src="script/exitBtn.js"></script>
     <script src="script/afterLogIn.js"></script>
     <script src="mnc.php"></script>

@@ -1,3 +1,4 @@
+//appointments
 var vetInputTable = document.querySelector(".vetInputTable").style.display="flex";
 
 document.querySelector(".vetInputTable").style.display = "flex";
