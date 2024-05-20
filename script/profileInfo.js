@@ -12,7 +12,6 @@ $(document).ready(function() {
                 // dodaje 1 mesec
                 startDate.setMonth(startDate.getMonth() + 1);
 
-
                 // prikazivanje podataka trenutno ulogovanog korisnika iz baze
                 $('#currentUserEmail').text(userData.email);
                 $('#currentUserPassword').text(userData.password);
