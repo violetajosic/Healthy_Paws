@@ -24,26 +24,28 @@ if ($conn2->connect_error) {
     die("Connection failed: " . $conn2->connect_error);
 }
 
-// Fetch email of the client
-$email = $_SESSION['emailClient']; //iz server.php deo log in
+// Fetch email of the client from session
+$email = $_SESSION['emailClient'];
 
-// Fetch catalog ID from mnc database where owner_email matches client's email
+// Prepare and execute SQL query to fetch catalog IDs from mnc database where owner_email matches client's email
 $sql = "SELECT id FROM pets WHERE owner_email = ?";
 $stmt = $conn2->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $catalogID = $row['id'];
-    echo $catalogID;
+$catalogIDs = [];
+while ($row = $result->fetch_assoc()) {
+    $catalogIDs[] = $row['id'];
+}
+
+if (count($catalogIDs) > 0) {
+    echo implode(", ", $catalogIDs);
 } else {
-    echo "No catalog ID found";
+    echo "No catalog IDs found";
 }
 
 $stmt->close();
 $conn1->close();
 $conn2->close();
-
 ?>
