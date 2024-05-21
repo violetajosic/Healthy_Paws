@@ -170,8 +170,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         var profileSDClinic = document.querySelector("#profileSDClinic").style.display="flex";
                         var profileClientBtn = document.querySelector("#profileCLID").style.display="flex";
                     }   
-                        
-
+                    if (window.location.pathname.includes('catalog.html')) {
+                        var vetInputTable = document.querySelector(".vetInputTable").style.display = "flex";
+                        document.querySelector(".vetInputTable").style.display = "flex";
+                    }
                 }else {
                     // Do something when the user is not logged in
                     console.log('User is not logged in.');

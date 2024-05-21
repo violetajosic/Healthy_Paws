@@ -1,7 +1,5 @@
 //appointments
 document.addEventListener("DOMContentLoaded", function () {
-    var vetInputTable = document.querySelector(".vetInputTable").style.display = "flex";
-    document.querySelector(".vetInputTable").style.display = "flex";
 
     // Function to handle form submission
     function addNewData() {
