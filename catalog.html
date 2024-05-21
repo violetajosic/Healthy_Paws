@@ -40,45 +40,49 @@
                         <p id="catalogAge"><span style="font-weight: bold;">Age:</span></span><span id="mncInfoPetAge"> 7 years old - 41 human years</span></p> <!--dodaj da se nakon godinu dana levi poveca za 1 a desni ponovo preracuna-->
                     </div>
                 </div>
-                <div class="row-12 vetTable">
-                    <div class="row-12 vetTableHeading">
-                        <div class="col-6 vetTableHeadingCol">
-                            <h6> Canine Parvovirus Infection</h6>
+                <div class="scrollVetTable">
+                    <div class="scrollVetTable-content">
+                        <div class="row-12 vetTable">
+                            <div class="row-12 vetTableHeading">
+                                <div class="col-6 vetTableHeadingCol">
+                                    <h6> Canine Parvovirus Infection</h6>
+                                </div>
+                                <div class="col-6 vetTableHeadingCol vetDate">
+                                    <h6>12.05.2024.</h6>
+                                </div>
+                            </div>
+                            <div class="row-12 vetTableInfo">
+                                <ul>
+                                    <li class="col-12 vetInfo symptomsInfo">Symptoms: vomiting, diarrhea, lethargy</li>
+                                    <li class="col-12 vetInfo therapyInfo">Therapy: intravenous fluids, antibiotics, anti-nausea medication, isolation</li>
+                                    <li class="col-12 vetInfo signInfo">Doctor signature: Dr. Amanda Thompson</li>
+                                    <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-6 vetTableHeadingCol vetDate">
-                            <h6>12.05.2024.</h6>
-                        </div>
-                    </div>
-                    <div class="row-12 vetTableInfo">
-                        <ul>
-                            <li class="col-12 vetInfo symptomsInfo">Symptoms: vomiting, diarrhea, lethargy</li>
-                            <li class="col-12 vetInfo therapyInfo">Therapy: intravenous fluids, antibiotics, anti-nausea medication, isolation</li>
-                            <li class="col-12 vetInfo signInfo">Doctor signature: Dr. Amanda Thompson</li>
-                            <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="row-12 vetTable">
-                    <div class="row-12 vetTableHeading">
-                        <div class="col-6 vetTableHeadingCol">
-                            <h6>Feline Upper Respiratory Infection:</h6>
+                        <div class="row-12 vetTable">
+                            <div class="row-12 vetTableHeading">
+                                <div class="col-6 vetTableHeadingCol">
+                                    <h6>Feline Upper Respiratory Infection:</h6>
+                                </div>
+                                <div class="col-6 vetTableHeadingCol vetDate">
+                                    <h6>10.06.2024.</h6>
+                                </div>
+                            </div>
+                            <div class="row-12 vetTableInfo">
+                                <ul>
+                                    <li class="col-12 vetInfo symptomsInfo">Symptoms: sneezing, nasal discharge, coughing</li>
+                                    <li class="col-12 vetInfo therapyInfo">Therapy: antibiotics, humidification therapy, supportive care (hydration and nutrition)</li>
+                                    <li class="col-12 vetInfo signInfo">Doctor signature: Dr. Michael Smith</li>
+                                    <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-6 vetTableHeadingCol vetDate">
-                            <h6>10.06.2024.</h6>
+                        <div id="appointmentContainer">
+                            <!-- Appointment data will be displayed here -->
                         </div>
                     </div>
-                    <div class="row-12 vetTableInfo">
-                        <ul>
-                            <li class="col-12 vetInfo symptomsInfo">Symptoms: sneezing, nasal discharge, coughing</li>
-                            <li class="col-12 vetInfo therapyInfo">Therapy: antibiotics, humidification therapy, supportive care (hydration and nutrition)</li>
-                            <li class="col-12 vetInfo signInfo">Doctor signature: Dr. Michael Smith</li>
-                            <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="appointmentContainer">
-                    <!-- Appointment data will be displayed here -->
                 </div>
                 <!--OVO IDE U BAZU-->
                 <form action="catalog.php" method="POST" onsubmit="addNewData()" class="row-12 vetTable vetInputTable">
