@@ -28,7 +28,7 @@
                 </div>
                 <div class="row-12 mb-2 catalogInfoRow">
                     <div class="col-12 catalogIDCol">
-                        <h4 id="catalogNumber" name="catalogNumber">1245635</h4> <!--ID BROJ KATALOGA DA SE PRIKAZE IZ MNC BAZE-->
+                        <h4 id="catalogNumber" name="catalogNumber">1245635</h4> <!--ID BROJ KATALOGA DA SE PRIKAZE IZ MNC BAZE : kada neko u search pretrazi id prikazi catalog.html ovde da stoji taj id a dole odredjeni podaci iz linije sa tim id-->
                     </div>
                     <div class="col-12 mb-4 profileCol profileOwnerImg" id="catalogImage">
                         <img src="img/profile/dogWithOwner.jpg" alt="User (client) image with his pet."><!--SLIKA IZ MNC BAZE ZA TAJ ID KATALOGA-->
@@ -37,7 +37,7 @@
                         <h5 id="catalogPetName"><span style="font-weight: bold;">Pet name:</span><span id="mncInfoPetName"> Lola</span></h5>
                         <h5 id="catalogOwnerName"><span style="font-weight: bold;">Owner email adress:</span></span><span id="mncInfoOwnerEmail"> client@Test.com</span></h5>
                         <p id="catalogSpecies"><span style="font-weight: bold;">Species / breed:</span></span><span id="mncInfoSpecies"> Dog / Bichon Bolognese</span></p>
-                        <p id="catalogAge"><span style="font-weight: bold;">Age:</span></span><span id="mncInfoPetAge"> 7 years old - 41 human years</span></p> <!--DA se abdejtuje ako moze-->
+                        <p id="catalogAge"><span style="font-weight: bold;">Age:</span></span><span id="mncInfoPetAge"> 7 years old - 41 human years</span></p> <!--dodaj da se nakon godinu dana levi poveca za 1 a desni ponovo preracuna-->
                     </div>
                 </div>
                 <div class="row-12 vetTable">
@@ -54,7 +54,7 @@
                             <li class="col-12 vetInfo symptomsInfo">Symptoms: vomiting, diarrhea, lethargy</li>
                             <li class="col-12 vetInfo therapyInfo">Therapy: intravenous fluids, antibiotics, anti-nausea medication, isolation</li>
                             <li class="col-12 vetInfo signInfo">Doctor signature: Dr. Amanda Thompson</li>
-                            <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li> <!--MORA DA SE POKLAPA SA ULOGOVANIM CLINIC ID-->
+                            <li class="col-12 vetInfo signInfo2">Clinic ID: 12345</li>
                         </ul>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <!--OVO IDE U BAZU-->
-                <form action="catalog.php" method="POST" class="row-12 vetTable vetInputTable">
+                <form action="catalog.php" method="POST" onsubmit="addNewData()" class="row-12 vetTable vetInputTable">
                     <div class="row-12 vetTableHeading vetInputHeading">
                         <div class="col-6 vetTableHeadingCol vetInputHeadingCol">
                             <h6>Disease name:</h6>
@@ -102,12 +102,12 @@
                            <input type="text" name="catalogDoctor" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name" autocomplete="off">
                            <span id="errorDoctor"></span>
                            <p class="col-12 vetInfo vetInputInfo">Clinic ID:</p>
-                           <input type="text" name="catalogClinicID" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
+                           <input type="text" name="catalogClinicID" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off"><!--MORA DA SE POKLAPA SA ULOGOVANIM CLINIC ID-->
                            <span id="errorClinicID"></span>
                         </ul>
                         <div class="row-12 profileButton catalogBtn">
                             <div class="col-12 profileBtn catalogBtn">
-                                <button onclick="addNewData()" type="submit" class="profileClientBtn"><h4>Add new appointment data</h4></button>
+                                <button type="submit" class="profileClientBtn"><h4>Add new appointment data</h4></button>
                             </div>
                         </div>
                     </div>

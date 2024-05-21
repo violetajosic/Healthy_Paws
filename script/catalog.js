@@ -1,5 +1,5 @@
 //appointments
-var vetInputTable = document.querySelector(".vetInputTable").style.display="flex";
+var vetInputTable = document.querySelector(".vetInputTable").style.display = "flex";
 
 document.querySelector(".vetInputTable").style.display = "flex";
 
@@ -16,46 +16,56 @@ function addNewData() {
     var errorDoctor = document.getElementById('errorDoctor');
     var errorClinicID = document.getElementById('errorClinicID');
 
+    var isValid = true;
+
+    errorcatalogDiseaseName.innerText = ''; // Clear previous error messages
+    errorSymptoms.innerText = '';
+    errorTherapy.innerText = '';
+    errorDoctor.innerText = '';
+    errorClinicID.innerText = '';
+
     if (diseaseName.trim() === '') {
         errorcatalogDiseaseName.innerText = 'This field is required.';
         errorcatalogDiseaseName.style.color = 'red';
+        isValid = false;
     }
     if (symptoms.trim() === '') {
         errorSymptoms.innerText = 'This field is required.';
         errorSymptoms.style.color = 'red';
+        isValid = false;
     }
     if (therapy.trim() === '') {
         errorTherapy.innerText = 'This field is required.';
         errorTherapy.style.color = 'red';
+        isValid = false;
     }
     if (doctorInfo.trim() === '') {
         errorDoctor.innerText = 'This field is required.';
         errorDoctor.style.color = 'red';
+        isValid = false;
     }
     if (clinicIDInfo.trim() === '') {
         errorClinicID.innerText = 'This field is required.';
         errorClinicID.style.color = 'red';
-    }else if(!/^\d+$/.test(clinicIDInfo)) {
+        isValid = false;
+    } else if (!/^\d+$/.test(clinicIDInfo)) {
         errorClinicID.innerText = "ID should contain digits only.";
         errorClinicID.style.color = "red";
+        isValid = false;
+    }
 
-    if (errorcatalogDiseaseName === "" &&
-        errorSymptoms === "" &&
-        errorTherapy === "" &&
-        errorDoctor === "" &&
-        errorClinicID === ""
-    ){  
+    if (isValid) {
         var currentDate = new Date();
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
-        
-        //format datuma - DD.MM.YY
+
+        // Format date - DD.MM.YY
         var formattedDate = day + '.' + month + '.' + year;
-    
+
         var newDiv = document.createElement('div');
         newDiv.className = 'row-12 vetTable';
-    
+
         newDiv.innerHTML = `
             <div class="row-12 vetTableHeading vetInputHeading editCatalog">
                 <div class="col-6 vetTableHeadingCol">
@@ -74,32 +84,20 @@ function addNewData() {
                 </ul>
             </div>
         `;
-    
+
         var vetInputTable = document.querySelector(".vetInputTable");
-    
         var parentContainer = document.querySelector(".help-secondWrapper");
-    
         parentContainer.insertBefore(newDiv, vetInputTable);
-    
-    
-        // asinhrono dohvati php
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "catalog.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // ako je uspesno
-                    console.log("uspesno");
-                } else {
-                    // neuspesno
-                    console.error("Error:", xhr.responseText);
-                }
-            }
-        };
-        // Send the data as a query string
-        var data = "catalogDiseaseName=" + encodeURIComponent(diseaseName) + "&catolgDate=" + encodeURIComponent(formattedDate) + "&catalogSympt=" + encodeURIComponent(symptoms) + "&catalogTherapy=" + encodeURIComponent(therapy) + "&catalogDoctor=" + encodeURIComponent(doctorInfo) + "&catalogClinicID=" + encodeURIComponent(clinicIDInfo);
-        xhr.send(data);
-        }
     }
+
+    return isValid;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.querySelector("form");
+    form.addEventListener("submit", function (event) {
+        if (!addNewData()) {
+            event.preventDefault(); // Prevent default form submission if validation fails
+        }
+    });
+});
