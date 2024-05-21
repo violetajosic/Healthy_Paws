@@ -1,10 +1,11 @@
 <?php
 //catalog appointments
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
 $database = "addapointment";
 
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
@@ -19,23 +20,15 @@ $therapy = $_POST['catalogTherapy'];
 $doctorInfo = $_POST['catalogDoctor'];
 $clinicIDInfo = $_POST['catalogClinicID'];
 
-$appointment_date = date('Y-m-d');
-
 // Prepare and execute SQL statement
 $sql = "INSERT INTO appointments (disease_name, appointment_date, symptoms, therapy, doctor_info, clinic_id)
-        VALUES (?, ?, ?, ?, ?, ?)";
+        VALUES (?, CURRENT_DATE(), ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssi", $diseaseName, $appointment_date, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
+$stmt->bind_param("ssssi", $diseaseName, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
 if ($stmt->execute()) {
-    // Return JSON response
-    echo json_encode([
-        'diseaseName' => $diseaseName,
-        'symptoms' => $symptoms,
-        'therapy' => $therapy,
-        'doctorInfo' => $doctorInfo,
-        'clinicIDInfo' => $clinicIDInfo,
-        'date' => date('d.m.Y') // Format the current date
-    ]);
+    // Redirect back to the page
+    header("Location: catalog.html");
+    exit();
 } else {
     // Return error message
     echo json_encode(['error' => 'Error saving data']);
