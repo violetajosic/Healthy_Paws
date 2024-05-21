@@ -1,19 +1,16 @@
 <?php
 // Fetch appointments from the database
 $servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
+$username = "root";
+$password = "";
 $database = "addapointment";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch appointments
 $sql = "SELECT * FROM appointments";
 $result = $conn->query($sql);
 
@@ -24,9 +21,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Close connection
 $conn->close();
 
-// Return JSON response
 echo json_encode($appointments);
 ?>
