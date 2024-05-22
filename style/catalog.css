@@ -33,6 +33,7 @@
     align-items: flex-start;
     line-height: 30px;
     padding: 0;
+    text-align: left;
 }
 .vetTable {
     display: flex;
@@ -185,13 +186,9 @@ div#appointmentContainer {
     width: 100%;
     padding: 10px 0;
 }
-
 @media only screen and (max-width: 992px) {
     .catalogIDCol {
         justify-content: center;
-    }
-    .catalogInfoCol {
-        align-items: center;
     }
     .catalogWrapper {
         padding: 30px;

@@ -12,30 +12,34 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Check if ID is provided in the request
 if (isset($_POST['findID'])) {
     $id = $_POST['findID'];
 
-    // Perform database query
     $sql = "SELECT * FROM pets WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $id);
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-    
-    // Check if ID exists
+
     if ($result->num_rows > 0) {
-        // ID found, send success response
-        echo json_encode(['success' => true]);
+        $row = $result->fetch_assoc();
+        echo json_encode([
+            'success' => true,
+            'image' => base64_encode($row['image']), //treba da se izmeni
+            'pet_name' => $row['pet_name'],
+            'owner_email' => $row['owner_email'],
+            'species' => $row['species'],
+            'pet_age' => $row['pet_age'],
+            'age_converted' => $row['age_converted']
+        ]);
     } else {
-        // ID not found, send error response
-        echo json_encode(['error' => $id]);
+        echo json_encode(['error' => 'Catalog with ID ' . $id . ' not found']);
     }
+
+    $stmt->close();
 } else {
-    // ID not provided, send error response
     echo json_encode(['error' => 'ID not provided']);
 }
 
-$stmt->close();
 $conn->close();
 ?>

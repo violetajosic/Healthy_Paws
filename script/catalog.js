@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 loggedInClinicID = data.clinicID;
             })
-            .catch(error => console.error('Error fetching clinic ID:', error)); //OVO ne prepozna ga kao json
+            .catch(error => console.error('Error fetching clinic ID:', error));
     }
 
     // Function to handle form submission
