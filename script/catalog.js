@@ -1,5 +1,15 @@
-//appointments
 document.addEventListener("DOMContentLoaded", function () {
+    let loggedInClinicID = null;
+
+    // Function to fetch logged-in clinic's ID
+    function fetchLoggedInClinicID() {
+        return fetch('fetchLoggedInClinicID.php')
+            .then(response => response.json())
+            .then(data => {
+                loggedInClinicID = data.clinicID;
+            })
+            .catch(error => console.error('Error fetching clinic ID:', error)); //OVO ne prepozna ga kao json
+    }
 
     // Function to handle form submission
     function addNewData() {
@@ -49,6 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         } else if (!/^\d+$/.test(clinicIDInfo)) {
             errorClinicID.innerText = "ID should contain digits only.";
+            errorClinicID.style.color = "red";
+            isValid = false;
+        } else if (clinicIDInfo !== loggedInClinicID) {
+            errorClinicID.innerText = "Clinic ID does not match the logged-in clinic.";
             errorClinicID.style.color = "red";
             isValid = false;
         }
@@ -136,4 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault(); // Prevent default form submission if validation fails
         }
     });
+
+    // Fetch logged-in clinic's ID when the page loads
+    fetchLoggedInClinicID();
 });

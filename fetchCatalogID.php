@@ -11,7 +11,6 @@ $database2 = "mnc";
 // Create connection to healthypawsusers database
 $conn1 = new mysqli($servername, $username, $password, $database1);
 
-// Check connection
 if ($conn1->connect_error) {
     die("Connection failed: " . $conn1->connect_error);
 }
@@ -19,7 +18,6 @@ if ($conn1->connect_error) {
 // Create connection to mnc database
 $conn2 = new mysqli($servername, $username, $password, $database2);
 
-// Check connection
 if ($conn2->connect_error) {
     die("Connection failed: " . $conn2->connect_error);
 }
