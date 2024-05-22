@@ -33,9 +33,9 @@
                 <a href="clinics.html" class="indexBtn-abs">
                     <h4>Get your catalog</h4>
                 </a>
-                <form class="form-inline IDSearchClinic">
-                    <input class="form-control mr-sm-2 IDSearchClinicInput" type="search" placeholder="Type catalog ID" aria-label="Search">
-                 <a href="catalog.html"><button id="catalogSearchId" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img class="searchIconImg" src="img/searchIcon/search.png" alt="Search icon" height="30px"></button></a>  
+                <form action="findCatalog.php" method="POST" onsubmit="findID()" class="form-inline IDSearchClinic">
+                    <input name="findID" class="form-control mr-sm-2 IDSearchClinicInput" type="search" placeholder="Type catalog ID" aria-label="Search">
+                    <button id="catalogSearchId" class="btn btn-outline-success my-2 my-sm-0" type="submit"><img class="searchIconImg" src="img/searchIcon/search.png" alt="Search icon" height="30px"></button>
                 </form>
                 <div class="col-7 empty">
                 </div>
@@ -49,6 +49,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
+    <script src="script/findCatalog.js"></script>
     <script src="script/afterLogIn.js"></script>
 </body>
 </html>

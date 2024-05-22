@@ -6,6 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "mnc";
 
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -13,19 +14,28 @@ if ($conn->connect_error) {
     exit;
 }
 
-$id = intval($_GET['id']);
+// Check if ID is provided in the request
+if (isset($_POST['findID'])) {
+    $id = $_POST['findID'];
 
-$sql = "SELECT image, pet_name, owner_email, species, pet_age, age_converted FROM pets WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
+    // Perform database query
+    $sql = "SELECT * FROM pets WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    // Fetch the result
     $row = $result->fetch_assoc();
-    echo json_encode($row);
+
+    if ($row) {
+        // Echo the required ID or any other data you want to return
+        echo json_encode($row);
+    } else {
+        echo 'ID not found.';
+    }
 } else {
-    echo json_encode(['error' => 'No catalog found with the given ID']);
+    echo 'ID not provided.';
 }
 
 $stmt->close();
