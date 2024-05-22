@@ -35,6 +35,9 @@
     padding: 0;
     text-align: left;
 }
+.catalogInfoCol h5 {
+    color: #98b5c8;
+}
 .vetTable {
     display: flex;
     flex-direction: column;
