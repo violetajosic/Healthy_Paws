@@ -1,11 +1,9 @@
 <?php
-header('Content-Type: application/json');
 session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "mnc";
-
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,18 +23,23 @@ if (isset($_POST['findID'])) {
     $stmt->execute();
     $result = $stmt->get_result();
     
-    // Fetch the result
-    $row = $result->fetch_assoc();
-
-    if ($row) {
-        // Echo the required ID or any other data you want to return
-        echo json_encode($row);
+    // Check if ID exists
+    if ($result->num_rows > 0) {
+        // ID found, send response
+        header('Location: catalog.html');
     } else {
-        echo 'ID not found.';
+        // ID not found, send response
+        echo json_encode(['status' => 'ID not found']);
     }
 } else {
-    echo 'ID not provided.';
+    // ID not provided, send response
+    echo json_encode(['status' => 'ID not provided']);
 }
+
+$stmt->close();
+$conn->close();
+?>
+
 
 $stmt->close();
 $conn->close();
