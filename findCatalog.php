@@ -25,21 +25,16 @@ if (isset($_POST['findID'])) {
     
     // Check if ID exists
     if ($result->num_rows > 0) {
-        // ID found, send response
-        header('Location: catalog.html');
+        // ID found, send success response
+        echo json_encode(['success' => true]);
     } else {
-        // ID not found, send response
-        echo json_encode(['status' => 'ID not found']);
+        // ID not found, send error response
+        echo json_encode(['error' => $id]);
     }
 } else {
-    // ID not provided, send response
-    echo json_encode(['status' => 'ID not provided']);
+    // ID not provided, send error response
+    echo json_encode(['error' => 'ID not provided']);
 }
-
-$stmt->close();
-$conn->close();
-?>
-
 
 $stmt->close();
 $conn->close();

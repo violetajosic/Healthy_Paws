@@ -1,25 +1,32 @@
 function findID() {
-    var findIDInput = document.querySelector('.IDSearchClinicInput').value;
+    var findIDInput = $('.IDSearchClinicInput').val();
+
     if (findIDInput.trim() !== '') {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var response = xhr.responseText;
-                    // Check if ID was found
-                    if (response.trim() === 'ID not found.') {
-                        console.error('ID not found.');
-                    }
-                } else {
-                    console.error('Request failed with status:', xhr.status);
+        $.ajax({
+            type: 'POST',
+            url: 'findCatalog.php',
+            data: { findID: findIDInput },
+            success: function(response) {
+                var jsonResponse = JSON.parse(response);
+
+                if (jsonResponse.error) {
+                    var findIDError = $('#findIDError');
+                    findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
+                    findIDError.css('color', 'red');
+                } else if (jsonResponse.success) {
+                    window.location.href = 'catalog.html';
                 }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Request failed with status:', textStatus);
             }
-        };
-        xhr.open('POST', 'findCatalog.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('findID=' + findIDInput);
+        });
     } else {
         console.error('Input cannot be empty.');
     }
+
     return false; // Prevent default form submission
 }
+
+// Attach the findID function to the form submission event
+$('.IDSearchClinic').submit(findID);
