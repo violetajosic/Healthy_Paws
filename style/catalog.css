@@ -54,6 +54,7 @@
     color: white;
     background-color: #98b5c8;
     border-radius: 5px;
+    gap: 5px;
 }
 .vetTableHeadingCol {
     padding: 0;
@@ -197,15 +198,7 @@ div#appointmentContainer {
 .vetInputHeading h6{
     text-align: left;
 }
-@media only screen and (max-width: 992px) {
-    .catalogIDCol {
-        justify-content: center;
-    }
-    .catalogWrapper {
-        padding: 30px;
-    }
-}
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 1440px) {
     .vetTableHeading {
         flex-direction: column;
         align-items: center;
@@ -216,6 +209,14 @@ div#appointmentContainer {
     }
     .editVetInputHeading h6 {
         text-align: left;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .catalogIDCol {
+        justify-content: center;
+    }
+    .catalogWrapper {
+        padding: 30px;
     }
 }
 @media only screen and (max-width: 800px) {

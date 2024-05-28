@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="col-1 vetTableHeadingCol vetCatalogID">
                                 <h6>${catalogVetID}</h6>
                              </div>
-                            <div class="col-7 vetTableHeadingCol">
+                            <div class="col-9 vetTableHeadingCol">
                                 <h6>${diseaseName}</h6>
                             </div>
-                            <div class="col-4 vetTableHeadingCol vetDate">
+                            <div class="col-2 vetTableHeadingCol vetDate">
                                 <h6>${formattedDate}</h6>
                             </div>
                         </div>
