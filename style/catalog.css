@@ -189,12 +189,32 @@ div#appointmentContainer {
     width: 100%;
     padding: 10px 0;
 }
+.editVetInputHeading {
+    flex-direction: column;
+    gap: 10px;
+}
+.vetInputHeading h6{
+    text-align: left;
+}
 @media only screen and (max-width: 992px) {
     .catalogIDCol {
         justify-content: center;
     }
     .catalogWrapper {
         padding: 30px;
+    }
+}
+@media only screen and (max-width: 860px) {
+    .vetTableHeading {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+    }
+    .vetTableHeading h6{
+        text-align: center;
+    }
+    .editVetInputHeading h6 {
+        text-align: left;
     }
 }
 @media only screen and (max-width: 800px) {

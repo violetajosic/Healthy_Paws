@@ -14,6 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Retrieve data from POST request
+$catalogVetID = $_POST['catalogVetID'];
 $diseaseName = $_POST['catalogDiseaseName'];
 $symptoms = $_POST['catalogSympt'];
 $therapy = $_POST['catalogTherapy'];
@@ -21,10 +22,10 @@ $doctorInfo = $_POST['catalogDoctor'];
 $clinicIDInfo = $_POST['catalogClinicID'];
 
 // Prepare and execute SQL statement
-$sql = "INSERT INTO appointments (disease_name, appointment_date, symptoms, therapy, doctor_info, clinic_id)
-        VALUES (?, CURRENT_DATE(), ?, ?, ?, ?)";
+$sql = "INSERT INTO appointments (catalog_id, disease_name, appointment_date, symptoms, therapy, doctor_info, clinic_id)
+        VALUES (?, ?, CURRENT_DATE(), ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssi", $diseaseName, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
+$stmt->bind_param("sssssi",$catalogVetID, $diseaseName, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
 if ($stmt->execute()) {
     // Redirect back to the page
     header("Location: catalog.html");

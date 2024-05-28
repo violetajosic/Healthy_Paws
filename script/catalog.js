@@ -13,12 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to handle form submission
     function addNewData() {
+        var catalogVetID = document.getElementById('catalogVetID').value;
         var diseaseName = document.getElementById('diseaseNameInput').value;
         var symptoms = document.getElementById('symptomsAdd').value;
         var therapy = document.getElementById('therapyAdd').value;
         var doctorInfo = document.getElementById('signAdd').value;
         var clinicIDInfo = document.getElementById('signAdd2').value;
 
+        var errorcatalogVetID = document.getElementById('errorcatalogVetID');
         var errorcatalogDiseaseName = document.getElementById('errorcatalogDiseaseName');
         var errorSymptoms = document.getElementById('errorSymptoms');
         var errorTherapy = document.getElementById('errorTherapy');
@@ -27,12 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var isValid = true;
 
+        errorcatalogVetID.innerText = '';
         errorcatalogDiseaseName.innerText = '';
         errorSymptoms.innerText = '';
         errorTherapy.innerText = '';
         errorDoctor.innerText = '';
         errorClinicID.innerText = '';
 
+        if (catalogVetID.trim() === '') {
+            errorcatalogVetID.innerText = 'This field is required.';
+            errorcatalogVetID.style.color = 'red';
+            isValid = false;
+        }
         if (diseaseName.trim() === '') {
             errorcatalogDiseaseName.innerText = 'This field is required.';
             errorcatalogDiseaseName.style.color = 'red';
@@ -69,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isValid) {
             var formData = new FormData();
+            formData.append('catalogVetID', catalogVetID);
             formData.append('catalogDiseaseName', diseaseName);
             formData.append('catalogSympt', symptoms);
             formData.append('catalogTherapy', therapy);
@@ -92,10 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     newDiv.innerHTML = `
                         <div class="row-12 vetTableHeading vetInputHeading editCatalog">
-                            <div class="col-6 vetTableHeadingCol">
+                            <div class="col-1 vetTableHeadingCol vetCatalogID">
+                                <h6>${catalogVetID}</h6>
+                             </div>
+                            <div class="col-7 vetTableHeadingCol">
                                 <h6>${diseaseName}</h6>
                             </div>
-                            <div class="col-6 vetTableHeadingCol vetDate">
+                            <div class="col-4 vetTableHeadingCol vetDate">
                                 <h6>${formattedDate}</h6>
                             </div>
                         </div>
@@ -114,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     parentContainer.insertBefore(newDiv, vetInputTable);
 
                     // Clear form fields
+                    document.getElementById('catalogVetID').value = '';
                     document.getElementById('diseaseNameInput').value = '';
                     document.getElementById('symptomsAdd').value = '';
                     document.getElementById('therapyAdd').value = '';
@@ -121,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('signAdd2').value = '';
 
                     // Clear error messages
+                    errorcatalogVetID.innerText = '';
                     errorcatalogDiseaseName.innerText = '';
                     errorSymptoms.innerText = '';
                     errorTherapy.innerText = '';
