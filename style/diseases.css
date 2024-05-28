@@ -28,7 +28,6 @@ input[type="checkbox"] {
 }
 .diseases-example-wrapper {
     display: none;
-    width: 90%;
     background-color: #ffffff7d;
     padding: 20px;
     border-radius: 15px;
@@ -81,9 +80,6 @@ input[type="checkbox"] {
     font-weight: bold;
 }
 @media only screen and (max-width: 1400px) {
-    .diseases-example-wrapper {
-        width: 100%;
-    }
     .diseases-example {
         height: 540px;
     }
@@ -98,13 +94,13 @@ input[type="checkbox"] {
     .diseases-img img {
         height: 400px;
     }
+    .diseases-example-wrapper {
+        flex-direction: column;
+    }
 }
 @media only screen and (max-width: 992px) {
     h5 {
         font-size: 1rem;
-    }
-    .diseases-example-wrapper {
-        flex-direction: column;
     }
     .diseases-text {
         justify-content: center;
