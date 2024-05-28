@@ -166,7 +166,7 @@ div#appointmentContainer {
     align-items: center;
     align-content: center;
     justify-content: flex-start;
-    height: 600px;
+    height: auto;
     overflow-y: auto;
     border: 4px solid #98b5c8;
     border-radius: 10px;
@@ -188,7 +188,7 @@ div#appointmentContainer {
 }
 .scrollVetTable-content {
     width: 100%;
-    padding: 10px 0;
+    padding-bottom: 20px;
 }
 .editVetInputHeading {
     flex-direction: column;
