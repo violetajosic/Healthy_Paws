@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to handle form submission
     function addNewData() {
+        var catalogID = localStorage.getItem('catalogID');
+
         var catalogVetID = document.getElementById('catalogVetID').value;
         var diseaseName = document.getElementById('diseaseNameInput').value;
         var symptoms = document.getElementById('symptomsAdd').value;
@@ -41,26 +43,40 @@ document.addEventListener("DOMContentLoaded", function () {
             errorcatalogVetID.innerText = 'This field is required.';
             errorcatalogVetID.style.color = 'red';
             isValid = false;
+        } else if (catalogVetID !== catalogID) {
+            errorcatalogVetID.innerText = 'Invalid catalog ID';
+            errorcatalogVetID.style.color = 'red';
+            isValid = false;
+        } else {
+            errorcatalogVetID.innerText = "✅";
         }
         if (diseaseName.trim() === '') {
             errorcatalogDiseaseName.innerText = 'This field is required.';
             errorcatalogDiseaseName.style.color = 'red';
             isValid = false;
+        } else {
+            errorcatalogDiseaseName.innerText = "✅";
         }
         if (symptoms.trim() === '') {
             errorSymptoms.innerText = 'This field is required.';
             errorSymptoms.style.color = 'red';
             isValid = false;
+        } else {
+            errorSymptoms.innerText = "✅";
         }
         if (therapy.trim() === '') {
             errorTherapy.innerText = 'This field is required.';
             errorTherapy.style.color = 'red';
             isValid = false;
+        } else {
+            errorTherapy.innerText = "✅";
         }
         if (doctorInfo.trim() === '') {
             errorDoctor.innerText = 'This field is required.';
             errorDoctor.style.color = 'red';
             isValid = false;
+        } else {
+            errorDoctor.innerText = "✅";
         }
         if (clinicIDInfo.trim() === '') {
             errorClinicID.innerText = 'This field is required.';
@@ -74,6 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
             errorClinicID.innerText = "Clinic ID does not match the logged-in clinic.";
             errorClinicID.style.color = "red";
             isValid = false;
+        } else {
+            errorClinicID.innerText = "✅";
         }
 
         if (isValid) {
