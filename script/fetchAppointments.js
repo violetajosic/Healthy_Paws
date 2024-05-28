@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             newDiv.innerHTML = `
                 <div class="row-12 vetTableHeading vetInputHeading editCatalog">
-                    <div class="col-1 vetTableHeadingCol vetCatalogID">
+                    <div class="appointmentsColWidth col-1 vetTableHeadingCol vetCatalogID">
                         <h6>${appointment.catalog_id}</h6>
                     </div>
-                    <div class="col-9 vetTableHeadingCol">
+                    <div class="appointmentsColWidth col-9 vetTableHeadingCol">
                         <h6>${appointment.disease_name}</h6>
                     </div>
-                    <div class="col-2 vetTableHeadingCol vetDate">
+                    <div class="appointmentsColWidth col-2 vetTableHeadingCol vetDate">
                         <h6>${formattedDate}</h6>
                     </div>
                 </div>

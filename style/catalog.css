@@ -209,6 +209,10 @@ div#appointmentContainer {
     .editVetInputHeading h6 {
         text-align: left;
     }
+    .appointmentsColWidth.col-1, .appointmentsColWidth.col-9, .appointmentsColWidth.col-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 @media only screen and (max-width: 992px) {
     .catalogIDCol {
