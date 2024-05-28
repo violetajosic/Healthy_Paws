@@ -159,6 +159,7 @@ div#appointmentContainer {
     align-items: center;
 }
 .scrollVetTable {
+    width: 90%;
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -243,6 +244,9 @@ div#appointmentContainer {
     }
     .col-6.vetTableHeadingCol {
         max-width: 100%;
+    }
+    .scrollVetTable {
+        width: 95%;
     }
 }
 @media only screen and (max-width: 650px) {

@@ -11,11 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error fetching appointments:', error));
     }
 
-    // Function to display appointments
+    // Function to display filtered appointments
     function displayAppointments(appointments) {
         var parentContainer = document.getElementById("appointmentContainer");
-        parentContainer.innerHTML = ''; // Clear existing content
-        appointments.forEach(function(appointment) {
+        parentContainer.innerHTML = '';
+
+        // Retrieve the catalog ID from local storage
+        var catalogID = localStorage.getItem('catalogID');
+
+        // Filter appointments by catalog ID
+        var filteredAppointments = appointments.filter(function(appointment) {
+            return appointment.catalog_id === catalogID;
+        });
+
+        // Display the filtered appointments
+        filteredAppointments.forEach(function(appointment) {
             var newDiv = document.createElement('div');
             newDiv.className = 'row-12 vetTable';
 

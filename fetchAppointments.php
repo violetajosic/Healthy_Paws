@@ -11,8 +11,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM appointments";
-$result = $conn->query($sql);
+// Check if catalog_id is provided in the request
+$catalog_id = isset($_POST['catalog_id']) ? $_POST['catalog_id'] : '';
+
+if ($catalog_id !== '') {
+    $sql = "SELECT * FROM appointments WHERE catalog_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $catalog_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {//treba da da neku gresku a ne da pretrazi sve
+    $sql = "SELECT * FROM appointments";
+    $result = $conn->query($sql);
+}
 
 $appointments = array();
 if ($result->num_rows > 0) {

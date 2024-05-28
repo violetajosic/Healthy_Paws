@@ -1,3 +1,4 @@
+//add appointment
 document.addEventListener("DOMContentLoaded", function () {
     let loggedInClinicID = null;
 

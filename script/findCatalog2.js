@@ -1,5 +1,6 @@
 $(document).ready(function() {
     // Check if data exists in local storage
+    //show required catalog
     var catalogData = localStorage.getItem('catalogData');
     var catalogID = localStorage.getItem('catalogID');
 
@@ -24,6 +25,7 @@ $(document).ready(function() {
         mncInfoSpecies.style.setProperty('color', 'black', 'important');
         mncInfoPetAge.innerHTML = jsonResponse.pet_age + " years old - " + jsonResponse.age_converted + " human years";
         mncInfoPetAge.style.setProperty('color', 'black', 'important');
+
     } else {
         console.error('No catalog data found in local storage.');
     }

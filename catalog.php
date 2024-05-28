@@ -25,7 +25,7 @@ $clinicIDInfo = $_POST['catalogClinicID'];
 $sql = "INSERT INTO appointments (catalog_id, disease_name, appointment_date, symptoms, therapy, doctor_info, clinic_id)
         VALUES (?, ?, CURRENT_DATE(), ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssi",$catalogVetID, $diseaseName, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
+$stmt->bind_param("issssi",$catalogVetID, $diseaseName, $symptoms, $therapy, $doctorInfo, $clinicIDInfo);
 if ($stmt->execute()) {
     // Redirect back to the page
     header("Location: catalog.html");
