@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display the filtered appointments
         filteredAppointments.forEach(function(appointment) {
+            var scrollVetTable = document.querySelector(".scrollVetTable");
+            scrollVetTable.style.display="flex";
             var newDiv = document.createElement('div');
             newDiv.className = 'row-12 vetTable';
 
