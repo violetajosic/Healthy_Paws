@@ -41,24 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         var newSearch = document.querySelector(".IDSearchClinic");
                         newSearch.style.display="flex";
-                        function findID() { //pretraga catalog ID-ja ALI SAMO ZA ONE KOJI IMAJU TAJ EMAIL
-                            var catalogID = document.getElementById('searchInput').value;
-                        
-                            // Use jQuery to send an AJAX request to catalog.html
-                            $.ajax({
-                                type: 'POST',
-                                url: 'catalog.html',
-                                data: { catalogID: catalogID },
-                                success: function(response) {
-                                    // Update the content in catalogIDCol with the response from catalog.html
-                                    $('.catalogIDCol h4').html(response);
-                                },
-                                error: function() {
-                                    alert('Error fetching data.');
-                                }
-                            });
-                        }
-                        findID();
                     }
                     if (window.location.pathname.includes('profile.html')) {
                         var profileSD = document.querySelector("#profileSD").style.display="flex";

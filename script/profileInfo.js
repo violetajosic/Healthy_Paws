@@ -19,7 +19,7 @@ $(document).ready(function() {
                 $('#currentUserExpiringDate').text(startDate.toISOString().slice(0, 10)); // istice mesec nakon dana
                 $('#currenClinicStartDate').text(userData.created_at);
                 $('#currentClinicID').text(userData.clinic_id);
-                $('#currentCatalogID').text(userData.catalog_id);
+                $('#currentCatalogID').text(userData.catalog_id); //prikazivanje svih id-jeva koje poseduje
             } else {
                 console.error('Error fetching user information: ' + response.message);
             }

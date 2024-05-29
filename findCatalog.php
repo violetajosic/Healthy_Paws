@@ -25,7 +25,7 @@ if (isset($_POST['findID'])) {
         $row = $result->fetch_assoc();
         echo json_encode([
             'success' => true,
-            'image' => base64_encode($row['image']), //treba da se izmeni
+            'image' => $row['image'], //treba da se izmeni
             'pet_name' => $row['pet_name'],
             'owner_email' => $row['owner_email'],
             'species' => $row['species'],

@@ -141,7 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
             if ($row_login['user_type'] === 'client') {
                 echo "sesija pocela kao klijent";
-
                 $_SESSION['loginClient'] = "1";
                 $_SESSION['type'] = 'client';
                 $_SESSION['emailClient'] = $email;
@@ -171,15 +170,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     header('Content-Type: application/json');
 if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
     $clientLogged = true;
-    echo json_encode(['data' => ['loginClient' => 1]]);
+    echo json_encode(['status' => 'success', 'data' => ['loginClient' => 1]]);
    
 } elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {  //ako je klinika
     $clinicLogged = true; 
-   
-    echo json_encode(['data' => ['loginClinics' => 1]]);
+    echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
    
 } else { //ako je izlogovan
-    echo json_encode(['message' => 'User is not logged in']); 
+    echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
     
 }
 }

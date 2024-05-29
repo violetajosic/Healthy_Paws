@@ -24,8 +24,11 @@ $userEmail = '';
 
 if (isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '') {
     $userEmail = $_SESSION['emailClient'];
+    $response = ['status' => 'success', 'data' => ['loginClient' => 1]];
+
 } elseif (isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '') {
     $userEmail = $_SESSION['emailClinics'];
+    $response = ['status' => 'success', 'data' => ['loginClinics' => 1]];
 }
 
 // Prepare and execute SQL query to fetch user information
@@ -39,12 +42,15 @@ if ($result->num_rows > 0) {
     $userData = $result->fetch_assoc();
 
     // Return user information as JSON data
-    echo json_encode(['status' => 'success', 'data' => $userData]);
+    $response['data'] = $userData;
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'User not found']);
+    $response = ['status' => 'error', 'message' => 'User not found'];
 }
 
 // Close database connection
 $stmt->close();
 $conn->close();
+
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

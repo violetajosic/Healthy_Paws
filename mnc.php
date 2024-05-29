@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
 
     if (isset($_FILES["customFile1"]) && $_FILES["customFile1"]["error"] == 0) {
         $targetDirectory = "img/mncUploads/";
+        // $allowTypes = array('jpg','png','jpeg','gif'); 
         $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
 
         if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {
