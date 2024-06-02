@@ -7,17 +7,16 @@ $(document).ready(function() {
         if (findIDInput !== '') {
             $.ajax({
                 type: 'POST',
-                url: 'findCatalog2.php', 
+                url: 'findCatalog.php', 
                 data: { findID: findIDInput },
                 success: function(response) {
-                    console.log(response); // Debugging: log the response
+                    console.log(response);
 
                     try {
                         var jsonResponse = JSON.parse(response);
 
                         if (jsonResponse.success) {
                             if (jsonResponse.logged.loginClient === 1) {
-                                // Correctly access userPets from jsonResponse.data
                                 var userPets = jsonResponse.data.userPets;
                                 if (userPets.includes(parseInt(findIDInput))) {
                                     localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
@@ -31,7 +30,7 @@ $(document).ready(function() {
                                 localStorage.setItem('catalogID', findIDInput);
                                 window.location.href = 'catalog.html';
                             } else {
-                                console.log("Ne prepoznaje ko je ulogovan."); // Not recognizing who is logged in
+                                console.log("Ne prepoznaje ko je ulogovan.");
                             }
                         } else if (jsonResponse.error) {
                             var findIDError = $('#findIDError');
@@ -39,7 +38,7 @@ $(document).ready(function() {
                             findIDError.css('color', 'red');
                         } 
                     } catch (e) {
-                        console.error("Error parsing JSON response:", e); // Handle JSON parse error
+                        console.error("Error parsing JSON response:", e);
                         console.log("Response that caused the error:", response);
                     }
                 },
