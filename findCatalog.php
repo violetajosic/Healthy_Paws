@@ -71,10 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
-                    'age_converted' => $row['age_converted'],
-                    'userData' => [
-                        'id' => $row['id']
-                    ]
+                    'age_converted' => $row['age_converted']
                 ];
 
                 $userEmailQuery = "SELECT healthypawsusers.users.email 
@@ -133,10 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
-                    'age_converted' => $row['age_converted'],
-                    'userData' => [
-                        'id' => $row['id']
-                    ]
+                    'age_converted' => $row['age_converted']
                 ];
             } else {
                 $response['error'] = 'Catalog does not exist';

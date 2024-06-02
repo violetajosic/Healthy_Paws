@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 loggedInClinicID = data.clinicID;
             })
-            .catch(error => console.error('Error fetching clinic ID:', error));
+            .catch(error => console.error('Error fetching clinic ID:', error)); //ovo dobijam
     }
 
     // Function to handle form submission
