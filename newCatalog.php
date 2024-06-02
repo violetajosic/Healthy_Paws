@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,6 +13,7 @@ if ($conn->connect_error) {
 
 if (isset($_GET['catalog_id']) && is_numeric($_GET['catalog_id'])) {
     $catalog_id = $_GET['catalog_id'];
+    $_SESSION['catalog_id'] = $catalog_id;
 
     $sql = "SELECT * FROM pets WHERE id = ?";
     $stmt = $conn->prepare($sql);

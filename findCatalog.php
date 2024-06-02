@@ -20,7 +20,10 @@ if (isset($_POST['findID'])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
+    //$catalog_id = $_GET['catalog_id'];
+    //$response = ['status' => 'success', 'data' => array_merge($userData, ['catalog_id' => $catalog_id])];
+    
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         echo json_encode([

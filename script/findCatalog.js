@@ -2,31 +2,47 @@ $(document).ready(function() {
     function findCatalogID(event) {
         event.preventDefault();
 
-        var findIDInput = $('.IDSearchClinicInput').val();
+        var findIDInput = $('.IDSearchClinicInput').val().trim(); // Upisan ID u pretragu
 
-        if (findIDInput.trim() !== '') {
+        if (findIDInput !== '') {
             $.ajax({
                 type: 'POST',
-                url: 'findCatalog.php',
+                url: 'findCatalog2.php', 
                 data: { findID: findIDInput },
                 success: function(response) {
-                    var jsonResponse = JSON.parse(response);
+                    console.log(response); // Debugging: log the response
 
-                    if (jsonResponse.error) {
-                        var findIDError = $('#findIDError');
-                        findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
-                        findIDError.css('color', 'red');
-                    } else if (jsonResponse.success) {
-                        // Save data to local storage
-                        localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
-                        localStorage.setItem('catalogID', findIDInput);
+                    try {
+                        var jsonResponse = JSON.parse(response);
 
-                        // Redirect to catalog.html
-                        window.location.href = 'catalog.html';
+                        if (jsonResponse.error) {
+                            var findIDError = $('#findIDError');
+                            findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
+                            findIDError.css('color', 'red');
+                        } else if (jsonResponse.success) {
+                            if (jsonResponse.data && jsonResponse.data.loginClient === 1) {
+                                if (jsonResponse.data.userData.id === parseInt(findIDInput)) {
+                                    localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
+                                    localStorage.setItem('catalogID', findIDInput);
+                                    window.location.href = 'catalog.html';
+                                } else {
+                                    console.log("ID mismatch.");
+                                }
+                            } else if (jsonResponse.data && jsonResponse.data.loginClinics === 1) {
+                                localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
+                                localStorage.setItem('catalogID', findIDInput);
+                                window.location.href = 'catalog.html';
+                            } else {
+                                console.log("Unrecognized response structure");
+                            }
+                        }
+                    } catch (e) {
+                        console.error("Error parsing JSON response:", e);
+                        console.log("Response that caused the error:", response);
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Request failed with status:', textStatus);
+                    console.error('Request failed with status:', textStatus, 'Error:', errorThrown);
                 }
             });
         } else {
@@ -34,6 +50,5 @@ $(document).ready(function() {
         }
     }
 
-    // Attach the findCatalogID function to the form submission event
     $('.IDSearchClinic').on('submit', findCatalogID);
 });

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
                 // Get the ID of the last inserted row
                 $last_id = $conn->insert_id;
                 $_SESSION['last_id'] = $last_id; // Store last ID in session
-                header("Location: newCatalog.html"); // Redirect to newCatalog.html
+                header("Location: newCatalog.html");
                 exit();
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
