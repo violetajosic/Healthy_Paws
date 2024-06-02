@@ -25,11 +25,11 @@ function handleRememberMe() {
   }
 }*/
 
-// LOGIN validacija
+//LOGIN validacija
 function validateAndRedirect() {
   var email = document.querySelector("#exampleInputEmail1").value;
   var password = document.querySelector("#exampleInputPassword1").value;
-  var rememberMe = document.querySelector("#exampleCheck1").checked;
+  //var rememberMe = document.querySelector("#exampleCheck1").checked;
 
   var emailErrorDiv = document.getElementById("emailError");
   var passwordErrorDiv = document.getElementById("passwordError");
@@ -37,51 +37,63 @@ function validateAndRedirect() {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var isValid = true;
 
+  // Client-side validation (same as before)
   if (!email.trim()) {
       emailErrorDiv.innerText = "This field is required.";
       emailErrorDiv.style.color = "red";
-      var isValid = false;
+      isValid = false;
   } else if (!emailRegex.test(email)) {
-      emailErrorDiv.innerText =
-          "Ups! Email Address is incorrect, it should contain @ and .com";
+      emailErrorDiv.innerText = "Ups! Email Address is incorrect, it should contain @ and.com";
       emailErrorDiv.style.color = "red";
-      var isValid = false;
-  }else {
-    emailErrorDiv.innerText = "✅";
+      isValid = false;
+  } else {
+      emailErrorDiv.innerText = "✅";
   }
   if (!password.trim()) {
       passwordErrorDiv.innerText = "This field is required.";
       passwordErrorDiv.style.color = "red";
-      var isValid = false;
-  } else if (
-      password.length < 8 ||
-      !/[A-Z]/.test(password) ||
-      !/\d/.test(password)
-  ) {
+      isValid = false;
+  } else if (password.length < 8 ||!/[A-Z]/.test(password) ||!/\d/.test(password)) {
       passwordErrorDiv.innerText = "Ups! Password is incorrect.";
       passwordErrorDiv.style.color = "red";
-      var isValid = false;
-  }else {
-    passwordErrorDiv.innerText = "✅";
-  }
-
-  if (rememberMe) {
-      // Set a cookie to remember the user
-      localStorage.setItem("remember_me", "true");
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
+      isValid = false;
   } else {
-      // Clear the existing cookie
-      localStorage.removeItem("remember_me");
-      localStorage.removeItem("email");
-      localStorage.removeItem("password");
+      passwordErrorDiv.innerText = "✅";
   }
-  return isValid;
-}
 
-document.addEventListener("DOMContentLoaded", function() {
+  if (!isValid) {
+      return false; // Prevent form submission
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'server.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.status === 'failed') {
+              if (response.data === 'Ups! Password is incorrect.') {
+                  passwordErrorDiv.innerText = "Ups! Password is incorrect.";
+                  passwordErrorDiv.style.color = "red";
+              } else if (response.data === 'Login failed. Invalid email or password.') {
+                  passwordErrorDiv.innerText = "Ups! Somewhere is problem.";
+                  passwordErrorDiv.style.color = "red";
+                  emailErrorDiv.innerText = "Ups! Somewhere is problem.";
+                  emailErrorDiv.style.color = "red";
+              }
+              isValid = false;
+          } else {
+              window.location.href = 'index.html';
+          }
+      }
+  };
+  xhr.send('myemail=' + email + '&my2password=' + password + '&logInFormCheck=true');
+
+  return false; // Prevent form submission
+}
+/*document.addEventListener("DOMContentLoaded", function() {
   handleRememberMe();
-});
+});*/
 
 
 function validateAndRedirectSignUpCLIENT() {

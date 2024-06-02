@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
     $stmt_login->bind_param("s", $email);
 
     if (!$stmt_login->execute()) {
-        echo "Error: " . $stmt_login->error;
+        $response = ['status' => 'failed', 'data' => 'Database error'];
     }
 
     $result_login = $stmt_login->get_result();
@@ -138,30 +138,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
         $storedPassword = $row_login['password'];
         if ($my2password === $storedPassword) {
+            $response = ['status' => 'success'];
 
             if ($row_login['user_type'] === 'client') {
-                echo "sesija pocela kao klijent";
                 $_SESSION['loginClient'] = "1";
                 $_SESSION['type'] = 'client';
                 $_SESSION['emailClient'] = $email;
-                header("Location: index.html");
 
             } elseif ($row_login['user_type'] === 'clinics') {
-                echo "sesija pocela kao klinika";
                 $_SESSION['loginClinics'] = "1";
                 $_SESSION['type'] = 'clinics';
                 $_SESSION['emailClinics'] = $email;
-                header("Location: index.html");
             }
 
         } else {
-            echo "<h1> Login failed. Invalid email or password.</h1>"; //ovo da se ne prikazuje kao echo nego kao alert
+            $response = (['status' => 'failed', 'data' => 'Ups! Password is incorrect.']);
             session_destroy();
         }
     } else {
-        echo "<h1> Login failed. Invalid email or password.</h1>"; //ovo da se ne prikazuje kao echo nego kao alert
+        $response = (['status' => 'failed', 'data' => 'Login failed. Invalid email or password.']);
     }
     $stmt_login->close();
+    echo json_encode($response);
 }
 
 
