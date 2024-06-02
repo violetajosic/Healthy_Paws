@@ -29,10 +29,10 @@ $clientLogged = false;
 $clinicLogged = false;
 $userEmail = '';
 
-if (isset($_SESSION['loginClient']) && $_SESSION['loginClient']!= '') { 
+if (isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '') {
     $clientLogged = true;
     $userEmail = $_SESSION['emailClient'];
-} elseif (isset($_SESSION['loginClinics']) && $_SESSION['loginClinics']!= '') {
+} elseif (isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '') {
     $clinicLogged = true;
     $userEmail = $_SESSION['emailClinics'];
 }
@@ -53,17 +53,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_POST['findID'])) {
         $id = $_POST['findID'];
 
-        if ($clientLogged) { //udje u ove petlje
+        if ($clientLogged) {
 
-            $sql = "SELECT * FROM mnc.pets WHERE id =?";
+            $sql = "SELECT * FROM mnc.pets WHERE id = ?";
             $stmt = $conn2->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
             $response['success'] = true;
             $response['logged']['loginClient'] = 1;
-            
-            if ($result && $result->num_rows > 0)  {
+
+            if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $response['success'] = true;
                 $response['data'] = [
@@ -73,42 +73,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted'],
-                    'userData' => [ 
+                    'userData' => [
                         'id' => $row['id']
                     ]
                 ];
 
-            //za poklapanje id-jeva : ukoliko se uneti id poklapa sa id iz kolone id u mnc.pets gde se nalazi owner_email sto je email ulogovanog klijenta
-            $userEmail = $row['owner_email']; //kaze da je undefined
-            $stmt2 = $conn1->prepare("SELECT id FROM mnc.pets WHERE owner_email = ?");
-            $stmt2->bind_param("s", $userEmail);
-            $stmt2->execute();
-            $result2 = $stmt2->get_result();
+                $userEmailQuery = "SELECT healthypawsusers.users.email 
+                                   FROM healthypawsusers.users 
+                                   INNER JOIN mnc.pets 
+                                   ON healthypawsusers.users.email = mnc.pets.owner_email 
+                                   WHERE healthypawsusers.users.email = ?";
+                $stmt3 = $conn1->prepare($userEmailQuery);
+                $stmt3->bind_param("s", $userEmail);
+                $stmt3->execute();
+                $userEmailResult = $stmt3->get_result();
 
-            if ($result2->num_rows > 0) {
-                $userData = $result2->fetch_assoc();
-                $response['data'] = $userData;
-            } else {
-                $response = ['error' => 'User not found'];
-            }
+                if ($userEmailResult->num_rows > 0) {
+                    $userData = $userEmailResult->fetch_assoc();
+                    $stmt2 = $conn1->prepare("SELECT id FROM mnc.pets WHERE owner_email = ?");
+                    $stmt2->bind_param("s", $userData['email']);
+                    $stmt2->execute();
+                    $result2 = $stmt2->get_result();
 
-            $stmt2->close();
-            
+                    if ($result2->num_rows > 0) {
+                        $userPets = [];
+                        while ($row = $result2->fetch_assoc()) {
+                            $userPets[] = $row['id'];
+                        }
+                        $response['data']['userPets'] = $userPets;
+                    } else {
+                        $response['error'] = 'No catalog found for the user';
+                    }
+                } else {
+                    $response['error'] = 'User not found';
+                }
+
+                $stmt3->close();
+                $stmt2->close();
+
             } else {
-                $response['error'] = 'Catalog does not exist'; //da ovo kada nema id kataloga
+                $response['error'] = 'Catalog does not exist';
                 $response['success'] = false;
             }
 
         } elseif ($clinicLogged) {
-            $sql = "SELECT * FROM mnc.pets WHERE id =?";
+            $sql = "SELECT * FROM mnc.pets WHERE id = ?";
             $stmt = $conn2->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
             $response['success'] = true;
             $response['logged']['loginClinics'] = 1;
-            
-            if($result && $result->num_rows > 0)  {
+
+            if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $response['success'] = true;
                 $response['data'] = [
@@ -118,12 +135,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted'],
-                    'userData' => [ 
+                    'userData' => [
                         'id' => $row['id']
                     ]
                 ];
             } else {
-                $response['error'] = 'Catalog does not exist'; //da ovo kada nema id kataloga
+                $response['error'] = 'Catalog does not exist';
                 $response['success'] = false;
             }
         } else {

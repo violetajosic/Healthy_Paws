@@ -17,7 +17,9 @@ $(document).ready(function() {
 
                         if (jsonResponse.success) {
                             if (jsonResponse.logged.loginClient === 1) {
-                                if (jsonResponse.data.id === parseInt(findIDInput)) {
+                                // Correctly access userPets from jsonResponse.data
+                                var userPets = jsonResponse.data.userPets;
+                                if (userPets.includes(parseInt(findIDInput))) {
                                     localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
                                     localStorage.setItem('catalogID', findIDInput);
                                     window.location.href = 'catalog.html';
@@ -29,7 +31,7 @@ $(document).ready(function() {
                                 localStorage.setItem('catalogID', findIDInput);
                                 window.location.href = 'catalog.html';
                             } else {
-                                console.log("Ne prepoznaje ko je ulogovan."); //ovo dobijam kad upisem vazeci id
+                                console.log("Ne prepoznaje ko je ulogovan."); // Not recognizing who is logged in
                             }
                         } else if (jsonResponse.error) {
                             var findIDError = $('#findIDError');
@@ -37,7 +39,7 @@ $(document).ready(function() {
                             findIDError.css('color', 'red');
                         } 
                     } catch (e) {
-                        console.error("Error parsing JSON response:", e); //ovo dobijam
+                        console.error("Error parsing JSON response:", e); // Handle JSON parse error
                         console.log("Response that caused the error:", response);
                     }
                 },
