@@ -77,13 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         'id' => $row['id']
                     ]
                 ];
-            } else {
-                $response['error'] = 'Catalog does not exist'; //da ovo kada nema id kataloga
-                $response['success'] = false;
-            }
 
             //za poklapanje id-jeva : ukoliko se uneti id poklapa sa id iz kolone id u mnc.pets gde se nalazi owner_email sto je email ulogovanog klijenta
-            $userEmail = $row['owner_email'];
+            $userEmail = $row['owner_email']; //kaze da je undefined
             $stmt2 = $conn1->prepare("SELECT id FROM mnc.pets WHERE owner_email = ?");
             $stmt2->bind_param("s", $userEmail);
             $stmt2->execute();
@@ -97,6 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             }
 
             $stmt2->close();
+            
+            } else {
+                $response['error'] = 'Catalog does not exist'; //da ovo kada nema id kataloga
+                $response['success'] = false;
+            }
 
         } elseif ($clinicLogged) {
             $sql = "SELECT * FROM mnc.pets WHERE id =?";
