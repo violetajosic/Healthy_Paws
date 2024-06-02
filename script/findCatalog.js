@@ -15,29 +15,29 @@ $(document).ready(function() {
                     try {
                         var jsonResponse = JSON.parse(response);
 
-                        if (jsonResponse.error) {
-                            var findIDError = $('#findIDError');
-                            findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
-                            findIDError.css('color', 'red');
-                        } else if (jsonResponse.success) {
-                            if (jsonResponse.data && jsonResponse.data.loginClient === 1) {
-                                if (jsonResponse.data.userData.id === parseInt(findIDInput)) {
+                        if (jsonResponse.success) {
+                            if (jsonResponse.logged.loginClient === 1) {
+                                if (jsonResponse.data.id === parseInt(findIDInput)) {
                                     localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
                                     localStorage.setItem('catalogID', findIDInput);
                                     window.location.href = 'catalog.html';
                                 } else {
                                     console.log("ID mismatch.");
                                 }
-                            } else if (jsonResponse.data && jsonResponse.data.loginClinics === 1) {
+                            } else if (jsonResponse.logged.loginClinics === 1) {
                                 localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
                                 localStorage.setItem('catalogID', findIDInput);
                                 window.location.href = 'catalog.html';
                             } else {
-                                console.log("Unrecognized response structure");
+                                console.log("Ne prepoznaje ko je ulogovan."); //ovo dobijam kad upisem vazeci id
                             }
-                        }
+                        } else if (jsonResponse.error) {
+                            var findIDError = $('#findIDError');
+                            findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
+                            findIDError.css('color', 'red');
+                        } 
                     } catch (e) {
-                        console.error("Error parsing JSON response:", e);
+                        console.error("Error parsing JSON response:", e); //ovo dobijam
                         console.log("Response that caused the error:", response);
                     }
                 },
