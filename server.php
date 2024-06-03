@@ -7,33 +7,30 @@ $username = "root";
 $password = "";
 $database = "healthypawsusers";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// sign up client
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
+// SIGN UP client
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['myemail'];
     $mypassword = $_POST['mypassword'];
-    $accMemId = $_POST['myAccNumID'];
+    $accMemId = $_POST['accMemId'];
 
     // Check if the email already exists
-    $stmt_check_email = $conn->prepare("SELECT * FROM users WHERE email = ?"); //ne radi
+    $stmt_check_email = $conn->prepare("SELECT email FROM users WHERE email = ?");
     $stmt_check_email->bind_param("s", $email);
 
-    // Execute the query
     if (!$stmt_check_email->execute()) {
-        // Display any errors
-        echo "Error executing email check query: " . $stmt_check_email->error;
+        $response = ['status' => 'failed', 'data' => 'Database error finding email.'];
+        echo json_encode($response);
         exit();
     }
 
-    // Get the query result
     $result_check_email = $stmt_check_email->get_result();
+    $num_rows = $result_check_email->num_rows;
 
-    // Check if any rows were returned
-    if ($result_check_email->num_rows > 0) {
-        // Email already exists, handle error
-        echo "<script>document.querySelector('.emailError').innerHTML = 'Email already exists. Please use a different email adress.';</script>"; //da ne ispisuje ovo vec da ispise ispod tog inputa crveno
+    if ($num_rows > 0) {
+        $response = ['status' => 'failed', 'data' => 'Email already exists.'];
+        echo json_encode($response);
         exit();
     }
 
@@ -42,22 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-client'])) {
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
-        die("Error preparing SQL query: " . $conn->error);
+        $response = ['status' => 'failed', 'data' => 'Error preparing SQL query: ' . $conn->error];
+        echo json_encode($response);
+        exit();
     }
 
     $stmt->bind_param("ssi", $email, $mypassword, $accMemId);
 
     if ($stmt->execute()) {
-        header("Location: log.html");
-        exit();
+        $response = ['status' => 'success'];
     } else {
-        echo "Error executing SQL query: " . $stmt->error;
+        $response = ['status' => 'failed', 'data' => 'SQL error'];
     }
 
     $stmt->close();
+    echo json_encode($response);
 }
 
-// sign up clinic (dodati da ne sme isti mail)
+
+//SIGN UP clinic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) {
     echo "clinics";
     $email = $_POST['myemail'];
@@ -92,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
      $result_check_clinic_id = $stmt_check_clinic_id->get_result();
  
      if ($result_check_clinic_id->num_rows > 0) {
-         // Error: Clinic ID already exists
          echo "<script>document.getElementById('clinic-id-error').innerHTML = 'Error: Clinic ID already exists. Please use a different clinic ID.';</script>";
          exit();
      }
@@ -113,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register-clinics'])) 
      }
  
      $stmt->close();
+     echo json_encode($response);
  }
 
 
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 
     $result_login = $stmt_login->get_result();
 
-    // Provjera je li pronađen korisnik
+    //check if user exist in database
     if ($result_login->num_rows === 1) {
 
         $row_login = $result_login->fetch_assoc();
@@ -163,18 +163,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logInFormCheck'])) {
 }
 
 
-//za povezivanje sa js
+//for connection with js if user is logged in
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     header('Content-Type: application/json');
 if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
     $clientLogged = true;
     echo json_encode(['status' => 'success', 'data' => ['loginClient' => 1]]);
    
-} elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {  //ako je klinika
+} elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {
     $clinicLogged = true; 
     echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
    
-} else { //ako je izlogovan
+} else {
     echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
     
 }
@@ -207,6 +207,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }*/
 
-// Close the connection
 $conn->close();
 ?>

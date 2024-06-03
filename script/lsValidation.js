@@ -37,7 +37,6 @@ function validateAndRedirect() {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var isValid = true;
 
-  // Client-side validation (same as before)
   if (!email.trim()) {
       emailErrorDiv.innerText = "This field is required.";
       emailErrorDiv.style.color = "red";
@@ -62,7 +61,7 @@ function validateAndRedirect() {
   }
 
   if (!isValid) {
-      return false; // Prevent form submission
+      return false;
   }
 
   var xhr = new XMLHttpRequest();
@@ -87,15 +86,15 @@ function validateAndRedirect() {
           }
       }
   };
-  xhr.send('myemail=' + email + '&my2password=' + password + '&logInFormCheck=true');
+  xhr.send('myemail=' + email + '&mypassword=' + password + '&myAccNumID=' + accNumID + '&register-client=true');
 
-  return false; // Prevent form submission
+  return false;
 }
 /*document.addEventListener("DOMContentLoaded", function() {
   handleRememberMe();
 });*/
 
-
+//SIGN UP CLIENT
 function validateAndRedirectSignUpCLIENT() {
   var email = document.querySelector("#exampleInputEmail2").value;
   var password = document.querySelector("#exampleInputPassword2").value;
@@ -114,53 +113,83 @@ function validateAndRedirectSignUpCLIENT() {
     emailErrorDiv.innerText = "This field is required.";
     emailErrorDiv.style.color = "red";
     isValid = false;
-  }else if (!emailRegex.test(email)) {
-    emailErrorDiv.innerText ="Ups! Email Address is incorrect, it should contain @ and .com";//OVO NE RADI
+  } else if (!emailRegex.test(email)) {
+    emailErrorDiv.innerText = "Ups! Email Address is incorrect, it should contain @ and .com";
     emailErrorDiv.style.color = "red";
     isValid = false;
-  }else {
+  } else {
     emailErrorDiv.innerText = "✅";
-  }if (!password.trim()) {
+  }
+
+  if (!password.trim()) {
     passwordErrorDiv.innerText = "This field is required.";
     passwordErrorDiv.style.color = "red";
     isValid = false;
-  }else if (
-    password.length < 8 ||
-    !/[A-Z]/.test(password) ||
-    !/\d/.test(password)
-  ) {
-    passwordErrorDiv.innerText ="Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
+  } else if (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password)) {
+    passwordErrorDiv.innerText = "Password should contain a minimum of 8 characters, one uppercase letter, and one digit.";
     passwordErrorDiv.style.color = "red";
     isValid = false;
-  }else {
+  } else {
     passwordErrorDiv.innerText = "✅";
-  }if (!repeatPassword.trim()) {
+  }
+
+  if (!repeatPassword.trim()) {
     repeatPasswordErrorDiv.innerText = "This field is required.";
     repeatPasswordErrorDiv.style.color = "red";
     isValid = false;
-  }else if (repeatPassword.trim() !== password.trim()) {
+  } else if (repeatPassword.trim() !== password.trim()) {
     repeatPasswordErrorDiv.innerText = "Ups! Passwords don't match.";
     repeatPasswordErrorDiv.style.color = "red";
     isValid = false;
-  }else {
+  } else {
     repeatPasswordErrorDiv.innerText = "✅";
   }
+
   if (!accNumID.trim()) {
     accNumIDDiv.innerText = "This field is required.";
     accNumIDDiv.style.color = "red";
     isValid = false;
-  }else if (!/\d/.test(accNumID)) {
+  } else if (!/\d/.test(accNumID)) {
     accNumIDDiv.innerText = "Ups! Account membership ID should contain numbers only.";
     accNumIDDiv.style.color = "red";
     isValid = false;
-  }else {
+  } else {
     accNumIDDiv.innerText = "✅";
   }
-  
-  var clientLogged = true;
-  return isValid;
-}
 
+  if (!isValid) {
+    return false;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'server.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function () {
+    console.log("usao u ajax");
+    if (xhr.status === 200) {
+      try {
+        var response = JSON.parse(xhr.responseText);
+        if (response.status === 'failed') {
+          console.log("emajl postoji");
+          if (response.data === 'Email already exists.') {
+            emailErrorDiv.innerText = "Email already exists. Please use a different email address.";
+            emailErrorDiv.style.color = "red";
+          }
+        } else {
+          window.location.href = 'index.html';
+        }
+      } catch (e) {
+        console.error("Failed to parse JSON response: ", xhr.responseText);
+      }
+    }
+  };
+  xhr.onerror = function () {
+    console.error("Request failed");
+  };
+  xhr.send('myemail=' + encodeURIComponent(email) + '&mypassword=' + encodeURIComponent(password) + '&accMemId=' + encodeURIComponent(accNumID));
+
+  return false;
+}
 
 //promena navigacije ukoliko je ulogovan kao klijent
 if (clientLogged){
@@ -176,7 +205,7 @@ if (clientLogged){
 }
 
 
-// validacija CLINIC
+//SIGN UP clinic
 function validateAndRedirectSignUpCLINIC() {
     var email = document.querySelector("#exampleInputEmail3").value;
     var password = document.querySelector("#exampleInputPassword4").value;
