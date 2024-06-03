@@ -57,5 +57,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode($response);
 }
 
+//za povezivanje sa js
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    header('Content-Type: application/json');
+if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
+    $clientLogged = true;
+    echo json_encode(['status' => 'success', 'data' => ['loginClient' => 1]]);
+   
+} elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {  //ako je klinika NE RADI
+    $clinicLogged = true; 
+    echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
+   
+} else { //ako je izlogovan
+    echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
+    
+}
+}
+
 $conn->close();
 ?>
