@@ -10,14 +10,22 @@ $database = "healthypawsusers";
 $conn = new mysqli($servername, $username, $password, $database);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['myemail'];
-    $mypassword = $_POST['mypassword']; //kaze undefined
+    $email = $_POST['myemail'] ?? '';
+    $mypassword = $_POST['mypassword'] ?? ''; // Correctly handle missing mypassword
+
+    if (empty($email) || empty($mypassword)) {
+        $response = ['status' => 'failed', 'data' => 'Login failed. Invalid email or password.'];
+        echo json_encode($response);
+        exit();
+    }
 
     $stmt_login = $conn->prepare("SELECT * FROM users WHERE BINARY email = ?");
     $stmt_login->bind_param("s", $email);
 
     if (!$stmt_login->execute()) {
         $response = ['status' => 'failed', 'data' => 'Database error'];
+        echo json_encode($response);
+        exit();
     }
 
     $result_login = $stmt_login->get_result();
@@ -39,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
         } else {
-            $response = ['status' => 'failed', 'data' => 'Ups! Password is incorrect.']; //treba u js da se prikaze
+            $response = ['status' => 'failed', 'data' => 'Ups! Password is incorrect.'];
             session_destroy();
         }
     } else {
