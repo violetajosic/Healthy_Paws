@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     function loadHeaders() {
         $.ajax({
-            url: 'server.php',
+            url: 'logIn.php',
             method: 'GET',
             dataType: 'json',
             success: function (response) {

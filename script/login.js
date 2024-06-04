@@ -65,7 +65,7 @@ function validateAndRedirect() {
     }
   
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'server.php', true);
+    xhr.open('POST', 'logIn.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (xhr.status === 200) {
