@@ -65,16 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $response['success'] = true;
+                $imageUrl = '/hp/img/mncUploads/'. basename($row['image']);
                 $response['data'] = [
-                    'image' => $row['image'],
+                    'image' => $imageUrl, // Return the full URL of the image
                     'pet_name' => $row['pet_name'],
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted']
                 ];
-                header('Content-Type: image/jpeg');
-                echo $row['image'];
+
                 $userEmailQuery = "SELECT healthypawsusers.users.email 
                                    FROM healthypawsusers.users 
                                    INNER JOIN mnc.pets 
@@ -125,17 +125,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $response['success'] = true;
+                $imageUrl = '/hp/img/mncUploads/'. basename($row['image']);
                 $response['data'] = [
-                    'image' => $row['image'],
+                    'image' => $imageUrl, // Return the full URL of the image
                     'pet_name' => $row['pet_name'],
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted']
                 ];
-                header('Content-Type: image/jpeg');
-                echo $row['image'];
-                exit;
+
             } else {
                 $response['error'] = 'Catalog does not exist';
                 $response['success'] = false;

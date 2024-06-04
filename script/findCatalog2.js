@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     if (catalogData && catalogID) {
         var jsonResponse = JSON.parse(catalogData);
-        console.log('Image Data:', jsonResponse.data.image); // should be defined now
+        console.log('Image Data:', jsonResponse.data.image); 
 
         var catalogNumber = document.querySelector("#catalogNumber");
         var catalogImage = document.querySelector("#catalogImage img");
@@ -16,11 +16,12 @@ $(document).ready(function() {
         var mncInfoPetAge = document.querySelector("#mncInfoPetAge");
 
         var blob = new Blob([jsonResponse.data.image], { type: 'image/jpeg' });
-        var imageUrl = URL.createObjectURL(blob);
-        catalogImage.src = imageUrl;
+        var imageUrl = '/hp/img/mncUploads/' + jsonResponse.data.image.replace('/hp/img/mncUploads/', '');
 
         catalogNumber.innerHTML = catalogID;
         catalogNumber.style.color = 'black';
+
+        catalogImage.src = imageUrl;
 
         catalogImage.onload = function() {
             // Image loaded successfully

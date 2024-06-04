@@ -18,6 +18,9 @@ $(document).ready(function() {
 
                         if (jsonResponse.success) {
                             if (jsonResponse.logged.loginClient === 1) {
+                                var catalogImage = document.querySelector("#catalogImage img");
+                                catalogImage.src = jsonResponse.data.image;
+                                
                                 var userPets = jsonResponse.data.userPets;
                                 if (userPets.includes(parseInt(findIDInput))) {
                                     localStorage.setItem('catalogData', JSON.stringify(jsonResponse));

@@ -1,4 +1,3 @@
-
 //pretraga u meniju kod klinike
 console.log("findCatalogMenu.js radi"); //radi
 $(document).ready(function() {

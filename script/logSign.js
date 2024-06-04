@@ -34,7 +34,6 @@ function applyChangesToLogHTML() {
 
 //odabir client / clinic sign up
 function signUpChoose(event) {
-  console.log("Event target:", event.target);
     var clientLSBtn = document.querySelector(".clientLSBtn");
     var clinicsLSBtn = document.querySelector(".clinicsLSBtn");
   
