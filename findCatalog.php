@@ -73,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted']
                 ];
-
+                header('Content-Type: image/jpeg');
+                echo $row['image'];
                 $userEmailQuery = "SELECT healthypawsusers.users.email 
                                    FROM healthypawsusers.users 
                                    INNER JOIN mnc.pets 
@@ -132,6 +133,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'pet_age' => $row['pet_age'],
                     'age_converted' => $row['age_converted']
                 ];
+                header('Content-Type: image/jpeg');
+                echo $row['image'];
+                exit;
             } else {
                 $response['error'] = 'Catalog does not exist';
                 $response['success'] = false;
@@ -145,7 +149,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 echo json_encode($response);
-
 $conn1->close();
 $conn2->close();
 ?>

@@ -1,9 +1,10 @@
 
 //pretraga u meniju kod klinike
+console.log("findCatalogMenu.js radi"); //radi
 $(document).ready(function() {
     function findCatalogIDMenu(event) {
         event.preventDefault();
-
+       // console.log("2 radi"); //ovo se ne prikazuje
         var findIDMenuInput = $('.IDSearchClinicInputMenu').val().trim(); // Upisan ID u pretragu
 
         if (findIDMenuInput !== '') {

@@ -33,7 +33,8 @@ function applyChangesToLogHTML() {
   }
 
 //odabir client / clinic sign up
-function signUpChoose() {
+function signUpChoose(event) {
+  console.log("Event target:", event.target);
     var clientLSBtn = document.querySelector(".clientLSBtn");
     var clinicsLSBtn = document.querySelector(".clinicsLSBtn");
   
@@ -65,7 +66,7 @@ function signUpChoose() {
       }
     }
 
-    if (clientLSBtn){
+    if (event.currentTarget.classList.contains('clientLSBtn')){
       var clientMembershipPay = document.querySelector(".clientMembershipPay").style.setProperty("display", "flex", "important");
       var signUpFormClient = document.querySelector(".signUpFormClient");
       if (signUpFormClient) {
@@ -73,7 +74,7 @@ function signUpChoose() {
       }
     }
 
-    if (clinicsLSBtn) { //TREBA SAMO OVDE DA SE SKLONI A NE I GORE
+    if (event.currentTarget.classList.contains('clinicsLSBtn')) {
       var clientMembershipPay = document.querySelector(".clientMembershipPay").style.setProperty("display", "none", "important");
     }
   }
