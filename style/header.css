@@ -22,6 +22,9 @@ div#navbarNavAltMarkup {
 .navbar-nav {
     gap: 20px;
 }
+button.navbar-toggler {
+    cursor: url("../img/cursor/cursorPointer.png"), pointer !important;
+}
 .navbar-light .navbar-toggler {
     border: none;
 }

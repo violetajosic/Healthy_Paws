@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("pokrenuto");
     $.ajax({
         url: 'getUserInfo.php',
         method: 'GET',
@@ -28,6 +27,5 @@ $(document).ready(function() {
             console.error('AJAX error: ' + textStatus, errorThrown);
         }
     });
-    console.log("zavrseno");
 });
 //pocetni datum treba da se menja, svaki put kad istekne, pocetni datum postaje dan uplate i to samo kod client profila
