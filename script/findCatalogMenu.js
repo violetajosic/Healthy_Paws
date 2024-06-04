@@ -1,15 +1,16 @@
-//glavna pretraga
+
+//pretraga u meniju kod klinike
 $(document).ready(function() {
-    function findCatalogID(event) {
+    function findCatalogIDMenu(event) {
         event.preventDefault();
 
-        var findIDInput = $('.IDSearchClinicInput').val().trim(); // Upisan ID u pretragu
+        var findIDMenuInput = $('.IDSearchClinicInputMenu').val().trim(); // Upisan ID u pretragu
 
-        if (findIDInput !== '') {
+        if (findIDMenuInput !== '') {
             $.ajax({
                 type: 'POST',
-                url: 'findCatalog.php', 
-                data: { findID: findIDInput },
+                url: 'findCatalogMenu.php', 
+                data: { findIDMenu: findIDMenuInput },
                 success: function(response) {
                     console.log(response);
 
@@ -19,24 +20,24 @@ $(document).ready(function() {
                         if (jsonResponse.success) {
                             if (jsonResponse.logged.loginClient === 1) {
                                 var userPets = jsonResponse.data.userPets;
-                                if (userPets.includes(parseInt(findIDInput))) {
+                                if (userPets.includes(parseInt(findIDMenuInput))) {
                                     localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
-                                    localStorage.setItem('catalogID', findIDInput);
+                                    localStorage.setItem('catalogID', findIDMenuInput);
                                     window.location.href = 'catalog.html';
                                 } else {
                                     console.log("ID mismatch.");
                                 }
                             } else if (jsonResponse.logged.loginClinics === 1) {
                                 localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
-                                localStorage.setItem('catalogID', findIDInput);
+                                localStorage.setItem('catalogID', findIDMenuInput);
                                 window.location.href = 'catalog.html';
                             } else {
                                 console.log("Ne prepoznaje ko je ulogovan.");
                             }
                         } else if (jsonResponse.error) {
-                            var findIDError = $('#findIDError');
-                            findIDError.html("Catalog with " + findIDInput + " ID number does not exist.");
-                            findIDError.css('color', 'red');
+                            var findIDMenuError = $('#findIDMenuError');
+                            findIDMenuError.html("Catalog with " + findIDMenuInput + " ID number does not exist.");
+                            findIDMenuError.css('color', 'red');
                         } 
                     } catch (e) {
                         console.error("Error parsing JSON response:", e);
@@ -52,5 +53,5 @@ $(document).ready(function() {
         }
     }
 
-    $('.IDSearchClinic').on('submit', findCatalogID);
+    $('.IDSearchClinicMenu').on('submit', findCatalogIDMenu);
 });

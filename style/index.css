@@ -55,6 +55,9 @@
 .IDSearchClinic {
     display: none;
 }
+.IDSearchClinicHeader {
+    display: flex !important;
+}
 .IDSearchClinicInput {
     text-align: center;
 }
