@@ -1,5 +1,6 @@
 <?php
 // Fetch appointments from the database
+
 $servername = "localhost";
 $username = "root";
 $password = "";

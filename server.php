@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['myemail'] ?? '';
-    $mypassword = $_POST['mypassword'] ?? ''; // Correctly handle missing mypassword
+    $mypassword = $_POST['mypassword'] ?? '';
 
     if (empty($email) || empty($mypassword)) {
         $response = ['status' => 'failed', 'data' => 'Login failed. Invalid email or password.'];
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['loginClient'] = "1";
                 $_SESSION['type'] = 'client';
                 $_SESSION['emailClient'] = $email;
-            } elseif ($row_login['user_type'] === 'clinic') {
+            } elseif ($row_login['user_type'] === 'clinics') {
                 $_SESSION['loginClinics'] = "1";
                 $_SESSION['type'] = 'clinic';
                 $_SESSION['emailClinics'] = $email;
@@ -58,20 +58,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 //za povezivanje sa js
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
     header('Content-Type: application/json');
-if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
-    $clientLogged = true;
-    echo json_encode(['status' => 'success', 'data' => ['loginClient' => 1]]);
-   
-} elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {  //ako je klinika NE RADI
-    $clinicLogged = true; 
-    echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
-   
-} else { //ako je izlogovan
-    echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
+
+    if ((isset($_SESSION['loginClient']) && $_SESSION['loginClient'] != '')) { 
+        $clientLogged = true;
+        echo json_encode(['status' => 'success', 'data' => ['loginClient' => 1]]);
     
-}
+    } elseif ((isset($_SESSION['loginClinics']) && $_SESSION['loginClinics'] != '')) {
+        $clinicLogged = true; 
+        echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
+    
+    } else { //ako je izlogovan
+        echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
+        
+    }
 }
 
 $conn->close();

