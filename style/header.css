@@ -42,13 +42,6 @@ button.navbar-toggler, .navbar-toggler-icon {
     margin-top: 0 !important;
     height: 35vh !important;
 }
-.searchBar {
-    align-content: center;
-    justify-content: center;
-}
-.searchBar:focus {
-    border: none;
-}
 .form-inline.form-control {
     border-radius: 5px !important;
 }
