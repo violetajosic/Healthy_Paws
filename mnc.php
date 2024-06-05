@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
 
     if (isset($_FILES["customFile1"]) && $_FILES["customFile1"]["error"] == 0) {
         $targetDirectory = "img/mncUploads/";
-        // $allowTypes = array('jpg','png','jpeg','gif'); 
         $targetFile = $targetDirectory . basename($_FILES["customFile1"]["name"]);
 
         if (move_uploaded_file($_FILES["customFile1"]["tmp_name"], $targetFile)) {
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mncButtonFunction']))
                 VALUES ('$imagePath', '$petName', '$ownerEmail', '$speciesName', $petAgeInput, $mncConverted)";
 
             if ($conn->query($sql) === TRUE) { 
-                // Get the ID of the last inserted row
+                // Get the ID of the last inserted row - last ID made
                 $last_id = $conn->insert_id;
                 $_SESSION['last_id'] = $last_id; // Store last ID in session
                 header("Location: newCatalog.html");

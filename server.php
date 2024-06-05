@@ -57,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode($response);
 }
 
-//za povezivanje sa js
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
     header('Content-Type: application/json');
 
@@ -69,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $clinicLogged = true; 
         echo json_encode(['status' => 'success', 'data' => ['loginClinics' => 1]]);
     
-    } else { //ako je izlogovan
+    } else {
         echo json_encode(['status' => 'error', 'message' => 'User is not logged in']);
         
     }

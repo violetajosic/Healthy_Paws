@@ -28,16 +28,16 @@
                 </div>
                 <div class="row-12 mb-2 catalogInfoRow">
                     <div class="col-12 catalogIDCol">
-                        <h4 id="catalogNumber" name="catalogNumber"></h4> <!--ID BROJ KATALOGA DA SE PRIKAZE IZ MNC BAZE : kada neko u search pretrazi id prikazi catalog.html ovde da stoji taj id a dole odredjeni podaci iz linije sa tim id-->
+                        <h4 id="catalogNumber" name="catalogNumber"></h4> 
                     </div>
                     <div class="col-12 mb-4 profileCol profileOwnerImg" id="catalogImage">
-                        <img src="" alt="User (client) image with his pet."><!--SLIKA IZ MNC BAZE ZA TAJ ID KATALOGA-->
+                        <img src="" alt="User (client) image with his pet.">
                     </div>
-                    <div class="col-12 catalogInfoCol"><!--INFORMACIJE IZ KATALOGA SA DATIM ID-->
+                    <div class="col-12 catalogInfoCol">
                         <h5 id="catalogPetName"><span style="font-weight: bold;">Pet name: </span><span id="mncInfoPetName"></span></h5>
                         <h5 id="catalogOwnerName"><span style="font-weight: bold;">Owner email adress: </span></span><span id="mncInfoOwnerEmail"></span></h5>
                         <h5 id="catalogSpecies"><span style="font-weight: bold;">Species / Breed: </span></span><span id="mncInfoSpecies"></span></h5>
-                        <h5 id="catalogAge"><span style="font-weight: bold;">Age: </span></span><span id="mncInfoPetAge"></span></h5> <!--dodaj da se nakon godinu dana levi poveca za 1 a desni ponovo preracuna-->
+                        <h5 id="catalogAge"><span style="font-weight: bold;">Age: </span></span><span id="mncInfoPetAge"></span></h5>
                     </div>
                 </div>
                 <div class="scrollVetTable">
@@ -49,7 +49,6 @@
                         </div>
                     </div>
                 </div>
-                <!--OVO IDE U BAZU-->
                 <form action="catalog.php" method="POST" onsubmit="addNewData()" class="row-12 vetTable vetInputTable">
                     <div class="row-12 vetTableHeading vetInputHeading editVetInputHeading">
                         <div class="col-12 vetTableHeadingCol vetInputHeadingCol">
@@ -79,7 +78,7 @@
                            <input type="text" name="catalogDoctor" class="form-control vetInfoInput" id="signAdd" placeholder="Enter doctor's name" autocomplete="off">
                            <span id="errorDoctor"></span>
                            <p class="col-12 vetInfo vetInputInfo">Clinic ID:</p>
-                           <input type="text" name="catalogClinicID" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off"><!--MORA DA SE POKLAPA SA ULOGOVANIM CLINIC ID-->
+                           <input type="text" name="catalogClinicID" class="form-control vetInfoInput" id="signAdd2" placeholder="Enter clinic ID" autocomplete="off">
                            <span id="errorClinicID"></span>
                         </ul>
                         <div class="row-12 profileButton catalogBtn">

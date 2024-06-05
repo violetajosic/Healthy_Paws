@@ -9,7 +9,7 @@ function showDropdown() {
       var input = document.getElementById("myInput");
       var ul = document.getElementById("myUL");
   
-      // Provera da li je klik van input polja i dropdown-a
+      // check if mouse click is out of the input
       if (event.target !== input && !ul.contains(event.target)) {
         ul.style.display = "none";
       }
@@ -30,7 +30,7 @@ function showDropdown() {
 function showClinicsForCity(city) {
     hideAllClinicRows();
   
-    // Prikazivanje reda sa klinikama za izabrani grad
+    // displaying clinics in cities
     var cityClass = getCityClass(city);
     var clinicRow = document.querySelector(".clinicsCityRow." + cityClass);
     clinicRow.style.display = "flex";
@@ -51,7 +51,7 @@ function getCityClass(city) {
       Subotica: "SU",
     };
   
-    // Vraćanje odgovarajuće klase za izabrani grad
+    // displaying city
     return cityClassMap[city];
 }
 
@@ -63,13 +63,13 @@ function searchFunction() {
     li = ul.getElementsByTagName("li");
   
     if (filter === "") {
-      // Ako je input prazan, prikaži sve redove sa gradovima
+      // if the input is empty show all cities
       var cityRows = document.querySelectorAll(".clinicsCityRow");
       cityRows.forEach(function (row) {
         row.style.display = "";
       });
     } else {
-      // Ako input nije prazan, filtriraj gradove na osnovu unosa
+      // if the input is not empty show required city
       for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
         txtValue = a.textContent || a.innerText;

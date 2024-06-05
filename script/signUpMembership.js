@@ -66,7 +66,7 @@ function clientSignUpMembership() {
   
         var signUpButtonPay = document.querySelectorAll(".btn.btn-primary.clinicsLSBtn.loginBtn.mt-4 button").style.display = "none";
   
-        var lsSwitchElements = document.querySelector(".row.mb-5.lsSwitch").style.setProperty("display", "none", "important"); //ne radi
+        var lsSwitchElements = document.querySelector(".row.mb-5.lsSwitch").style.setProperty("display", "none", "important");
   }
 }
 function payClientMembership() {
@@ -89,7 +89,7 @@ function payClientMembership() {
       var clientMembershipPage = document.querySelector(".clientMembershipPage").style.display="none";
       var payClientMembership = document.querySelector(".payClientMembership");
       if (payClientMembership) {
-          payClientMembership.style.setProperty("display", "none", "important"); //ne radi
+          payClientMembership.style.setProperty("display", "none", "important");
       }
       var accNumHeadingWrapper = document.querySelector(".accNumHeadingWrapper");
       accNumHeadingWrapper.style.cssText += "display: flex; flex-direction: column; gap: 10px;";

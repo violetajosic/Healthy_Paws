@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Check if data exists in local storage
-    // Show required catalog
+    // Show required catalog by searching its ID
     var catalogData = localStorage.getItem('catalogData');
     var catalogID = localStorage.getItem('catalogID');
 
@@ -24,11 +24,9 @@ $(document).ready(function() {
         catalogImage.src = imageUrl;
 
         catalogImage.onload = function() {
-            // Image loaded successfully
             console.log("Image loaded successfully");
         };
         catalogImage.onerror = function() {
-            // Error loading image
             console.error("Error loading image");
         };
 

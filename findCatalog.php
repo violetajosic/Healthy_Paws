@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $response['success'] = true;
                 $imageUrl = '/hp/img/mncUploads/'. basename($row['image']);
                 $response['data'] = [
-                    'image' => $imageUrl, // Return the full URL of the image
+                    'image' => $imageUrl,
                     'pet_name' => $row['pet_name'],
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $response['success'] = true;
                 $imageUrl = '/hp/img/mncUploads/'. basename($row['image']);
                 $response['data'] = [
-                    'image' => $imageUrl, // Return the full URL of the image
+                    'image' => $imageUrl,
                     'pet_name' => $row['pet_name'],
                     'owner_email' => $row['owner_email'],
                     'species' => $row['species'],

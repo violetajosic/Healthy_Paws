@@ -14,7 +14,6 @@ if ($conn->connect_error) {
 // Get the logged-in user's email
 $email = $_SESSION['emailClinics'];
 
-// Fetch the clinic's ID from the users table
 $sql = "SELECT clinic_id FROM users WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);

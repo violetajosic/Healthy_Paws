@@ -1,19 +1,16 @@
- //promena iz sign u log tj iz ls html u log html
+ //switch between sign up and log in
 fetch("logSign.html")
   .then((response) => response.text())
   .then((html) => {
-    // ubacivanje logSing.html u id lswrapper
     document.getElementById("lswrapper").innerHTML = html;
 
-    // Provera da li se nalazite na log.html stranici pre primene izmena
     if (window.location.href.includes("log.html")) {
-      // Nakon što se HTML učita, primeniti promene na log.html
       applyChangesToLogHTML();
     }
   })
   .catch((error) => console.error("Error fetching navigation:", error));
 
-//funkcija za promenu teksta ukoliko si na log html
+//change text on log.html
 function applyChangesToLogHTML() {
     var lsButtons = (document.querySelector(".lsButtons").style.display = "none");
     var lsAS = (document.querySelector(".lsAs").style.display = "none");
@@ -32,7 +29,7 @@ function applyChangesToLogHTML() {
     }
   }
 
-//odabir client / clinic sign up
+//choose client / clinic sign up
 function signUpChoose(event) {
     var clientLSBtn = document.querySelector(".clientLSBtn");
     var clinicsLSBtn = document.querySelector(".clinicsLSBtn");
@@ -78,7 +75,7 @@ function signUpChoose(event) {
     }
   }
 
-//ubacivanje ls headera za ove strane (samo logo)
+//changin navigation menu just to have logo
 fetch("lsHeader.html")
 .then((response) => response.text())
 .then((html) => {
@@ -86,7 +83,7 @@ fetch("lsHeader.html")
 })
 .catch((error) => console.error("Error fetching navigation:", error));
 
-//enter na tastaturi
+//enter 
 var enterBtn = document.querySelector(".enterBtn");
 enterBtn.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {

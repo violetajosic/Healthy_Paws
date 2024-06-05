@@ -21,7 +21,7 @@ if ($catalog_id !== '') {
     $stmt->bind_param("i", $catalog_id);
     $stmt->execute();
     $result = $stmt->get_result();
-} else {//treba da da neku gresku a ne da pretrazi sve
+} else {
     $sql = "SELECT * FROM appointments";
     $result = $conn->query($sql);
 }

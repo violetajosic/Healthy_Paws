@@ -1,26 +1,21 @@
-//navigacija default
+//default navigaction menu
 fetch("header.html")
   .then((response) => response.text())
   .then((html) => {
 
-    // ubacivanje fetch-a u id
     document.getElementById("navigation").innerHTML = html;
 
-    // active klasa sa zutim podvlacenjem na trenutnoj strani
+    //class to add underline for current page
     addActiveClassToLink();
   
   })
   .catch((error) => console.error("Error fetching navigation:", error));
 
-//heading .active class
 function addActiveClassToLink() {
-  // dohvatanje trenutne strane
   var currentPagePath = window.location.pathname;
 
-  // selektovanje svih linkova iz meni navigacije
   var navLinks = document.querySelectorAll(".navbar-nav a");
 
-  // iteracija kroz svaki link i dodavanje active klase
   navLinks.forEach(function (link) {
     var linkPath1 = document.querySelector(".index");
     var linkPath2 = document.querySelector(".about");

@@ -64,14 +64,14 @@ function validateAndRedirectSignUpCLIENT() {
     var clientLogged = true;
   
     if (!isValid) {
-      return false; // Prevent form submission
+      return false;
     }
   
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'signup_client.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
-      console.log("usao u ajax"); //prikaze se
+      console.log("usao u ajax");
       if (xhr.status === 200) {
           var response = JSON.parse(xhr.responseText); //ovde je greska
           if (response.status === 'failed') {

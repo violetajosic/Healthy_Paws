@@ -1,5 +1,5 @@
 <?php
-//za hvatanje i prikazivanje catalog id-ja na profilu kod onog klijenta ciji se email iz healthypawsusers poklapa sa owner_email iz mnc baze
+//fetching catalog id and displaying it on profile.html of a client that has same email from healthypawsusers database as owner_email from mnc database
 session_start();
 
 $servername = "localhost";

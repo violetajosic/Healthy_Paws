@@ -1,6 +1,6 @@
 var exitBtn = document.querySelector(".exitBtn");
 var exitBtnHover = document.querySelector(".exitBtnHover");
-//menjanje slike dugmeta na hover
+
 if (exitBtn !== null && exitBtnHover !== null) {
 
     exitBtn.addEventListener("mouseover", function (event) {

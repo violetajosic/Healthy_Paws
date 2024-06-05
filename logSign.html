@@ -1,4 +1,4 @@
-<!--odavde se u zavisnosti od potrebe prikazuje log in ili sign up i odvojeno za client i clinic-->
+<!--fetching log in / sign up clinic or sign up client-->
 <div class="lswrapper">
     <div id="lsNavigation"></div>
     <div class="container lsContainer">
@@ -10,7 +10,7 @@
                 <h5>As a</h5>
             </div>
         </div>
-        <!--SIGN UP DEO ZA BIRANJE CLIENT / CLINIC-->
+        <!--CHOOSE CLIENT / CLINIC-->
         <div class="row mb-5 lsButtons">
             <div class="col-6 leftBtnLS">
                <button type="button" onclick="signUpChoose(event)" class="btn btn-primary clientLSBtn"><h4>client</h4></button>
@@ -20,7 +20,7 @@
             </div>
         </div>
         
-        <!--LOG IN DEO-->
+        <!--LOG IN PART-->
         <form action="logIn.php" method="post" onsubmit="return validateAndRedirect()" class="row mb-5 logInForm" >
             <div class="form-group mb-4 logInFormGroup">
                 <label class="logInLabel" for="exampleInputEmail1">Email address</label>
@@ -32,11 +32,7 @@
                 <input type="password" name="my2password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
                 <div id="passwordError" class="error-message"></div>
             </div>
-            <div class="form-group form-check logInFormGroup">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
-                <label class="logInLabel" class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
-            <button name="logInFormCheck" type="submit" class="btn btn-primary clinicsLSBtn loginBtn enterBtn"><h5>Log in</h5></button>
+            <button name="logInFormCheck" type="submit" class="btn btn-primary mt-4 clinicsLSBtn loginBtn enterBtn"><h5>Log in</h5></button>
         </form>
 
         <!--CLIENT SIGN UP-->
@@ -64,7 +60,6 @@
                 <input type="text" name="myAccNumID" class="form-control exampleAccNumInput" id="exampleInputAccNumID" placeholder="Enter your Account membership ID." autocomplete="off">
                 <div class="accNumID error-message"></div>
             </div>
-<!--kad neko klikne na ovaj button u bazu se ispisuje user_type client zbog register-client-->
             <button name="register-client" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn" id="singUpBtn"><h5>Sign Up</h5></button>
         </form>
 
@@ -110,7 +105,6 @@
         <div class="clientSignUpMembership payClientMembership">
             <button onclick="payClientMembership()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 mb-4"><h5>pay</h5></button>
         </div>
-       <!--acc num id prikazuje se nakon uplate tj klika na dugme pay iznad-->
         <div class="row-12 accNumHeadingWrapper">
             <div class="row-12 accNumIDHeading">
                 <div class="col-12 accNumIDHeading-heading">
@@ -128,7 +122,6 @@
         <div class="clientSignUpMembership accNumberButton">
             <button onclick="accNumBack()" name="client-membership" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 mb-4" id="backToSignUpBtn"><h5>Back to Sign Up</h5></button>
         </div>
-
 
         <!--CLINIC SIGN UP-->
         <div class="col-12 mb-5 signUpHeading2">
@@ -156,11 +149,9 @@
                 <input type="text" name="clinics_id" class="form-control clinicsID" id="exampleInputPassword6" placeholder="Your unique number" autocomplete="off">
                 <div class="clinicsId" class="error-message"></div>
              </div>
-<!--kad neko klikne na ovaj button u bazu se ispisuje user_type clinics zbog register-clinics-->
             <button name="register-clinics" type="submit" class="btn btn-primary clinicsLSBtn loginBtn mt-4 enterBtn"><h5>Sign Up</h5></button>
         </form>
         
-        <!--promena teksta u zavisnosti da li ima profil ili ne tj promena iz log in u sign up i obrnuto-->
         <div class="row mb-5 lsSwitch">
             <div class="col-12">
                 <h6>Already have an account? <a href="log.html"><span class="lsLogInBtn" style="color: #FFD95A;">Log in</span></a></h6>

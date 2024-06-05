@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             document.querySelector("#profileSD").style.display = "flex";
                             document.querySelector("#profileSDClinic").style.display = "none";
                         }
-                    } else if (userData.loginClinics) { //ne radi
+                    } else if (userData.loginClinics) {
                         console.log('Clinic is logged in.');
                         fetch("clinicsHeader.html")
                             .then((response) => {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                 } else {
-                    console.log('User is not logged in or there was an error.'); //ovo se pojavljuje za clinic
+                    console.log('User is not logged in or there was an error.');
                     fetch("header.html")
                         .then((response) => {
                             if (!response.ok) {

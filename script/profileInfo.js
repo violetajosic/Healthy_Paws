@@ -6,19 +6,18 @@ $(document).ready(function() {
         success: function(response) {
             if (response.status === 'success') {
                 var userData = response.data;
-                var startDate = new Date(userData.created_at); // pocetni datum - kad je napravljen profil
+                var startDate = new Date(userData.created_at);
 
-                // dodaje 1 mesec
                 startDate.setMonth(startDate.getMonth() + 1);
 
-                // prikazivanje podataka trenutno ulogovanog korisnika iz baze
+                // current logged user
                 $('#currentUserEmail').text(userData.email);
                 $('#currentUserPassword').text(userData.password);
                 $('#currentUserStartDate').text(userData.created_at);
-                $('#currentUserExpiringDate').text(startDate.toISOString().slice(0, 10)); // istice mesec nakon dana
+                $('#currentUserExpiringDate').text(startDate.toISOString().slice(0, 10));
                 $('#currenClinicStartDate').text(userData.created_at);
                 $('#currentClinicID').text(userData.clinic_id);
-                $('#currentCatalogID').text(userData.catalog_id); //prikazivanje svih id-jeva koje poseduje
+                $('#currentCatalogID').text(userData.catalog_id);
             } else {
                 console.error('Error fetching user information: ' + response.message);
             }
@@ -28,4 +27,3 @@ $(document).ready(function() {
         }
     });
 });
-//pocetni datum treba da se menja, svaki put kad istekne, pocetni datum postaje dan uplate i to samo kod client profila

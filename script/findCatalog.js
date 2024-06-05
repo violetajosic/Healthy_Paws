@@ -3,7 +3,7 @@ $(document).ready(function() {
     function findCatalogID(event) {
         event.preventDefault();
 
-        var findIDInput = $('.IDSearchClinicInput').val().trim(); // Upisan ID u pretragu
+        var findIDInput = $('.IDSearchClinicInput').val().trim();
 
         if (findIDInput !== '') {
             $.ajax({

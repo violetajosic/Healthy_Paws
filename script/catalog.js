@@ -9,10 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 loggedInClinicID = data.clinicID;
             })
-            .catch(error => console.error('Error fetching clinic ID:', error)); //ovo dobijam
+            .catch(error => console.error('Error fetching clinic ID:', error));
     }
 
-    // Function to handle form submission
     function addNewData() {
         var catalogID = localStorage.getItem('catalogID');
 
@@ -103,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append('catalogDoctor', doctorInfo);
             formData.append('catalogClinicID', clinicIDInfo);
 
-            // Send AJAX request
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'catalog.php', true);
             xhr.onload = function () {
@@ -152,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('signAdd').value = '';
                     document.getElementById('signAdd2').value = '';
 
-                    // Clear error messages
                     errorcatalogVetID.innerText = '';
                     errorcatalogDiseaseName.innerText = '';
                     errorSymptoms.innerText = '';
@@ -160,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorDoctor.innerText = '';
                     errorClinicID.innerText = '';
                 } else {
-                    // Handle error if submission fails
                     console.error('Error:', xhr.statusText);
                 }
             };
@@ -169,21 +165,18 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             xhr.send(formData);
 
-            // Prevent default form submission
             return false;
         }
 
         return isValid;
     }
 
-    // Event listener for form submission
     var form = document.querySelector("form");
     form.addEventListener("submit", function (event) {
         if (!addNewData()) {
-            event.preventDefault(); // Prevent default form submission if validation fails
+            event.preventDefault();
         }
     });
 
-    // Fetch logged-in clinic's ID when the page loads
     fetchLoggedInClinicID();
 });

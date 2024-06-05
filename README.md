@@ -30,7 +30,7 @@ Ukoliko podaci nisu ispravni, ispod nevalidnog polja će se ispisati crvena slov
 Ukoliko su podaci validni, odlazite na LOG IN stranu.
 
 Log In:
-Na Log in strani, nezavisno od toga da li imate profil kao klijent ili klinika, imate opciju da unesete email i šifru napravljenog naloga. Osim unošenja podataka, postoji i mogućnost njihovog pamćenja za naredna logovanja.
+Na Log in strani, nezavisno od toga da li imate profil kao klijent ili klinika, imate opciju da unesete email i šifru napravljenog naloga.
 Ukoliko podaci nisu ispravni, ispod nevalidnog polja će se ispisati crvena slova - uputstvo šta treba izmeniti kako bi polje postalo validno.
 Ukoliko su podaci validni, odlazite na home page i sesija započinje.
 
@@ -52,4 +52,4 @@ Profil CLINIC:
 4. help page - objasnjenje sajta (aplikacije), sve njegove mogućnosti i uputstvo za lakše korišćenje (snalaženje)
 5. profile page - strana na kojoj možete da vidite podatke vašeg profila: logo fotografija klinike, email i šifra kojom ste ulogovani, dan početka saradnje, kao i ID veterinarske ustanove. Ispod svega postoji log out dugme na kom možete da se izlogujete sa profila
 
-*Promena u meniju jeste dodata search opcija, za lakše i brže pretraživanje kataloga, unošenjem njegovog ID-ja (nema potrebe za vraćanjem na home page).
+*Klinika ima pristup svim ID-jevima koji postoje u bazi

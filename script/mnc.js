@@ -1,4 +1,4 @@
-//upload image - treba da se cuva u bazu
+//upload image
 function displaySelectedImage(event, elementId) {
     const selectedImage = document.getElementById(elementId);
     const fileInput = event.target;
@@ -27,7 +27,7 @@ petInput.addEventListener("input", function() {
         } else if (petAge >= 2) {
             mncConverted.textContent = 2 * 10.5 + (petAge - 2) * 4;
         }
-    } else { //za macke
+    } else {
         mncConverted.textContent = 15 + 9 * (petAge - 1);
     }
 });

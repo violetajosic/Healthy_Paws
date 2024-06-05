@@ -6,10 +6,8 @@ $username = "root";
 $password = "";
 $database = "healthypawsusers";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -39,12 +37,9 @@ if ($result->num_rows === 1) {
     $response = ['status' => 'error', 'message' => 'User not found'];
 }
 
-// Close the statement
 $stmt->close();
-// Close the connection
 $conn->close();
 
-// Return the response as JSON
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>
