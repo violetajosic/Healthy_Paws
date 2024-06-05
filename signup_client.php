@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $result_check_email = $stmt_check_email->get_result();
     if ($result_check_email->num_rows > 0) {
-        echo "Email already exists in database";
         $response = ['status' => 'failed', 'data' => 'Email already exists.'];
         echo json_encode($response);
         exit();
