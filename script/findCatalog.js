@@ -26,6 +26,9 @@ $(document).ready(function() {
                                     window.location.href = 'catalog.html';
                                 } else {
                                     console.log("ID mismatch.");
+                                    var findIDError = $('#findIDError');
+                                    findIDError.html("You don't own a catalog with " + findIDInput + " ID number.");
+                                    findIDError.css('color', 'red');
                                 }
                             } else if (jsonResponse.logged.loginClinics === 1) {
                                 localStorage.setItem('catalogData', JSON.stringify(jsonResponse));
