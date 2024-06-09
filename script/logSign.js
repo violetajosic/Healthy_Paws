@@ -19,13 +19,13 @@ function applyChangesToLogHTML() {
     var lsHeading = document.querySelector(".lsHeading h1");
     if (lsHeading) {
       lsHeading.innerHTML =
-        '<span style="font-family:\'Chicle\', serif;">Log <span style="color: #FFD95A; letter-spacing: 2px;">In</span></span>';
+        '<span style="font-family:\'Chicle\', serif;">Log <span style="color: #FFD95A; letter-spacing: 2px; filter: drop-shadow(1px 1px 1px black);">In</span></span>';
     }
   
     var lsSwitch = document.querySelector(".lsSwitch h6");
     if (lsSwitch) {
       lsSwitch.innerHTML =
-        'Don\'t have an account? <a href="ls.html"><span class="lsLogInBtn" style="color: #FFD95A;">Sign up</span></a>';
+        'Don\'t have an account? <a href="ls.html"><span class="lsLogInBtn" style="color: #FFD95A; filter: drop-shadow(1px 1px 1px black);">Sign up</span></a>';
     }
   }
 

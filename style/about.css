@@ -1,6 +1,7 @@
 .aboutHeading {
     font-family: "Chicle", serif;
     color: #FFD95A;
+    filter: drop-shadow(1px 1px 1px black);
 }
 .about-wrapper {
     margin: 20px 0;
@@ -15,6 +16,7 @@
 .aboutSpan {
     color: #FFD95A;
     font-weight: bold;
+    filter: drop-shadow(1px 1px 1px black);
 }
 .aboutSpan:hover {
     color: #5087ca;

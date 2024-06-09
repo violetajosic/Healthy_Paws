@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             .catch((error) => console.error("Error fetching clientHeader:", error));
 
                         if (window.location.pathname.includes('index.html')) {
-                            document.querySelector(".indexH1 h1").innerHTML = 'Welcome to the <span style="font-family: Chicle, serif;"><span style="color: black; letter-spacing: 1px;">Healthy</span> <span style="color: #FFD95A; letter-spacing: 1px;">Paws</span></span>';
-                            document.querySelector(".indexH1 h2").innerHTML = 'Type below the <span style="color:#FFD95A; font-weight:bold">CATALOG ID</span> that you got from a veterinarian.';
+                            document.querySelector(".indexH1 h1").innerHTML = 'Welcome to the <span style="font-family: Chicle, serif;"><span style="color: black; letter-spacing: 1px;">Healthy</span> <span style="color: #FFD95A; letter-spacing: 1px; filter: drop-shadow(1px 1px 1px black);">Paws</span></span>';
+                            document.querySelector(".indexH1 h2").innerHTML = 'Type below the <span style="color:#FFD95A; font-weight:bold filter: drop-shadow(1px 1px 1px black);">CATALOG ID</span> that you got from a veterinarian.';
                             document.querySelector(".indexBtn-abs h4").innerHTML = 'Type your ID here..';
                             document.querySelector(".indexBtn-abs").style.display = "none";
                             document.querySelector(".IDSearchClinic").style.display = "flex";
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             .catch((error) => console.error("Error fetching clinicsHeader:", error));
 
                         if (window.location.pathname.includes('index.html')) {
-                            document.querySelector(".indexH1 h1").innerHTML = 'Thank you for contributing to a better society <br> and safety of our loved ones <br> with <span style="font-family: Chicle, serif; color:black; font-weight:bold; letter-spacing: 1px;">Healthy <span style="color:#FFD95A; letter-spacing: 1px;">Paws</span></span>';
+                            document.querySelector(".indexH1 h1").innerHTML = 'Thank you for contributing to a better society <br> and safety of our loved ones <br> with <span style="font-family: Chicle, serif; color:black; font-weight:bold; letter-spacing: 1px;">Healthy <span style="color:#FFD95A; letter-spacing: 1px; filter: drop-shadow(1px 1px 1px black);">Paws</span></span>';
                             function adjustFontSize() {
                                 var windowWidth = window.innerWidth;
                                 var breakpoints = { xsmall: 570, small: 600, medium: 1000, xl: 1200 };
