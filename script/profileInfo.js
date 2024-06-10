@@ -8,7 +8,7 @@ $(document).ready(function() {
                 var userData = response.data;
                 var startDate = new Date(userData.created_at);
 
-                startDate.setMonth(startDate.getMonth() + 1);
+                startDate.setFullYear(startDate.getFullYear() + 1);
 
                 // current logged user
                 $('#currentUserEmail').text(userData.email);
