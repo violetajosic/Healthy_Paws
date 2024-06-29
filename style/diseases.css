@@ -47,7 +47,7 @@ input[type="checkbox"] {
 }
 .diseases-example {
     padding: 0;
-    height: 500px;
+    height: auto;
 }
 .diseases-img {
     display: flex;
@@ -79,17 +79,9 @@ input[type="checkbox"] {
 .diseases-example-rows h5 {
     font-weight: bold;
 }
-@media only screen and (max-width: 1400px) {
-    .diseases-example {
-        height: 540px;
-    }
-}
 @media only screen and (max-width: 1200px) {
     h5 {
         font-size: 1.2rem;
-    }
-    .diseases-example {
-        height: 580px;
     }
     .diseases-img img {
         height: 400px;

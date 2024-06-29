@@ -18,7 +18,7 @@ function find() {
     changesInActivity: ["cwd"],
     lethargy: ["canineParvovirus", "cwd"],
     fearOfTouch: ["canineParvovirus", "cwd"],
-    cough: ["equineInfluenza", "canineDistemper", "ehv", "brsv"],
+    cough: ["canine-Parvovirus", "equineInfluenza", "canineDistemper", "ehv", "brsv"],
     difficultyBreathing: ["equineInfluenza", "avianInfluenza", "brsv"],
     sneezing: ["feLV", "avianInfluenza"],
     nasalDischarge: ["feLV", "canineDistemper", "ehv"],
