@@ -1,4 +1,4 @@
-//glavna pretraga
+//main search
 $(document).ready(function() {
     function findCatalogID(event) {
         event.preventDefault();

@@ -81,10 +81,6 @@ function mnc() {
         speciesError.innerText = "This field is required.";
         speciesError.style.color = "red";
         isValid = false;
-    } else if (!speciesInput.includes(" / ")) {
-        speciesError.innerText = "Please enter information in this format: Species / breed";
-        speciesError.style.color = "red";
-        isValid = false;
     } else {
         speciesError.innerText = "✅";
     }
